@@ -6,4 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+  hideList: boolean = true;
+
+  changeMenuState() {
+    this.hideList = !this.hideList;
+  }
 }

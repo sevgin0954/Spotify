@@ -1,6 +1,6 @@
 <nav>
     <a class="navbar-brand">
-        <i class="fab fa-spotify"></i> 
+        <i class="fab fa-spotify"></i>
         <span>SPOTIFY</span>
     </a>
 
@@ -9,10 +9,17 @@
         <input type="text" placeholder="Search music">
     </form>
 
-    <a href="#" class="signup">
-        Sign up
-    </a>
-    <a href="#" class="login">
-        Log in
-    </a>
+    <button (click)="changeMenuState()" class="menu-list-button"><i class="fas fa-bars"></i></button>
+    <ul [class.flex]="hideList" class="menu-list">
+        <li>
+            <a href="#" class="signup">
+                Sign up
+            </a>
+        </li>
+        <li>
+            <a href="#" class="login">
+                Log in
+            </a>
+        </li>
+    </ul>
 </nav>

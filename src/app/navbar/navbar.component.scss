@@ -1,15 +1,25 @@
 @import '../../variables.scss';
 
+$navbar-height: 4rem;
+$navbar-background-color: #202020;
+
+ul.menu-list.flex {
+    display: flex;
+}
+
 nav {
-    background-color: #202020;
+    background-color: $navbar-background-color;
     color: white;
-    height: 4rem;
+    height: $navbar-height;
     font-size: 1.5rem;
     
     display: flex;
     align-items: center;
 
     padding: 0 2rem;
+}
+nav > * {
+    flex-shrink: 0;
 }
 
 a.navbar-brand {
@@ -69,7 +79,6 @@ a.navbar-brand {
     background-color: white;
     color: black;
     border-radius: 5px;
-    border-radius: 5px;
     padding: 0.2rem 1.5rem;
 }
 .login:focus, .login:hover {
@@ -78,8 +87,60 @@ a.navbar-brand {
 
 .signup {
     color: white;
-    padding: 0.2rem 1.5rem;
 }
 .signup:focus, .signup:hover {
     color: $green;
+}
+
+ul.menu-list {
+    display: flex;
+    padding: 0;
+}
+
+.menu-list-button {
+    display: none;
+}
+
+@media (max-width: 680px) {
+    .menu-list-button {
+        display: block;
+        background-color: inherit;
+        border: none;
+        font-size: 1.9rem;
+        color: $green;
+        cursor: pointer;
+    }
+
+    ul.menu-list {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        top: $navbar-height;
+        background-color: $navbar-background-color;
+        margin: 0;
+        width: 20vh;
+        height: 30vh;
+        align-items: center;
+        justify-content: space-evenly;
+        border-bottom-left-radius: 6px;
+
+        * {
+            background-color: $navbar-background-color;
+            border: none;
+            padding: 0;
+            border-radius: 0;
+            color: white;
+            margin: 0;
+        }
+        :hover {
+            color: $green;
+        }
+    }
+}
+
+@media (max-width: 420px) {
+    nav {
+        padding: 0 1rem;
+    }
 }
