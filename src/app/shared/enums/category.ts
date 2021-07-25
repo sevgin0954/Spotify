@@ -1,0 +1,3 @@
+export enum Category {
+    'Top Lists', 'At Home', Pop, EQUAL, Mood, Decades, 'Hip Hop', 'In the car', Frequency, Gaming, Wellness, Workout, Chill, Focus, Sleep, Party, Indie, Metal, Rock, 'Dance/Electronic', 'Cooking & Dining', Jazz, 'R&B', Instrumental, Romance, Soul, 'Kids & Family', Classical, Latin, Caribbean, Blues, Funk, Punk, Country, 'Folk & Acoustic', Desi, Arab, Afro, Travel, 'K-Pop', Ambient
+}

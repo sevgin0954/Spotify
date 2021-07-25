@@ -10,7 +10,7 @@
     </form>
 
     <button (click)="changeMenuState()" class="menu-list-button"><i class="fas fa-bars"></i></button>
-    <ul [class.flex]="hideList" class="menu-list">
+    <ul [class.flex]="hideList === false" class="menu-list">
         <li>
             <a href="#" class="signup">
                 Sign up
