@@ -1,3 +1,4 @@
+import { Image } from "../image/image";
 import { PlailistTrack } from "../plailist-track/plailist-track";
 import { User } from "../user/user";
 
@@ -8,7 +9,7 @@ export interface Playlist {
     external_urls: string,
     href: string,
     id: string,
-    images: any[],
+    images: Image[],
     name: string,
     owner: User,
     public: boolean,
