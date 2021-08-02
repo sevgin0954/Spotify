@@ -10,11 +10,13 @@ export class HomeComponent implements OnInit {
   categories: CategoryEnum[] = [];
 
   getCategoryName(category: CategoryEnum): string {
-    return CategoryEnum[category];
+    const categoryName = CategoryEnum[category].split('_').join(' ');
+    return categoryName;
   }
 
   ngOnInit(): void {
-    this.categories.push(CategoryEnum.Mood);
-    //this.categories.push(CategoryEnum.Focus);
+    this.categories.push(CategoryEnum.toplists);
+    this.categories.push(CategoryEnum.mood);
+    this.categories.push(CategoryEnum.focus);
   }
 }
