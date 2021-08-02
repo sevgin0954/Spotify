@@ -1,0 +1,12 @@
+<div class="playlist-card">
+    <img src="{{ playlist.images[playlist.images.length - 1].url }}" alt="{{ playlist.name }} playlist image">
+
+    <div>
+        <h2>
+            <app-text-fit [displayRows]="1" [text]="playlist.name"></app-text-fit>
+        </h2>
+    </div>
+    <p class="playlist-description">
+        <app-text-fit [displayRows]="2" [text]="playlist.description"></app-text-fit>
+    </p>
+</div>

@@ -1,8 +1,9 @@
-import { AfterViewInit, Renderer2 } from '@angular/core';
-import { AfterViewChecked, Component, ElementRef, Input, OnChanges, QueryList, SimpleChanges, ViewChildren } from '@angular/core';
+import { Renderer2 } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, Input, OnChanges, QueryList, ViewChildren } from '@angular/core';
 import { Playlist } from 'src/app/models/playlist/playlist';
 import { PlaylistService } from 'src/app/services-singleton/playlist-service';
-import { Category as CategoryEnum } from '../../../shared/enums/category';
+import { Category as CategoryEnum } from '../../shared/enums/category';
+import { PlaylistCardComponent } from '../components/playlist-card/playlist-card.component';
 
 @Component({
   selector: 'app-playlists-section',
@@ -13,7 +14,7 @@ export class PlaylistsSectionComponent implements OnChanges, AfterViewChecked {
   @Input()
   category: CategoryEnum;
 
-  @ViewChildren('playlistElement')
+  @ViewChildren(PlaylistCardComponent, { read: ElementRef })
   playlistElements: QueryList<ElementRef>;
 
   descriptionDisplayRows: number = 2;

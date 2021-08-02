@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Category as CategoryEnum } from '../../shared/enums/category';
 
 @Component({
@@ -15,5 +15,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.categories.push(CategoryEnum.Mood);
+    //this.categories.push(CategoryEnum.Focus);
   }
 }
