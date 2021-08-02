@@ -1,9 +1,8 @@
 import { Renderer2 } from '@angular/core';
 import { AfterViewChecked, Component, ElementRef, Input, OnChanges, QueryList, ViewChildren } from '@angular/core';
 import { Playlist } from 'src/app/models/playlist/playlist';
-import { PlaylistService } from 'src/app/services-singleton/playlist-service';
-import { Category as CategoryEnum } from '../../shared/enums/category';
 import { PlaylistCardComponent } from '../components/playlist-card/playlist-card.component';
+import { loadPlaylistsCallback } from '../types';
 
 @Component({
   selector: 'app-playlists-section',
@@ -12,7 +11,7 @@ import { PlaylistCardComponent } from '../components/playlist-card/playlist-card
 })
 export class PlaylistsSectionComponent implements OnChanges, AfterViewChecked {
   @Input()
-  category: CategoryEnum;
+  loadPlaylistsCallback: loadPlaylistsCallback;
 
   @ViewChildren(PlaylistCardComponent, { read: ElementRef })
   playlistElements: QueryList<ElementRef>;
@@ -22,12 +21,11 @@ export class PlaylistsSectionComponent implements OnChanges, AfterViewChecked {
   playlists: Playlist[] = [];
 
   constructor(
-    private playlistService: PlaylistService,
     private renderer: Renderer2
   ) { }
 
   ngOnChanges() {
-    this.playlistService.getByCategory(this.category, 10).subscribe(data => {
+    this.loadPlaylistsCallback().subscribe(data => {
       this.playlists = data.items;
     });
   }
