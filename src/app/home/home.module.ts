@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { TextModule } from "../text/text.module";
+import { PlaylistsModule } from "../playlists/playlists.module";
 import { HomeComponent } from "./home/home.component";
 
 @NgModule({
@@ -8,8 +8,8 @@ import { HomeComponent } from "./home/home.component";
         HomeComponent
     ],
     imports: [
-        TextModule,
-        CommonModule
+        CommonModule,
+        PlaylistsModule
     ],
     exports: [
         HomeComponent

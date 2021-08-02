@@ -1,16 +1,5 @@
 <div *ngFor="let category of categories">
-    <h1>{{ category }}</h1>
+    <h1>{{ getCategoryName(category) }}</h1>
 
-    <div class="playlist-container">
-        <div class="playlist-card" *ngFor="let playlist of getPlaylistByCategory(category)">
-            <img src="{{ playlist.images[playlist.images.length - 1].url }}" alt="{{ playlist.name }} playlist image">
-
-            <div>
-                <h2><app-text-fit [displayRows]="1" [text]="playlist.name"></app-text-fit></h2>
-            </div>
-            <p class="playlist-description">
-                <app-text-fit [displayRows]="2" [text]="playlist.description"></app-text-fit>
-            </p>
-        </div>
-    </div>
+    <app-playlists-section [category]="category"></app-playlists-section>
 </div>
