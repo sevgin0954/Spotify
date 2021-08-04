@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Playlist } from 'src/app/models/playlist/playlist';
 
 @Component({
   selector: 'app-playlist-card',
   templateUrl: './playlist-card.component.html',
-  styleUrls: ['./playlist-card.component.scss']
+  styleUrls: ['./playlist-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlaylistCardComponent {
   @Input()
