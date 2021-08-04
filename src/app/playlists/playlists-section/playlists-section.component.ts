@@ -37,8 +37,8 @@ export class PlaylistsSectionComponent implements OnChanges, AfterViewChecked {
   }
 
   private updateElementsHiddenAttribute(): void {
-    const firstRowPosition = this.getFirstRowElementsTopPosition();
     this.unhideAllPlaylistElements();
+    const firstRowPosition = this.getFirstRowElementsTopPosition();
     this.hideWrapedElements(firstRowPosition);
   }
 
