@@ -53,8 +53,8 @@ export class PlaylistsSectionComponent implements OnChanges, AfterViewChecked {
     this.playlistElements.forEach(currentElement => {
       const currentNativeElement = currentElement.nativeElement;
       const currentElementPosition: DOMRect = currentNativeElement.getBoundingClientRect();
-      
-      if (currentElementPosition.top > firstRowPosition) {
+
+      if (currentElementPosition.top !== firstRowPosition) {
         this.renderer.setAttribute(currentNativeElement, 'hidden', 'hidden');
       }
     });
@@ -69,6 +69,7 @@ export class PlaylistsSectionComponent implements OnChanges, AfterViewChecked {
 
       const currentElementPosition: DOMRect = currentNativeElement.getBoundingClientRect();
       const currentElementTopPosition = currentElementPosition.top;
+
       if (currentElementTopPosition) {
         if (currentElementTopPosition < firstRowPosition) {
           firstRowPosition = currentElementTopPosition;
