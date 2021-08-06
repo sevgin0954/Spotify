@@ -1,6 +1,7 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { loadPlaylistsCallback } from 'src/app/playlists/types';
 import { PlaylistService } from 'src/app/services-singleton/playlist-service';
+import { RouteConstants } from 'src/app/shared/constants/route-constants';
 
 @Component({
   selector: 'app-category-playlists-futured-short',
@@ -9,6 +10,7 @@ import { PlaylistService } from 'src/app/services-singleton/playlist-service';
 })
 export class CategoryPlaylistsFuturedShortComponent implements OnInit {
   loadPlaylistsCallback: loadPlaylistsCallback;
+  playlistsRoute: string = `${RouteConstants.CATEGORY_PLAYLISTS_BASE}/futured`;
 
   private playlistLoadLimit = 10;
 
