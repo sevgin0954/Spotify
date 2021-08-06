@@ -1,5 +1,5 @@
 <div (window:resize)="onResize()" class="playlist-container">
-    <ng-container *ngFor="let playlist of playlists">
+    <ng-container *ngFor="let playlist of playlists$ | async">
         <app-playlist-card [playlist]="playlist"></app-playlist-card>
     </ng-container>
 </div>

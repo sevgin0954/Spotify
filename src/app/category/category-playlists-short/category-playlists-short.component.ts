@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { loadPlaylistsCallback } from 'src/app/playlists/types';
 import { PlaylistService } from 'src/app/services-singleton/playlist-service';
 import { Category as CategoryEnum } from 'src/app/shared/enums/category';
@@ -6,7 +6,8 @@ import { Category as CategoryEnum } from 'src/app/shared/enums/category';
 @Component({
   selector: 'app-category-playlists-short',
   templateUrl: './category-playlists-short.component.html',
-  styleUrls: ['./category-playlists-short.component.scss', '../styles.scss']
+  styleUrls: ['./category-playlists-short.component.scss', '../styles.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoryPlaylistsShortComponent implements OnChanges {
   @Input()
@@ -24,6 +25,7 @@ export class CategoryPlaylistsShortComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log('aaaaaaaaaaaaaaaaaa')
     this.loadPlaylistsCallbacks = () => {
       return this.playlistService.getByCategory(this.category, this.playlistLoadLimit);
     };

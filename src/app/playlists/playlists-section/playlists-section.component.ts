@@ -1,5 +1,7 @@
 import { Renderer2 } from '@angular/core';
 import { AfterViewChecked, Component, ElementRef, Input, OnChanges, QueryList, ViewChildren } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map, pluck } from 'rxjs/operators';
 import { Playlist } from 'src/app/models/playlist/playlist';
 import { PlaylistCardComponent } from '../components/playlist-card/playlist-card.component';
 import { loadPlaylistsCallback } from '../types';
@@ -18,16 +20,16 @@ export class PlaylistsSectionComponent implements OnChanges, AfterViewChecked {
 
   descriptionDisplayRows: number = 2;
   titleDisplayRows: number = 2;
-  playlists: Playlist[] = [];
+  playlists$: Observable<Playlist[]>;
 
   constructor(
     private renderer: Renderer2
   ) { }
 
   ngOnChanges() {
-    this.loadPlaylistsCallback().subscribe(data => {
-      this.playlists = data.items;
-    });
+    this.playlists$ = this.loadPlaylistsCallback().pipe(
+      pluck('items')
+    );
   }
 
   onResize() { }
