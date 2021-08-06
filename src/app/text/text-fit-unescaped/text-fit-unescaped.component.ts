@@ -1,9 +1,8 @@
-import { AfterViewChecked, ElementRef, OnChanges, Renderer2, SecurityContext, SimpleChanges } from '@angular/core';
+import { AfterViewChecked, ElementRef, Renderer2 } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 import { Input } from '@angular/core';
 import { Component } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-text-fit-unescaped',
@@ -22,7 +21,6 @@ export class TextFitUnescapedComponent implements AfterViewChecked {
   textElement: ElementRef;
 
   constructor(
-    private sanitizer: DomSanitizer,
     private renderer2: Renderer2) { }
 
   ngAfterViewChecked(): void {

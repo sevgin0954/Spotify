@@ -1,10 +1,4 @@
-<section>
-    <h1>Futured</h1>
-    <app-playlists-section [loadPlaylistsCallback]="loadFuturedPlaylistsCallback"></app-playlists-section>
-</section>
-
-<section *ngFor="let category of categories; let i = index;">
-    <h1>{{ getCategoryName(category) }}</h1>
-
-    <app-playlists-section [loadPlaylistsCallback]="loadCategoriesPlaylistsCallbacks[i]"></app-playlists-section>
+<app-category-playlists-futured-short></app-category-playlists-futured-short>
+<section *ngFor="let category of categories">
+    <app-category-playlists-short [category]="category"></app-category-playlists-short>
 </section>

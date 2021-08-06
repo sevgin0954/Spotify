@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { TextFitComponent } from './text-fit/text-fit.component';
 import { TextFitUnescapedComponent } from './text-fit-unescaped/text-fit-unescaped.component';
 
-
-
 @NgModule({
   declarations: [
     TextFitComponent,
