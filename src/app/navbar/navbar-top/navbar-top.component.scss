@@ -1,7 +1,9 @@
 @import '../../../variables.scss';
+@import '../variables.scss';
 
-$navbar-height: 4rem;
-$navbar-background-color: #202020;
+.dummy {
+    height: $navbar-top-height;
+}
 
 ul.menu-list.flex {
     display: flex;
@@ -10,8 +12,12 @@ ul.menu-list.flex {
 nav {
     background-color: $navbar-background-color;
     color: white;
-    height: $navbar-height;
+    height: $navbar-top-height;
     font-size: 1.5rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    box-sizing: border-box;
     
     display: flex;
     align-items: center;
@@ -116,7 +122,7 @@ ul.menu-list {
         flex-direction: column;
         position: absolute;
         right: 0;
-        top: $navbar-height;
+        top: $navbar-top-height;
         background-color: $navbar-background-color;
         margin: 0;
         width: 20vh;
