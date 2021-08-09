@@ -10,7 +10,7 @@ import { RouteConstants } from 'src/app/shared/constants/route-constants';
 })
 export class CategoryPlaylistsFuturedShortComponent implements OnInit {
   loadPlaylistsCallback: loadPlaylistsCallback;
-  playlistsRoute: string = `${RouteConstants.CATEGORY_PLAYLISTS_BASE}/futured`;
+  playlistsRoute: string = `/${RouteConstants.CATEGORY_PLAYLISTS_BASE}/futured`;
 
   private playlistLoadLimit = 10;
 

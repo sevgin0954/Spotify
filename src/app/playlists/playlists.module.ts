@@ -16,7 +16,8 @@ import { PlaylistCardComponent } from './components/playlist-card/playlist-card.
     TextModule
   ],
   exports: [
-    PlaylistsSectionComponent
+    PlaylistsSectionComponent,
+    PlaylistCardComponent
   ]
 })
 export class PlaylistsModule { }

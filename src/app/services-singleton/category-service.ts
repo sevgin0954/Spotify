@@ -25,6 +25,7 @@ export class CategoryService {
         }
 
         const categoryName = CategoryEnum[category].toLowerCase();
+        // TODO: Move base route to constant
         return this.http.get<Paging<Category>>(`https://api.spotify.com/v1/browse/categories/${categoryName}`, {
             headers
         }).pipe(

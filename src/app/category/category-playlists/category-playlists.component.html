@@ -1,0 +1,6 @@
+<h1>{{ category }}</h1>
+<div class="playlists-container">
+    <div class="playlist-element" *ngFor="let playlist of playlists$ | async">
+        <app-playlist-card [playlist]="playlist"></app-playlist-card>
+    </div>
+</div>

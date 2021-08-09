@@ -27,7 +27,7 @@ export class CategoryPlaylistsShortComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.playlistsRoute = `${RouteConstants.CATEGORY_PLAYLISTS_BASE}/${CategoryEnum[this.category]}`;
+    this.playlistsRoute = `/${RouteConstants.CATEGORY_PLAYLISTS_BASE}/${CategoryEnum[this.category]}`;
   }
 
   ngOnChanges(changes: SimpleChanges): void {

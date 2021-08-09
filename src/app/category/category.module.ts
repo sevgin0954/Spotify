@@ -4,11 +4,13 @@ import { CategoryPlaylistsShortComponent } from './category-playlists-short/cate
 import { PlaylistsModule } from '../playlists/playlists.module';
 import { CategoryPlaylistsFuturedShortComponent } from './category-playlists-futured-short/category-playlists-futured-short.component';
 import { RouterModule } from '@angular/router';
+import { CategoryPlaylistsComponent } from './category-playlists/category-playlists.component';
 
 @NgModule({
   declarations: [
     CategoryPlaylistsShortComponent,
-    CategoryPlaylistsFuturedShortComponent
+    CategoryPlaylistsFuturedShortComponent,
+    CategoryPlaylistsComponent
   ],
   imports: [
     CommonModule,

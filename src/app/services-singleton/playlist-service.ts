@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 import { LocalStorageService } from "./local-storage.service";
 import { Paging } from "../models/paging/paging";
-import { map, tap } from "rxjs/operators";
+import { map } from "rxjs/operators";
 import { Category } from "../shared/enums/category";
 
 @Injectable({
