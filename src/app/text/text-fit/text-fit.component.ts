@@ -14,6 +14,7 @@ export class TextFitComponent implements AfterViewChecked {
 
   @ViewChild('textElement') textElement: ElementRef;
 
+  // Replace with style file
   ngAfterViewChecked(): void {
     this.textElement.nativeElement.setAttribute('style', `-webkit-line-clamp: ${this.displayRows}`);
   }

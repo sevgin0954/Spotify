@@ -1,0 +1,5 @@
+<div class="container">
+    <div class="category" *ngFor="let category of categories$ | async">
+        <app-category [category]="category"></app-category>
+    </div>
+</div>

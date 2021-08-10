@@ -8,6 +8,7 @@ import { JwtInterceptorService } from './services-singleton/interceptors/jwt-int
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { NavbarModule } from './navbar/navbar.module';
+import { CategoriesModule } from './categories/categories.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NavbarModule } from './navbar/navbar.module';
     HttpClientModule,
     SharedModule,
     HomeModule,
-    NavbarModule
+    NavbarModule,
+    CategoriesModule
   ],
   providers: [
     {
