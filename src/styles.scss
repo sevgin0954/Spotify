@@ -3,6 +3,12 @@ body {
     background-color: #121212;
 }
 
+.hide-clamp {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+}
+
 // Removed default styles
 a {
     color: black;

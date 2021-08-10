@@ -1,19 +1,19 @@
+@import '../../../../styles.scss';
+
 img {
     border-radius: 5px;
     width: 100%;
     min-width: 179px;
 }
 
-// TODO: Use global style for line clamp
 h1 {
+    @extend .hide-clamp;
+
     position: absolute;
     text-align: center;
     width: 100%;
     color: white;
     -webkit-line-clamp: 1;
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
     margin-top: 0.5rem;
 }
 
