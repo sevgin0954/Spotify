@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RouteConstants } from 'src/app/shared/constants/route-constants';
 
 @Component({
   selector: 'app-navbar-top',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarTopComponent {
   hideList: boolean = true;
+  homeRoute: string = RouteConstants.HOME;
 
   changeMenuState() {
     this.hideList = !this.hideList;

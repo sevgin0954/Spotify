@@ -13,7 +13,7 @@ export class NavbarSideComponent implements AfterViewInit {
   @ViewChildren('menuElement')
   menuElements: QueryList<ElementRef>
 
-  homeRoute: string = RouteConstants.home;
+  homeRoute: string = RouteConstants.HOME;
   searchRoute: string = '/categories';
   libraryRoute: string = '/library';
   likedRoute: string = '/liked';
