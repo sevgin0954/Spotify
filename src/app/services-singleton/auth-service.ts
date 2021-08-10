@@ -18,8 +18,4 @@ export class AuthService {
             }
         });
     }
-
-    getUserToken(): string {
-        return '';
-    }
 }

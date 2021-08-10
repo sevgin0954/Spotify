@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, QueryList, Renderer2, ViewChildren } from '@angular/core';
 import { NavigationEnd, NavigationError, Router } from '@angular/router';
+import { RouteConstants } from 'src/app/shared/constants/route-constants';
 
 const HIGHTLIGHT_CLASS = 'hightlight';
 
@@ -12,8 +13,7 @@ export class NavbarSideComponent implements AfterViewInit {
   @ViewChildren('menuElement')
   menuElements: QueryList<ElementRef>
 
-  // TODO: Make home route global constant
-  homeRoute: string = '/';
+  homeRoute: string = RouteConstants.home;
   searchRoute: string = '/categories';
   libraryRoute: string = '/library';
   likedRoute: string = '/liked';
