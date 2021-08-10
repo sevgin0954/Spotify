@@ -1,7 +1,7 @@
 @import '../variables.scss';
 @import '../../../variables.scss';
 
-$navbar-side-width: 130px;
+$navbar-side-width: 134px;
 
 nav {
     height: 100vh;
@@ -9,12 +9,17 @@ nav {
     top: $navbar-top-height;
     position: fixed;;
     background-color: $navbar-background-color;
-    padding-left: 1rem;
     box-sizing: border-box;
 }
 
 ul > li {
-    margin-top: 1.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 5px;
 }
 
 ul > li > a {
@@ -27,6 +32,10 @@ ul > li > a:hover {
 
 i {
     font-weight: 500;
+}
+
+.hightlight {
+    background-color: #2e2e2e;
 }
 
 .dummy {

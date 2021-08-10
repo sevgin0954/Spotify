@@ -1,25 +1,25 @@
 <nav>
     <ul>
-        <li>
-            <a routerLink="/">
+        <li [id]="homeRoute" #menuElement>
+            <a [routerLink]="homeRoute">
                 <i class="fas fa-home"></i>
                 Home
             </a>
         </li>
-        <li>
-            <a routerLink="/categories">
+        <li [id]="searchRoute" #menuElement>
+            <a [routerLink]="searchRoute">
                 <i class="fas fa-search"></i>
                 Search
             </a>
         </li>
-        <li>
-            <a>
+        <li [id]="libraryRoute" #menuElement>
+            <a [routerLink]="libraryRoute">
                 <i class="fas fa-list-ul"></i>
                 Library
             </a>
         </li>
-        <li>
-            <a>
+        <li [id]="likedRoute" #menuElement>
+            <a [routerLink]="likedRoute">
                 <i class="fas fa-heart"></i>
                 Liked
             </a>
