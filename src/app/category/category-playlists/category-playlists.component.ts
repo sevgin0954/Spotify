@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { concatMap, pluck } from 'rxjs/operators';
@@ -25,12 +25,16 @@ export class CategoryPlaylistsComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
+  getCategoryName(category: string): string {
+    return category.split('_').join(' ');
+  }
+
   ngOnInit(): void {
     this.playlists$ = this.route.params.pipe(
       concatMap(params => {
         this.category = params['id'];
 
-        if (this.category === FUTURED_CATEGORY) {
+        if (this.category.toLowerCase() === FUTURED_CATEGORY) {
           return this.playlistService.getFutured(this.limit);
         }
         else {

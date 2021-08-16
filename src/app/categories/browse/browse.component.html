@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="category" *ngFor="let category of categories$ | async">
+    <a [routerLink]="getCategoryRoute(category)" class="category" *ngFor="let category of categories$ | async">
         <app-category [category]="category"></app-category>
-    </div>
+    </a>
 </div>
