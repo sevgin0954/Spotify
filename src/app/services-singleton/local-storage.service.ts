@@ -15,7 +15,7 @@ export class LocalStorageService {
     return localStorage.getItem(AUTH_TOKEN_KEY);
   }
 
-  logout(): void {
+  removeToken(): void {
     localStorage.removeItem(AUTH_TOKEN_KEY);
   }
 }
