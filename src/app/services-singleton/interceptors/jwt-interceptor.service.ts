@@ -24,7 +24,6 @@ export class JwtInterceptorService implements HttpInterceptor {
             catchError(error => {
                 // Token is invalid
                 if (error instanceof HttpErrorResponse && error.status === 401) {
-                    this.localStorageService.removeToken();
                     return this.refreshToken(request, next);
                 }
 
@@ -34,6 +33,8 @@ export class JwtInterceptorService implements HttpInterceptor {
     }
 
     refreshToken(request: HttpRequest<any>, next: HttpHandler) {
+        this.localStorageService.removeToken();
+        
         return this.authService.getClientToken().pipe(
             switchMap(token => {
                 this.localStorageService.setToken(token.access_token);
