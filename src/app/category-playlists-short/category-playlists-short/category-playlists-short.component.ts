@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { loadPlaylistsCallback } from 'src/app/playlists/types';
 import { PlaylistService } from 'src/app/services-singleton/playlist.service';
 import { RouteConstants } from 'src/app/shared/constants/route-constants';
 import { Category as CategoryEnum } from 'src/app/shared/enums/category';
+import { loadPlaylistsCallback } from '../types';
 
 @Component({
   selector: 'app-category-playlists-short',

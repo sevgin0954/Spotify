@@ -4,16 +4,16 @@ import { LoadingElementsComponent } from './components/loading-elements/loading-
 import { LoadingComponent } from "./components/loading/loading.component";
 
 @NgModule({
-    imports: [
-        CommonModule
-    ],
-    declarations: [
-      LoadingElementsComponent,
-      LoadingComponent
-    ],
-    exports: [
-      LoadingElementsComponent,
-      LoadingComponent
-    ]
+  declarations: [
+    LoadingElementsComponent,
+    LoadingComponent
+  ],
+  imports: [
+    CommonModule
+  ],
+  exports: [
+    LoadingElementsComponent,
+    LoadingComponent
+  ]
 })
 export class SharedModule { }

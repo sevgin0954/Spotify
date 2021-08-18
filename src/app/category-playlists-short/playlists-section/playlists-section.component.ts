@@ -1,9 +1,9 @@
 import { Renderer2 } from '@angular/core';
 import { AfterViewChecked, Component, ElementRef, Input, OnChanges, QueryList, ViewChildren } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, pluck } from 'rxjs/operators';
+import { pluck } from 'rxjs/operators';
 import { Playlist } from 'src/app/models/playlist/playlist';
-import { PlaylistCardComponent } from '../components/playlist-card/playlist-card.component';
+import { PlaylistCardComponent } from '../../playlist-card/components/playlist-card/playlist-card.component';
 import { loadPlaylistsCallback } from '../types';
 
 @Component({

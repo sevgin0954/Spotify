@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { concatMap, pluck, tap } from 'rxjs/operators';
 import { Paging } from 'src/app/models/paging/paging';
@@ -14,7 +14,7 @@ const PAGE_LIMIT: number = 10;
   templateUrl: './category-playlists.component.html',
   styleUrls: ['./category-playlists.component.scss']
 })
-export class CategoryPlaylistsComponent implements OnInit {
+export class CategoryPlaylistsComponent {
   category: string = '';
   isLoadingDisabled: boolean = true;
   playlists: Playlist[] = [];
@@ -57,5 +57,4 @@ export class CategoryPlaylistsComponent implements OnInit {
       this.playlists.push(...playlists);
     });
   }
-
 }

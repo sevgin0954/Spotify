@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { NavbarModule } from './navbar/navbar.module';
 import { CategoriesModule } from './categories/categories.module';
+import { CategoryPlaylistsFullModule } from './category-playlists-full/category-playlists-full.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CategoriesModule } from './categories/categories.module';
     SharedModule,
     HomeModule,
     NavbarModule,
-    CategoriesModule
+    CategoriesModule,
+    CategoryPlaylistsFullModule
   ],
   providers: [
     {

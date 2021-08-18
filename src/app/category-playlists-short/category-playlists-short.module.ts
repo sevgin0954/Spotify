@@ -1,27 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoryPlaylistsShortComponent } from './category-playlists-short/category-playlists-short.component';
-import { PlaylistsModule } from '../playlists/playlists.module';
+import { PlaylistsSectionComponent } from './playlists-section/playlists-section.component';
 import { CategoryPlaylistsFuturedShortComponent } from './category-playlists-futured-short/category-playlists-futured-short.component';
-import { RouterModule } from '@angular/router';
-import { CategoryPlaylistsComponent } from './category-playlists/category-playlists.component';
 import { SharedModule } from '../shared/shared.module';
+import { PlaylistCardModule } from '../playlist-card/playlist-card.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     CategoryPlaylistsShortComponent,
-    CategoryPlaylistsFuturedShortComponent,
-    CategoryPlaylistsComponent
+    PlaylistsSectionComponent,
+    CategoryPlaylistsFuturedShortComponent
   ],
   imports: [
     CommonModule,
-    PlaylistsModule,
-    RouterModule,
-    SharedModule
+    SharedModule,
+    PlaylistCardModule,
+    RouterModule
   ],
   exports: [
     CategoryPlaylistsShortComponent,
+    PlaylistsSectionComponent,
     CategoryPlaylistsFuturedShortComponent
   ]
 })
-export class CategoryModule { }
+export class CategoryPlaylistsShortModule { }

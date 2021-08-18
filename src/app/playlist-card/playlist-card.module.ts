@@ -1,14 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PlaylistsSectionComponent } from './playlists-section/playlists-section.component';
-import { TextModule } from '../text/text.module';
 import { PlaylistCardComponent } from './components/playlist-card/playlist-card.component';
-
-
+import { TextModule } from '../text/text.module';
 
 @NgModule({
   declarations: [
-    PlaylistsSectionComponent,
     PlaylistCardComponent
   ],
   imports: [
@@ -16,8 +12,7 @@ import { PlaylistCardComponent } from './components/playlist-card/playlist-card.
     TextModule
   ],
   exports: [
-    PlaylistsSectionComponent,
     PlaylistCardComponent
   ]
 })
-export class PlaylistsModule { }
+export class PlaylistCardModule { }
