@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, HostListener, Input, OnChanges, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
 import { WindowService } from 'src/app/services-singleton/window.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { WindowService } from 'src/app/services-singleton/window.service';
   templateUrl: './loading-elements.component.html',
   styleUrls: ['./loading-elements.component.scss']
 })
-export class LoadingElementsComponent {
+export class LoadingElementsComponent implements AfterViewChecked {
   @Input()
   isLoadingDisabled: boolean;
 
@@ -17,8 +17,18 @@ export class LoadingElementsComponent {
   private loadingElement: ElementRef;
 
   constructor(
-    private windowService: WindowService
+    private windowService: WindowService,
+    private renderer2: Renderer2
   ) { }
+
+  ngAfterViewChecked(): void {
+    if (this.isLoadingDisabled) {
+      this.renderer2.setAttribute(this.loadingElement.nativeElement, 'hidden', 'hidden');
+    }
+    else {
+      this.renderer2.removeAttribute(this.loadingElement.nativeElement, 'hidden');
+    }
+  }
 
   @HostListener("window:scroll")
   onScroll(): void {

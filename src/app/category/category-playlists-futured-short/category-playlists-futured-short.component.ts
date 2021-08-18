@@ -18,7 +18,7 @@ export class CategoryPlaylistsFuturedShortComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPlaylistsCallback = () => {
-      return this.playlistService.getFutured(this.playlistLoadLimit);
+      return this.playlistService.getFutured(this.playlistLoadLimit, 0);
     }
   }
 }

@@ -8,8 +8,12 @@ import { LoadingComponent } from "./components/loading/loading.component";
         CommonModule
     ],
     declarations: [
-    LoadingElementsComponent,
-    LoadingComponent
-  ]
+      LoadingElementsComponent,
+      LoadingComponent
+    ],
+    exports: [
+      LoadingElementsComponent,
+      LoadingComponent
+    ]
 })
 export class SharedModule { }

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { concatMap, pluck } from 'rxjs/operators';
+import { concatMap, pluck, tap } from 'rxjs/operators';
 import { Paging } from 'src/app/models/paging/paging';
 import { Playlist } from 'src/app/models/playlist/playlist';
 import { PlaylistService } from 'src/app/services-singleton/playlist.service';
 import { Category as CategoryEnum } from 'src/app/shared/enums/category';
 
 const FUTURED_CATEGORY: string = 'futured';
+const PAGE_LIMIT: number = 10;
 
 @Component({
   selector: 'app-category-playlists',
@@ -16,9 +16,8 @@ const FUTURED_CATEGORY: string = 'futured';
 })
 export class CategoryPlaylistsComponent implements OnInit {
   category: string = '';
-  playlists$: Observable<Playlist[]>;
-  // TODO: Create pagination
-  private limit: number = 50;
+  isLoadingDisabled: boolean = true;
+  playlists: Playlist[] = [];
 
   constructor(
     private playlistService: PlaylistService,
@@ -30,19 +29,33 @@ export class CategoryPlaylistsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.playlists$ = this.route.params.pipe(
+    this.loadMorePlaylists();
+  }
+
+  loadMorePlaylists = () => {
+    this.route.params.pipe(
       concatMap(params => {
         this.category = params['id'];
 
         if (this.category.toLowerCase() === FUTURED_CATEGORY) {
-          return this.playlistService.getFutured(this.limit);
+          return this.playlistService.getFutured(PAGE_LIMIT, this.playlists.length);
         }
         else {
-          return this.playlistService.getByCategory(CategoryEnum[this.category], this.limit);
+          return this.playlistService.getByCategory(CategoryEnum[this.category], PAGE_LIMIT, this.playlists.length);
+        }
+      }),
+      tap(data => {
+        if (data.next) {
+          this.isLoadingDisabled = false;
+        }
+        else {
+          this.isLoadingDisabled = true;
         }
       }),
       pluck<Paging<Playlist>, Playlist[]>('items')
-    );
+    ).subscribe(playlists => {
+      this.playlists.push(...playlists);
+    });
   }
 
 }

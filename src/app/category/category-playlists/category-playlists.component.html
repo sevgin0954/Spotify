@@ -1,8 +1,9 @@
-<ng-container *ngIf="playlists$ | async as playlists">
-    <h1>{{ getCategoryName(category) }}</h1>
-    <div class="playlists-container">
-        <div class="playlist-element" *ngFor="let playlist of playlists">
-            <app-playlist-card [playlist]="playlist"></app-playlist-card>
-        </div>
+<h1>{{ getCategoryName(category) }}</h1>
+<div class="playlists-container">
+    <div class="playlist-element" *ngFor="let playlist of playlists">
+        <app-playlist-card [playlist]="playlist"></app-playlist-card>
     </div>
-</ng-container>
+</div>
+
+<app-loading-elements [isLoadingDisabled]="isLoadingDisabled" [loadingCallback]="loadMorePlaylists">
+</app-loading-elements>

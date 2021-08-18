@@ -32,7 +32,7 @@ export class CategoryPlaylistsShortComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.loadPlaylistsCallbacks = () => {
-      return this.playlistService.getByCategory(this.category, this.playlistLoadLimit);
+      return this.playlistService.getByCategory(this.category, this.playlistLoadLimit, 0);
     };
   }
 }

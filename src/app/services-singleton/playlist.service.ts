@@ -17,12 +17,12 @@ export class PlaylistService {
         private authHeaderService: AuthHeaderService
     ) { }
 
-    getByCategory(category: Category, limit: number): Observable<Paging<Playlist>> {
+    getByCategory(category: Category, limit: number, offset: number): Observable<Paging<Playlist>> {
         let headers = new HttpHeaders();
         headers = this.authHeaderService.addApiAuthHeaders(headers);
 
         let params = new HttpParams();
-        params = params.set('limit', limit.toString());
+        params = this.addPaginationParams(params, limit, offset);
 
         const categoryName = Category[category].toLowerCase()
         return this.http.get<Paging<Playlist>>(`${RouteConstants.BASE}/browse/categories/${categoryName}/playlists`, 
@@ -31,16 +31,23 @@ export class PlaylistService {
         );
     }
 
-    getFutured(limit: number): Observable<Paging<Playlist>> {
+    getFutured(limit: number, offset: number): Observable<Paging<Playlist>> {
         let headers = new HttpHeaders();
         headers = this.authHeaderService.addApiAuthHeaders(headers);
 
         let params = new HttpParams();
-        params = params.set('limit', limit.toString());
+        params = this.addPaginationParams(params, limit, offset);
 
         return this.http.get<Paging<Playlist>>(`${RouteConstants.BASE}/browse/featured-playlists`, 
         { headers, params }).pipe(
             map<any, Paging<Playlist>>(data => data.playlists)
         );
+    }
+
+    private addPaginationParams(params: HttpParams, limit: number, offset: number): HttpParams {
+        params = params.set('limit', limit.toString());
+        params = params.set('offset', offset.toString());
+
+        return params;
     }
 }
