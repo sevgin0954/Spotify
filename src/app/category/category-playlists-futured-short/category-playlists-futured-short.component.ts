@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { loadPlaylistsCallback } from 'src/app/playlists/types';
-import { PlaylistService } from 'src/app/services-singleton/playlist-service';
+import { PlaylistService } from 'src/app/services-singleton/playlist.service';
 import { RouteConstants } from 'src/app/shared/constants/route-constants';
 
 @Component({

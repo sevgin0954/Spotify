@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { Injectable } from "@angular/core";
 import { RouteConstants } from "../shared/constants/route-constants";
-import { AuthHeaderService } from "./auth-headers-service";
+import { AuthHeaderService } from "./auth-headers.service";
 
 @Injectable({
     providedIn: 'root'

@@ -4,9 +4,9 @@ import { EMPTY, Observable, of, pipe, throwError } from "rxjs";
 import { MainConstants } from "src/app/shared/constants/main-constants";
 import { LocalStorageService } from "../local-storage.service";
 import { Router } from "@angular/router";
-import { AuthService } from "../auth-service";
+import { AuthService } from "../auth.service";
 import { catchError, concatMap, map, retry, switchMap, tap } from "rxjs/operators";
-import { AuthHeaderService } from "../auth-headers-service";
+import { AuthHeaderService } from "../auth-headers.service";
 
 @Injectable({
     providedIn: 'root'

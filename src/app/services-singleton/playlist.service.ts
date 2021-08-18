@@ -6,7 +6,7 @@ import { Paging } from "../models/paging/paging";
 import { map } from "rxjs/operators";
 import { Category } from "../shared/enums/category";
 import { RouteConstants } from "../shared/constants/route-constants";
-import { AuthHeaderService } from "./auth-headers-service";
+import { AuthHeaderService } from "./auth-headers.service";
 
 @Injectable({
     providedIn: 'root'
