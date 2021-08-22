@@ -36,9 +36,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [
-              "./node_modules/colorthief/dist/color-thief.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
