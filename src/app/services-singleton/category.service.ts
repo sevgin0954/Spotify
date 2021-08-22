@@ -6,7 +6,8 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { Injectable } from "@angular/core";
 import { RouteConstants } from "../shared/constants/route-constants";
-import { AuthHeaderService } from "./auth-headers.service";
+import { LocalStorageService } from "./local-storage.service";
+import { AuthUtility } from "../shared/utilities/auth-utility";
 
 @Injectable({
     providedIn: 'root'
@@ -14,12 +15,13 @@ import { AuthHeaderService } from "./auth-headers.service";
 export class CategoryService {
     constructor(
         private http: HttpClient,
-        private authHeaderService: AuthHeaderService
+        private localStorageService: LocalStorageService
     ) { }
 
     getCategory(category: CategoryEnum): Observable<Paging<Category>> {
+        const authToken = this.localStorageService.getToken();
         let headers = new HttpHeaders();
-        headers = this.authHeaderService.addApiAuthHeaders(headers);
+        headers = AuthUtility.addApiAuthHeaders(headers, authToken);
 
         const categoryName = CategoryEnum[category].toLowerCase();
         return this.http.get<Paging<Category>>(`${RouteConstants.BASE}/browse/categories/${categoryName}`, {
@@ -28,8 +30,9 @@ export class CategoryService {
     }
 
     getCategories(limit: number): Observable<Paging<Category>> {
+        const authToken = this.localStorageService.getToken();
         let headers = new HttpHeaders();
-        headers = this.authHeaderService.addApiAuthHeaders(headers);
+        headers = AuthUtility.addApiAuthHeaders(headers, authToken);
 
         let params = new HttpParams();
         params = params.set('limit', limit.toString());

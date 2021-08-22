@@ -1,9 +1,8 @@
-import { SimplifiedAlbumObject } from "../album/simplified-album-object";
+import { SimplifiedAlbum } from "../album/simplified-album";
 import { Artist } from "../artist/artist";
-import { Image } from "../image/image";
 
 export interface Track {
-    album: SimplifiedAlbumObject,
+    album: SimplifiedAlbum,
     artists: Artist[],
     available_markets: string[],
     disc_number: number,

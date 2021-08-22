@@ -1,6 +1,6 @@
 import { Image } from "../image/image";
 
-export interface SimplifiedAlbumObject {
+export interface SimplifiedAlbum {
     album_group: string,
     album_type: string,
     artists,

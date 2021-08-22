@@ -4,7 +4,7 @@ import { Observable, throwError } from "rxjs";
 import { LocalStorageService } from "../local-storage.service";
 import { AuthService } from "../auth.service";
 import { catchError, switchMap } from "rxjs/operators";
-import { AuthHeaderService } from "../auth-headers.service";
+import { AuthUtility } from "src/app/shared/utilities/auth-utility";
 
 @Injectable({
     providedIn: 'root'
@@ -12,8 +12,7 @@ import { AuthHeaderService } from "../auth-headers.service";
 export class JwtInterceptorService implements HttpInterceptor {
     constructor(
         private localStorageService: LocalStorageService,
-        private authService: AuthService,
-        private authHeaderService: AuthHeaderService
+        private authService: AuthService
     ) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {        
@@ -35,7 +34,8 @@ export class JwtInterceptorService implements HttpInterceptor {
         return this.authService.getClientToken().pipe(
             switchMap(token => {
                 this.localStorageService.setToken(token.access_token);
-                const headers = this.authHeaderService.addApiAuthHeaders(request.headers);
+                const authToken = this.localStorageService.getToken();
+                const headers = AuthUtility.addApiAuthHeaders(request.headers, authToken);
 
                 const newRequest = request.clone({
                     headers

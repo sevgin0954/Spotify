@@ -4,7 +4,9 @@ import { Observable } from "rxjs";
 import { Paging } from "../models/paging/paging";
 import { PlailistTrack } from "../models/plailist-track/plailist-track";
 import { RouteConstants } from "../shared/constants/route-constants";
-import { AuthHeaderService } from "./auth-headers.service";
+import { AuthUtility } from "../shared/utilities/auth-utility";
+import { PaginationUtility } from "../shared/utilities/pagination-utility";
+import { LocalStorageService } from "./local-storage.service";
 
 @Injectable({
     providedIn: 'root'
@@ -12,27 +14,20 @@ import { AuthHeaderService } from "./auth-headers.service";
 export class SongService {
     constructor(
         private http: HttpClient,
-        private authHeaderService: AuthHeaderService
+        private localStorageService: LocalStorageService
     ) { }
 
     getSongs(trackId: string, limit: number, offset: number): Observable<Paging<PlailistTrack>> {
+        const authToken = this.localStorageService.getToken();
         let headers = new HttpHeaders();
-        headers = this.authHeaderService.addApiAuthHeaders(headers);
+        headers = AuthUtility.addApiAuthHeaders(headers, authToken);
 
         let params = new HttpParams();
-        params = this.addPaginationParams(params, limit, offset);
+        params = PaginationUtility.addPaginationParams(params, limit, offset);
 
         return this.http.get<Paging<PlailistTrack>>(`${RouteConstants.BASE}/playlists/${trackId}/tracks`, {
             headers,
             params
         });
-    }
-
-    // TODO: Reuse
-    private addPaginationParams(params: HttpParams, limit: number, offset: number): HttpParams {
-        params = params.set('limit', limit.toString());
-        params = params.set('offset', offset.toString());
-
-        return params;
     }
 }
