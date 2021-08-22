@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PlaylistCardComponent } from './components/playlist-card/playlist-card.component';
 import { TextModule } from '../text/text.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { TextModule } from '../text/text.module';
   ],
   imports: [
     CommonModule,
-    TextModule
+    TextModule,
+    RouterModule
   ],
   exports: [
     PlaylistCardComponent

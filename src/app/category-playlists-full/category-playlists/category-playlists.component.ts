@@ -7,7 +7,7 @@ import { PlaylistService } from 'src/app/services-singleton/playlist.service';
 import { Category as CategoryEnum } from 'src/app/shared/enums/category';
 
 const FUTURED_CATEGORY: string = 'futured';
-const PAGE_LIMIT: number = 10;
+const PAGE_LIMIT: number = 50;
 
 @Component({
   selector: 'app-category-playlists',

@@ -1,4 +1,5 @@
 import { Image } from "../image/image";
+import { Paging } from "../paging/paging";
 import { PlailistTrack } from "../plailist-track/plailist-track";
 import { User } from "../user/user";
 
@@ -14,7 +15,8 @@ export interface Playlist {
     owner: User,
     public: boolean,
     snapshot_id: string,
-    tracks: PlailistTrack[],
+    tracks: Paging<PlailistTrack>,
     type: string,
-    uri: string
+    uri: string,
+    primary_color: string
 }

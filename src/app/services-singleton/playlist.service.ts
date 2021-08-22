@@ -44,6 +44,10 @@ export class PlaylistService {
         );
     }
 
+    getById(id: string): Observable<Playlist> {
+        return this.http.get<Playlist>(`${RouteConstants.BASE}/playlists/${id}`);
+    }
+
     private addPaginationParams(params: HttpParams, limit: number, offset: number): HttpParams {
         params = params.set('limit', limit.toString());
         params = params.set('offset', offset.toString());

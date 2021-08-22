@@ -10,6 +10,7 @@ import { HomeModule } from './home/home.module';
 import { NavbarModule } from './navbar/navbar.module';
 import { CategoriesModule } from './categories/categories.module';
 import { CategoryPlaylistsFullModule } from './category-playlists-full/category-playlists-full.module';
+import { PlaylistSongsModule } from './playlist-songs/playlist-songs.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CategoryPlaylistsFullModule } from './category-playlists-full/category-
     HomeModule,
     NavbarModule,
     CategoriesModule,
-    CategoryPlaylistsFullModule
+    CategoryPlaylistsFullModule,
+    PlaylistSongsModule
   ],
   providers: [
     {

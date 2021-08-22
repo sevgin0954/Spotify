@@ -1,8 +1,11 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { tap } from 'rxjs/operators';
 import { PlaylistService } from 'src/app/services-singleton/playlist.service';
 import { RouteConstants } from 'src/app/shared/constants/route-constants';
 import { Category as CategoryEnum } from 'src/app/shared/enums/category';
 import { loadPlaylistsCallback } from '../types';
+
+const PLAYLIST_LIMIT = 10;
 
 @Component({
   selector: 'app-category-playlists-short',
@@ -17,8 +20,6 @@ export class CategoryPlaylistsShortComponent implements OnInit, OnChanges {
   playlistsRoute: string;
   loadPlaylistsCallbacks: loadPlaylistsCallback;
 
-  private playlistLoadLimit = 10;
-
   constructor(private playlistService: PlaylistService) { }
 
   getCategoryName(category: CategoryEnum): string {
@@ -32,7 +33,7 @@ export class CategoryPlaylistsShortComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.loadPlaylistsCallbacks = () => {
-      return this.playlistService.getByCategory(this.category, this.playlistLoadLimit, 0);
+      return this.playlistService.getByCategory(this.category, PLAYLIST_LIMIT, 0);
     };
   }
 }
