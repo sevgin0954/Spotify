@@ -11,6 +11,7 @@ import { NavbarModule } from './navbar/navbar.module';
 import { CategoriesModule } from './categories/categories.module';
 import { CategoryPlaylistsFullModule } from './category-playlists-full/category-playlists-full.module';
 import { PlaylistSongsModule } from './playlist-songs/playlist-songs.module';
+import { LibraryModule } from './library/library.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PlaylistSongsModule } from './playlist-songs/playlist-songs.module';
     NavbarModule,
     CategoriesModule,
     CategoryPlaylistsFullModule,
-    PlaylistSongsModule
+    PlaylistSongsModule,
+    LibraryModule
   ],
   providers: [
     {

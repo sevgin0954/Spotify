@@ -20,7 +20,7 @@ export class SongService {
     getSongs(trackId: string, limit: number, offset: number): Observable<Paging<PlailistTrack>> {
         const authToken = this.localStorageService.getToken();
         let headers = new HttpHeaders();
-        headers = AuthUtility.addApiAuthHeaders(headers, authToken);
+        headers = AuthUtility.addAuthHeaders(headers, authToken);
 
         let params = new HttpParams();
         params = PaginationUtility.addPaginationParams(params, limit, offset);

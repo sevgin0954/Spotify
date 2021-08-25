@@ -1,1 +1,15 @@
-<p>library works!</p>
+<nav>
+    <ul>
+        <li #menuElement [id]="playlistsRoute">
+            <a [routerLink]="playlistsRoute">Playlists</a>
+        </li>
+        <li #menuElement [id]="artistsRoute">
+            <a [routerLink]="playlistsRoute">Artists</a>
+        </li>
+        <li #menuElement [id]="albumsRoute">
+            <a [routerLink]="playlistsRoute">Albums</a>
+        </li>
+    </ul>
+</nav>
+
+<router-outlet></router-outlet>

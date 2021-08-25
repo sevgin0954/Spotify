@@ -15,8 +15,13 @@ export class NavbarSideComponent implements AfterViewInit {
 
   homeRoute: string = RouteConstants.HOME;
   searchRoute: string = '/categories';
-  libraryRoute: string = '/library';
+  libraryRoute: string = '/library/playlists';
   likedRoute: string = '/liked';
+
+  homeRegex: string = `^${RouteConstants.HOME}$`;
+  searchRegex: string = '^/categories$';
+  libraryRegex: string = '/library';
+  likedRegex: string = '^/liked$';
 
   constructor(
     private router: Router,
@@ -37,7 +42,8 @@ export class NavbarSideComponent implements AfterViewInit {
 
   private higthlightCurrentRouteMenu(currentRoute: string): void {
     this.menuElements.forEach(currentElement => {
-      if (currentElement.nativeElement['id'] === currentRoute) {
+      const currentElementRegexp = new RegExp(currentElement.nativeElement['id']);
+      if (currentRoute.match(currentElementRegexp)) {
         this.renderer2.addClass(currentElement.nativeElement, HIGHTLIGHT_CLASS);
       }
       else {
