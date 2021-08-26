@@ -11,16 +11,25 @@
 
     <button (click)="changeMenuState()" class="menu-list-button"><i class="fas fa-bars"></i></button>
     <ul [class.flex]="hideList === false" class="menu-list">
-        <li>
-            <a href="#" class="signup">
-                Sign up
-            </a>
-        </li>
-        <li>
-            <a href="#" class="login">
-                Log in
-            </a>
-        </li>
+        <ng-container *ngIf="isUserLoggedIn; else loggedInTemplate">
+            <li>
+                <a routerLink="/logout" class="login">
+                    Log out
+                </a>
+            </li>
+        </ng-container>
+        <ng-template #loggedInTemplate>
+            <li>
+                <a href="#" class="signup">
+                    Sign up
+                </a>
+            </li>
+            <li>
+                <a routerLink="/signin" class="login">
+                    Log in
+                </a>
+            </li>
+        </ng-template>
     </ul>
 </nav>
 

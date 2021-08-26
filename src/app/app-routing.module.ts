@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LogoutComponent } from './authentication/logout/logout.component';
 import { SigninComponent } from './authentication/signin/signin.component';
 import { BrowseComponent } from './categories/browse/browse.component';
 import { CategoryPlaylistsComponent } from './category-playlists-full/category-playlists/category-playlists.component';
@@ -27,7 +28,8 @@ const routes: Routes = [
     { path: 'albums', component: SavedAlbumsComponent }
   ] },
   { path: 'signin', component: SigninComponent },
-  { path: 'liked', component: LikedSongsComponent }
+  { path: 'liked', component: LikedSongsComponent },
+  { path: 'logout', component: LogoutComponent }
 ];
 
 @NgModule({
