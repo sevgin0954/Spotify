@@ -25,19 +25,6 @@ header {
     text-decoration: underline;
 }
 
-.fa-heart {
-    font-size: 1.6rem;
-    margin-left: 1rem;
-    cursor: pointer;
-}
-.fa-heart:hover {
-    color: $green;
-}
-
-.liked {
-    color: $green;
-}
-
 @media (max-width: 950px) {
     header {
         height: 10rem;

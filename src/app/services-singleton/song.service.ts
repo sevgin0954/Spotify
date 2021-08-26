@@ -50,4 +50,48 @@ export class SongService {
             })
         )
     }
+
+    getLikedSongsByIds(trackIds: string[]): Observable<boolean[]> {
+        const authToken = this.localStorageService.getUserToken();
+        let headers = new HttpHeaders();
+        headers = AuthUtility.addAuthHeaders(headers, authToken);
+        headers = headers.set(MainConstants.USER_AUTHORIZATION_REQUIRED_HEADER, '');
+
+        let params = new HttpParams();
+        params = params.set('ids', trackIds.join(','));
+
+        return this.http.get<boolean[]>(`${RouteConstants.BASE}/me/tracks/contains`, {
+            headers, params
+        });
+    }
+
+    likeSong(songId: string): Observable<void> {
+        const authToken = this.localStorageService.getUserToken();
+        let headers = new HttpHeaders();
+        headers = AuthUtility.addAuthHeaders(headers, authToken);
+        headers = headers.set(MainConstants.USER_AUTHORIZATION_REQUIRED_HEADER, '');
+        headers = headers.set('Content-Type', 'application/json');
+
+        let params = new HttpParams();
+        params = params.set('ids', songId);
+
+        return this.http.put<void>(`${RouteConstants.BASE}/me/tracks`, {}, {
+            headers, params
+        });
+    }
+
+    dislikeSong(songId: string): Observable<void> {
+        const authToken = this.localStorageService.getUserToken();
+        let headers = new HttpHeaders();
+        headers = AuthUtility.addAuthHeaders(headers, authToken);
+        headers = headers.set(MainConstants.USER_AUTHORIZATION_REQUIRED_HEADER, '');
+        headers = headers.set('Content-Type', 'application/json');
+
+        let params = new HttpParams();
+        params = params.set('ids', songId);
+
+        return this.http.delete<void>(`${RouteConstants.BASE}/me/tracks`, {
+            headers, params
+        });
+    }
 }

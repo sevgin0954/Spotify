@@ -6,13 +6,22 @@
         <th>DATA ADDED</th>
         <th class="time-row-title"><i class="far fa-clock"></i></th>
     </tr>
-    <tr *ngFor="let track of tracks; let songNumber = index;">
+    <tr *ngFor="let track of tracks; let songIndex = index;">
         <td>
-            {{ songNumber + 1 }}
+            {{ songIndex + 1 }}
         </td>
         <td class="title-row">
             <img src="{{ track.album.images[0].url }}" alt="">
-            <p>{{ track.name}}</p>
+            <div>
+                <p>{{ track.name}}</p>
+                <a class="artist" routerLink="/artist/{{artist.id}}" *ngFor="let artist of track.artists">
+                    {{ artist.name }}
+                </a>
+            </div>
+            <div class="like-container">
+                <app-like (onDislike)="dislike(songIndex)" (onLike)="like(songIndex)" [isLiked]="isTrackLiked[songIndex]">
+                </app-like>
+            </div>
         </td>
         <td>
             {{ track.album.name }}

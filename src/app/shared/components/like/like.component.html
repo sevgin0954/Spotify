@@ -1,0 +1,2 @@
+<i (click)="onClickDislike()" class="fas fa-heart liked" *ngIf="isLiked; else notLikedHeart"></i>
+<ng-template #notLikedHeart><i (click)="onClickLike()" class="far fa-heart"></i></ng-template>

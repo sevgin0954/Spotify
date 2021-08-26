@@ -4,7 +4,8 @@ import { PlaylistSongsComponent } from './playlist-songs/playlist-songs.componen
 import { SongsComponent } from './songs/songs.component';
 import { SharedModule } from '../shared/shared.module';
 import { PlaylistSongsHeaderComponent } from './playlist-songs-header/playlist-songs-header.component';
-import { PlaylistSongsBodyComponent } from './components/playlist-songs-body/playlist-songs-body.component';
+import { PlaylistSongsBodyComponent } from './playlist-songs-body/playlist-songs-body.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PlaylistSongsBodyComponent } from './components/playlist-songs-body/pla
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   exports: [
     PlaylistSongsBodyComponent

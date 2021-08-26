@@ -7,8 +7,7 @@
         <p>
             <a class="author">{{ playlist.owner.display_name }}</a>, 
             {{ playlist.tracks.total }} songs 
-            <i (click)="unfallow()" class="fas fa-heart liked" *ngIf="isUserFallowing; else notLikedHeart"></i>
-            <ng-template #notLikedHeart><i (click)="fallow()" class="far fa-heart"></i></ng-template>
+            <app-like (onDislike)="unfallow()" (onLike)="fallow()" [isLiked]="isUserFallowing"></app-like>
         </p>
     </div>
 </header>

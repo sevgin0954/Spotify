@@ -1,4 +1,4 @@
-@import '../../../../variables.scss';
+@import '../../../variables.scss';
 
 $table-padding: 1rem;
 
@@ -52,6 +52,19 @@ tr {
 
         p {
             text-align: left;
+            margin: 0;
+        }
+
+        .artist {
+            color: grey;
+            text-decoration: underline;
+        }
+        .artist:hover {
+            color: $green;
+        }
+
+        .like-container {
+            margin-left: auto;
         }
     }
 }

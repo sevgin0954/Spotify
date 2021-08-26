@@ -1,0 +1,14 @@
+@import './../../../../variables.scss';
+
+.fa-heart {
+    font-size: 1.6rem;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+.fa-heart:hover {
+    color: $green;
+}
+
+.liked {
+    color: $green;
+}
