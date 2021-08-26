@@ -12,6 +12,7 @@ import { CategoriesModule } from './categories/categories.module';
 import { CategoryPlaylistsFullModule } from './category-playlists-full/category-playlists-full.module';
 import { PlaylistSongsModule } from './playlist-songs/playlist-songs.module';
 import { LibraryModule } from './library/library.module';
+import { LikedSongsModule } from './liked-songs/liked-songs.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LibraryModule } from './library/library.module';
     CategoriesModule,
     CategoryPlaylistsFullModule,
     PlaylistSongsModule,
-    LibraryModule
+    LibraryModule,
+    LikedSongsModule
   ],
   providers: [
     {

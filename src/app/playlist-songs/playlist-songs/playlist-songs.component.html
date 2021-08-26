@@ -1,12 +1,4 @@
-<header #header>
-    <img src="{{ playlist.images[0].url }}" alt="">
-
-    <div class="header-info">
-        <h1>{{ playlist.name }}</h1>
-        <p>{{ playlist.description }}</p>
-        <p><a class="author">{{ playlist.owner.display_name }}</a>, {{ playlist.tracks.total }} songs</p>
-    </div>
-</header>
+<app-playlist-songs-header [playlist]="playlist"></app-playlist-songs-header>
 
 <div class="songs-container">
     <app-songs [playlistTrack]="playlist.tracks" [playlistId]="playlist.id"></app-songs>

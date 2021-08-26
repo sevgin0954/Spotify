@@ -1,30 +1,4 @@
-<table>
-    <tr class="header">
-        <th>#</th>
-        <th>TITLE</th>
-        <th>ALBUM</th>
-        <th>DATA ADDED</th>
-        <th class="time-row-title"><i class="far fa-clock"></i></th>
-    </tr>
-    <tr *ngFor="let track of playlistTrack.items; let songNumber = index;">
-        <td>
-            {{ songNumber + 1 }}
-        </td>
-        <td class="title-row">
-            <img src="{{ track.track.album.images[0].url }}" alt="">
-            <p>{{ track.track.name}}</p>
-        </td>
-        <td>
-            {{ track.track.album.name }}
-        </td>
-        <td class="date-row-table-cell">
-            {{ track.track.album.release_date }}
-        </td>
-        <td class="time-row-table-cell">
-            {{ getDurationString(track.track.duration_ms) }}
-        </td>
-    </tr>
-</table>
+<app-playlist-songs-body [tracks]="getTracks(playlistTrack.items)"></app-playlist-songs-body>
 
 <app-loading-elements [isLoadingDisabled]="isLoadingDisabled" [loadingCallback]="loadMoreSongsCallback">
 </app-loading-elements>

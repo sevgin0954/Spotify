@@ -1,5 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { tap } from 'rxjs/operators';
+import { Component, Input, OnInit} from '@angular/core';
 import { Paging } from 'src/app/models/paging/paging';
 import { PlailistTrack } from 'src/app/models/plailist-track/plailist-track';
 import { Track } from 'src/app/models/track/track';
@@ -48,9 +47,7 @@ export class SongsComponent implements OnInit {
     };
   }
 
-  getDurationString(miliseconds: number): string {
-    const minutes = Math.floor(miliseconds / 60000);
-    const seconds = Number.parseInt(((miliseconds % 60000) / 1000).toFixed(0));
-    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  getTracks(playlistTracks: PlailistTrack[]): Track[] {
+    return playlistTracks.map(pt => pt.track);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Playlist } from 'src/app/models/playlist/playlist';
 
@@ -15,8 +15,7 @@ export class PlaylistSongsComponent implements OnInit {
   header: ElementRef;
 
   constructor(
-    private route: ActivatedRoute,
-    private renderer2: Renderer2
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {

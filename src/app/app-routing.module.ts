@@ -8,6 +8,7 @@ import { LibraryComponent } from './library/library/library.component';
 import { SavedAlbumsComponent } from './library/saved-albums/saved-albums.component';
 import { SavedArtistsComponent } from './library/saved-artists/saved-artists.component';
 import { SavedPlaylistsComponent } from './library/saved-playlists/saved-playlists.component';
+import { LikedSongsComponent } from './liked-songs/liked-songs/liked-songs.component';
 import { PlaylistSongsComponent } from './playlist-songs/playlist-songs/playlist-songs.component';
 import { PlaylistResolverService } from './services-singleton/resolvers/playlist-resolver.service';
 import { RouteConstants } from './shared/constants/route-constants';
@@ -25,7 +26,8 @@ const routes: Routes = [
     { path: 'artists', component: SavedArtistsComponent },
     { path: 'albums', component: SavedAlbumsComponent }
   ] },
-  { path: 'signin', component: SigninComponent }
+  { path: 'signin', component: SigninComponent },
+  { path: 'liked', component: LikedSongsComponent }
 ];
 
 @NgModule({

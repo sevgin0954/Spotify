@@ -1,8 +1,11 @@
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 import { Paging } from "../models/paging/paging";
 import { PlailistTrack } from "../models/plailist-track/plailist-track";
+import { Track } from "../models/track/track";
+import { MainConstants } from "../shared/constants/main-constants";
 import { RouteConstants } from "../shared/constants/route-constants";
 import { AuthUtility } from "../shared/utilities/auth-utility";
 import { PaginationUtility } from "../shared/utilities/pagination-utility";
@@ -29,5 +32,22 @@ export class SongService {
             headers,
             params
         });
+    }
+
+    getLikedSongs(): Observable<Paging<Track>> {
+        const authToken = this.localStorageService.getUserToken();
+        let headers = new HttpHeaders();
+        headers = AuthUtility.addAuthHeaders(headers, authToken);
+
+        headers = headers.set(MainConstants.USER_AUTHORIZATION_REQUIRED_HEADER, '');
+
+        return this.http.get(`${RouteConstants.BASE}/me/tracks`, {
+            headers
+        }).pipe(
+            map<any, Paging<Track>>(data => {
+                data.items = data.items.map(i => i.track)
+                return data;
+            })
+        )
     }
 }

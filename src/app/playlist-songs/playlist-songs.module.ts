@@ -3,15 +3,22 @@ import { CommonModule } from '@angular/common';
 import { PlaylistSongsComponent } from './playlist-songs/playlist-songs.component';
 import { SongsComponent } from './songs/songs.component';
 import { SharedModule } from '../shared/shared.module';
+import { PlaylistSongsHeaderComponent } from './components/playlist-songs-header/playlist-songs-header.component';
+import { PlaylistSongsBodyComponent } from './components/playlist-songs-body/playlist-songs-body.component';
 
 @NgModule({
   declarations: [
     PlaylistSongsComponent,
-    SongsComponent
+    SongsComponent,
+    PlaylistSongsHeaderComponent,
+    PlaylistSongsBodyComponent
   ],
   imports: [
     CommonModule,
     SharedModule
+  ],
+  exports: [
+    PlaylistSongsBodyComponent
   ]
 })
 export class PlaylistSongsModule { }

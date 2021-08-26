@@ -1,0 +1,10 @@
+<header #header>
+    <img src="https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png" alt="heart">
+
+    <div class="header-info">
+        <h1>{{ playlistName }}</h1>
+        <p>{{ totalTracks }} songs</p>
+    </div>
+</header>
+
+<app-playlist-songs-body [tracks]="tracks"></app-playlist-songs-body>
