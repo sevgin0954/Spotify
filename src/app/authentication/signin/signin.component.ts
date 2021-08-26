@@ -41,7 +41,7 @@ export class SigninComponent implements OnInit {
         const code = (codePart as string).split('=')[1];
 
         this.authService.getUserToken(code, redirectUri).subscribe(data => {
-          this.localStorageService.setToken(data.access_token);
+          this.localStorageService.setUserToken(data.access_token);
 
           this.router.navigateByUrl('/');
         });

@@ -20,7 +20,7 @@ export class PlaylistService {
     ) { }
 
     getByCategory(category: Category, limit: number, offset: number): Observable<Paging<Playlist>> {
-        const authToken = this.localStorageService.getToken();
+        const authToken = this.localStorageService.getApiToken();
         let headers = new HttpHeaders();
         headers = AuthUtility.addAuthHeaders(headers, authToken);
 
@@ -35,7 +35,7 @@ export class PlaylistService {
     }
 
     getFutured(limit: number, offset: number): Observable<Paging<Playlist>> {
-        const authToken = this.localStorageService.getToken();
+        const authToken = this.localStorageService.getApiToken();
         let headers = new HttpHeaders();
         headers = AuthUtility.addAuthHeaders(headers, authToken);
 

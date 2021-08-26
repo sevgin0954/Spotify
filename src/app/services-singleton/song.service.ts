@@ -18,7 +18,7 @@ export class SongService {
     ) { }
 
     getSongs(trackId: string, limit: number, offset: number): Observable<Paging<PlailistTrack>> {
-        const authToken = this.localStorageService.getToken();
+        const authToken = this.localStorageService.getApiToken();
         let headers = new HttpHeaders();
         headers = AuthUtility.addAuthHeaders(headers, authToken);
 

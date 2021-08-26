@@ -19,7 +19,7 @@ export class CategoryService {
     ) { }
 
     getCategory(category: CategoryEnum): Observable<Paging<Category>> {
-        const authToken = this.localStorageService.getToken();
+        const authToken = this.localStorageService.getApiToken();
         let headers = new HttpHeaders();
         headers = AuthUtility.addAuthHeaders(headers, authToken);
 
@@ -30,7 +30,7 @@ export class CategoryService {
     }
 
     getCategories(limit: number): Observable<Paging<Category>> {
-        const authToken = this.localStorageService.getToken();
+        const authToken = this.localStorageService.getApiToken();
         let headers = new HttpHeaders();
         headers = AuthUtility.addAuthHeaders(headers, authToken);
 

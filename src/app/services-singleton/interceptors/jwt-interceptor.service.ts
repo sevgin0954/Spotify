@@ -29,12 +29,14 @@ export class JwtInterceptorService implements HttpInterceptor {
                 // Token is invalid
                 if (error instanceof HttpErrorResponse && error.status === 401) {
                     if (hasUserAuthRequiredHeader) {
+                        this.localStorageService.removeUserToken();
+
                         this.router.navigate(['/signin']);
 
                         return EMPTY;
                     }
                     else {
-                        return this.refreshClientToken(request, next);
+                        return this.refreshApiToken(request, next);
                     }
                 }
 
@@ -43,13 +45,13 @@ export class JwtInterceptorService implements HttpInterceptor {
         );
     }
 
-    private refreshClientToken(request: HttpRequest<any>, next: HttpHandler) {
-        this.localStorageService.removeToken();
+    private refreshApiToken(request: HttpRequest<any>, next: HttpHandler) {
+        this.localStorageService.removeApiToken();
 
         return this.authService.getClientToken().pipe(
             switchMap(token => {
-                this.localStorageService.setToken(token.access_token);
-                const authToken = this.localStorageService.getToken();
+                this.localStorageService.setApiToken(token.access_token);
+                const authToken = this.localStorageService.getApiToken();
                 const headers = AuthUtility.addAuthHeaders(request.headers, authToken);
 
                 const newRequest = request.clone({

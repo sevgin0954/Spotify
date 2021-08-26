@@ -19,7 +19,7 @@ export class UserLibraryService {
     ) { }
 
     getSavedAlbums(): Observable<Paging<SavedAlbum>> {
-        const authToken = this.localStorageService.getToken();
+        const authToken = this.localStorageService.getUserToken();
         let headers = new HttpHeaders();
         headers = AuthUtility.addAuthHeaders(headers, authToken);
         
@@ -31,7 +31,7 @@ export class UserLibraryService {
     }
 
     getSavedPlaylists(): Observable<Paging<Playlist>> {
-        const authToken = this.localStorageService.getToken();
+        const authToken = this.localStorageService.getUserToken();
         let headers = new HttpHeaders();
         headers = AuthUtility.addAuthHeaders(headers, authToken);
 

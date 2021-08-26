@@ -1,21 +1,32 @@
 import { Injectable } from '@angular/core';
-
-const AUTH_TOKEN_KEY = 'token'
+import { MainConstants } from '../shared/constants/main-constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
 
-  setToken(token: string): void {
-    localStorage.setItem(AUTH_TOKEN_KEY, token);
+  setApiToken(token: string): void {
+    localStorage.setItem(MainConstants.API_TOKEN_KEY, token);
   }
 
-  getToken(): string | null {
-    return localStorage.getItem(AUTH_TOKEN_KEY);
+  setUserToken(token: string): void {
+    localStorage.setItem(MainConstants.USER_TOKEN_KEY, token);
   }
 
-  removeToken(): void {
-    localStorage.removeItem(AUTH_TOKEN_KEY);
+  getApiToken(): string | null {
+    return localStorage.getItem(MainConstants.API_TOKEN_KEY);
+  }
+
+  getUserToken(): string | null {
+    return localStorage.getItem(MainConstants.USER_TOKEN_KEY);
+  }
+
+  removeApiToken(): void {
+    localStorage.removeItem(MainConstants.API_TOKEN_KEY);
+  }
+
+  removeUserToken(): void {
+    localStorage.removeItem(MainConstants.USER_TOKEN_KEY);
   }
 }
