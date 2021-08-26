@@ -5,6 +5,7 @@ import { BrowseComponent } from './categories/browse/browse.component';
 import { CategoryPlaylistsComponent } from './category-playlists-full/category-playlists/category-playlists.component';
 import { HomeComponent } from './home/home/home.component';
 import { LibraryComponent } from './library/library/library.component';
+import { SavedArtistsComponent } from './library/saved-artists/saved-artists.component';
 import { SavedPlaylistsComponent } from './library/saved-playlists/saved-playlists.component';
 import { PlaylistSongsComponent } from './playlist-songs/playlist-songs/playlist-songs.component';
 import { PlaylistResolverService } from './services-singleton/resolvers/playlist-resolver.service';
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'playlist/:id', component: PlaylistSongsComponent, resolve: { playlist: PlaylistResolverService } },
   { path: 'library', redirectTo: 'library/playlists' },
   { path: 'library', component: LibraryComponent, children: [
-    { path: 'playlists', component: SavedPlaylistsComponent }
+    { path: 'playlists', component: SavedPlaylistsComponent },
+    { path: 'artists', component: SavedArtistsComponent }
   ] },
   { path: 'signin', component: SigninComponent }
 ];

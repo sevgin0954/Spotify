@@ -54,7 +54,7 @@ export class SigninComponent implements OnInit {
       `redirect_uri=${redirectUri}&` +
       'response_type=code&' +
       'scope=' +
-      'user-library-read playlist-read-private playlist-read-collaborative';
+      'user-library-read playlist-read-private playlist-read-collaborative user-follow-modify user-follow-read';
       // 'https://www.googleapis.com/auth/youtube.upload ' +
       // 'https://www.googleapis.com/auth/youtube.force-ssl ' +
       // 'https://www.googleapis.com/auth/youtubepartner';

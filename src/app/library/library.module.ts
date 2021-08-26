@@ -5,17 +5,27 @@ import { PlaylistCardModule } from '../playlist-card/playlist-card.module';
 import { RouterModule } from '@angular/router';
 import { SavedPlaylistsComponent } from './saved-playlists/saved-playlists.component';
 import { SharedModule } from '../shared/shared.module';
+import { UserLibraryService } from './services/user-library.service';
+import { SavedArtistsComponent } from './saved-artists/saved-artists.component';
+import { ArtistCardComponent } from './components/artist-card/artist-card.component';
+import { TextModule } from '../text/text.module';
 
 @NgModule({
   declarations: [
     LibraryComponent,
-    SavedPlaylistsComponent
+    SavedPlaylistsComponent,
+    SavedArtistsComponent,
+    ArtistCardComponent
   ],
   imports: [
     CommonModule,
     PlaylistCardModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    TextModule
+  ],
+  providers: [
+    UserLibraryService
   ]
 })
 export class LibraryModule { }

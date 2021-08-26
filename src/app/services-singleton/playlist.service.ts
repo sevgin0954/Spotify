@@ -49,6 +49,12 @@ export class PlaylistService {
     }
 
     getById(id: string): Observable<Playlist> {
-        return this.http.get<Playlist>(`${RouteConstants.BASE}/playlists/${id}`);
+        const authToken = this.localStorageService.getApiToken();
+        let headers = new HttpHeaders();
+        headers = AuthUtility.addAuthHeaders(headers, authToken);
+
+        return this.http.get<Playlist>(`${RouteConstants.BASE}/playlists/${id}`, {
+            headers
+        });
     }
 }

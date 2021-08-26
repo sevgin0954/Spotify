@@ -1,0 +1,9 @@
+<div class="card">
+    <img [src]="artist.images[0].url" alt="{{ artist.name }}">
+
+    <div>
+        <h2>
+            <app-text-fit [displayRows]="2" [text]="artist.name"></app-text-fit>
+        </h2>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="playlists-container">
+    <div class="playlist-element" *ngFor="let artist of artists">
+        <app-artist-card [artist]="artist"></app-artist-card>
+    </div>
+</div>
+
+<app-loading-elements [loadingCallback]="loadMoreArtists" [isLoadingDisabled]="isLoadingDisabled"></app-loading-elements>

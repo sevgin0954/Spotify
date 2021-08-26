@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Playlist } from 'src/app/models/playlist/playlist';
-import { UserLibraryService } from 'src/app/services-singleton/user-library.service';
+import { UserLibraryService } from 'src/app/library/services/user-library.service';
 
 @Component({
   selector: 'app-saved-playlists',
