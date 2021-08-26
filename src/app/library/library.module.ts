@@ -9,13 +9,15 @@ import { UserLibraryService } from './services/user-library.service';
 import { SavedArtistsComponent } from './saved-artists/saved-artists.component';
 import { ArtistCardComponent } from './components/artist-card/artist-card.component';
 import { TextModule } from '../text/text.module';
+import { SavedAlbumsComponent } from './saved-albums/saved-albums.component';
 
 @NgModule({
   declarations: [
     LibraryComponent,
     SavedPlaylistsComponent,
     SavedArtistsComponent,
-    ArtistCardComponent
+    ArtistCardComponent,
+    SavedAlbumsComponent
   ],
   imports: [
     CommonModule,

@@ -5,6 +5,7 @@ import { BrowseComponent } from './categories/browse/browse.component';
 import { CategoryPlaylistsComponent } from './category-playlists-full/category-playlists/category-playlists.component';
 import { HomeComponent } from './home/home/home.component';
 import { LibraryComponent } from './library/library/library.component';
+import { SavedAlbumsComponent } from './library/saved-albums/saved-albums.component';
 import { SavedArtistsComponent } from './library/saved-artists/saved-artists.component';
 import { SavedPlaylistsComponent } from './library/saved-playlists/saved-playlists.component';
 import { PlaylistSongsComponent } from './playlist-songs/playlist-songs/playlist-songs.component';
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'library', redirectTo: 'library/playlists' },
   { path: 'library', component: LibraryComponent, children: [
     { path: 'playlists', component: SavedPlaylistsComponent },
-    { path: 'artists', component: SavedArtistsComponent }
+    { path: 'artists', component: SavedArtistsComponent },
+    { path: 'albums', component: SavedAlbumsComponent }
   ] },
   { path: 'signin', component: SigninComponent }
 ];

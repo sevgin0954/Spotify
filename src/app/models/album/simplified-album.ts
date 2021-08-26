@@ -1,9 +1,10 @@
+import { SimplifiedArtist } from "../artist/simplified-artist";
 import { Image } from "../image/image";
 
 export interface SimplifiedAlbum {
     album_group: string,
     album_type: string,
-    artists,
+    artists: SimplifiedArtist[],
     available_markets: string[],
     href: string,
     id: string,
