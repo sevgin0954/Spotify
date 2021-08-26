@@ -1,0 +1,14 @@
+<header #header>
+    <img src="{{ playlist.images[0].url }}" alt="">
+
+    <div class="header-info">
+        <h1>{{ playlist.name }}</h1>
+        <p>{{ playlist.description }}</p>
+        <p>
+            <a class="author">{{ playlist.owner.display_name }}</a>, 
+            {{ playlist.tracks.total }} songs 
+            <i (click)="unfallow()" class="fas fa-heart liked" *ngIf="isUserFallowing; else notLikedHeart"></i>
+            <ng-template #notLikedHeart><i (click)="fallow()" class="far fa-heart"></i></ng-template>
+        </p>
+    </div>
+</header>

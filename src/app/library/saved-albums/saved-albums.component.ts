@@ -19,12 +19,10 @@ export class SavedAlbumsComponent implements OnInit {
   ngOnInit(): void {
     this.userLibraryService.getSavedAlbums().subscribe(data => {
       this.albums = data.items;
-      console.log(data)
     });
   }
 
   getArtistsString(artists: SimplifiedArtist[]): string {
     return artists.map(a => a.name).join(', ');
   }
-
 }
