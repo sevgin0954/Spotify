@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
 import { Track } from 'src/app/models/track/track';
+import { LocalStorageService } from 'src/app/services-singleton/local-storage.service';
 import { SongService } from 'src/app/services-singleton/song.service';
 
 @Component({
@@ -15,21 +16,25 @@ export class PlaylistSongsBodyComponent implements OnChanges {
   likedTracksStartIndex: number = 0;
 
   constructor(
-    private songService: SongService
+    private songService: SongService,
+    private localStorageService: LocalStorageService
   ) { }
 
   ngOnChanges(): void {
-    this.isTrackLiked.length = this.tracks.length;
+    const userToken = this.localStorageService.getUserToken();
+    if (userToken) {
+      this.isTrackLiked.length = this.tracks.length;
 
-    for (let startIndex = this.likedTracksStartIndex; startIndex < this.tracks.length; startIndex+=50) {
-      const endIndex = this.likedTracksStartIndex + 50 - 1;
-
-      const currentPartTracks = this.tracks.slice(this.likedTracksStartIndex, endIndex);
-      const currentPartTracksIds = currentPartTracks.map(t => t.id);
-      this.songService.getLikedSongsByIds(currentPartTracksIds).subscribe(data => {
-        this.likedTracksStartIndex += data.length;
-        this.fillIsTrackLiked(startIndex, data);
-      });
+      for (let startIndex = this.likedTracksStartIndex; startIndex < this.tracks.length; startIndex+=50) {
+        const endIndex = this.likedTracksStartIndex + 50 - 1;
+  
+        const currentPartTracks = this.tracks.slice(this.likedTracksStartIndex, endIndex);
+        const currentPartTracksIds = currentPartTracks.map(t => t.id);
+        this.songService.getLikedSongsByIds(currentPartTracksIds).subscribe(data => {
+          this.likedTracksStartIndex += data.length;
+          this.fillIsTrackLiked(startIndex, data);
+        });
+      }
     }
   }
 

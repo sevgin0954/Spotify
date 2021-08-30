@@ -23,8 +23,6 @@ export class AuthService {
     }
 
     getUserToken(code: string, redirectUri: string): Observable<Token> {
-        // params = params.set('scope', 'sasa a ssa saassa');
-
         const body = `grant_type=${'authorization_code'}&code=${code}&redirect_uri=${redirectUri}`;
         const headers = {
             'Content-Type': 'application/x-www-form-urlencoded',
