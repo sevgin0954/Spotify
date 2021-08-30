@@ -2,7 +2,11 @@
     <div class="playlist-element card" *ngFor="let album of albums">
         <img [src]="album.album.images[0].url" alt="album cover">
 
-        <h2><app-text-fit [text]="album.album.name" [displayRows]=1></app-text-fit></h2>
-        <div><app-text-fit [text]="getArtistsString(album.album.artists)" [displayRows]=2></app-text-fit></div>
+        <h2>
+            {{ album.album.name }}
+        </h2>
+        <div class="artists">
+            {{ getArtistsString(album.album.artists) }}
+        </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { Playlist } from '../../../models/playlist/playlist';
 
 @Component({
@@ -7,13 +7,17 @@ import { Playlist } from '../../../models/playlist/playlist';
   styleUrls: ['./playlist-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PlaylistCardComponent {
+export class PlaylistCardComponent implements AfterViewInit {
   @Input()
   playlist: Playlist;
 
-  @Input()
-  descriptionDisplayRows: number = 2;
+  @ViewChild('description')
+  description: ElementRef;
 
-  @Input()
-  titleDisplayRows: number = 2;
+  ngAfterViewInit(): void {
+    const child = this.description.nativeElement.children[0];
+    if (child) {
+      this.description.nativeElement.children[0].setAttribute('style', `color: white; text-decoration: underline;`);
+    }
+  }
 }

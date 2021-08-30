@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SavedAlbum } from 'src/app/models/album/saved-album';
 import { SimplifiedArtist } from 'src/app/models/artist/simplified-artist';
-import { UserLibraryService } from '../services/user-library.service';
+import { UserLibraryService } from '../services/user-library.service'
 
 @Component({
   selector: 'app-saved-albums',

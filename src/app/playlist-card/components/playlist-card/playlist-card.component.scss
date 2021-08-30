@@ -1,36 +1,32 @@
 @import './../../../card.scss';
+@import './../../../../styles.scss';
+
+.playlist-description {
+    a {
+        color: white;
+        text-decoration: underline;
+    }
+}
 
 h2 {
+    @extend .hide-clamp;
+    -webkit-line-clamp: 1;
+    
     font-family: 'PT Serif', serif;
     font-weight: 400;
     margin-top: 0.4rem;
     margin-bottom: 0.4rem;
     word-break: break-all;
+    color: white;
 }
 
 p {
     margin: 0;
 }
 
-// .playlist-card {
-//     padding: 1rem;
-//     background-color: #282828;
-//     border-radius: 7px;
-//     color: white;
-//     height: 100%;
-//     box-sizing: border-box;
-
-//     img {
-//         width: 100%;
-//         height: 67%;
-//         object-fit: cover;
-//         border-radius: 7px;
-//         margin-right: auto;
-//         margin-left: auto;
-//         display: block;
-//     }
-// }
-
 .playlist-description {
+    @extend .hide-clamp;
+    -webkit-line-clamp: 2;
+    
     height: 2.3rem;
 }

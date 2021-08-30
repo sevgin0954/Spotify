@@ -4,11 +4,9 @@
     
         <div>
             <h2>
-                <app-text-fit [displayRows]="1" [text]="playlist.name"></app-text-fit>
+                {{ playlist.name }}
             </h2>
         </div>
-        <p class="playlist-description">
-            <app-text-fit-unescaped [displayRows]="2" [text]="playlist.description"></app-text-fit-unescaped>
-        </p>
+        <p #description class="playlist-description" [innerHtml]="playlist.description"></p>
     </div>
 </a>

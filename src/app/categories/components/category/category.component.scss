@@ -8,12 +8,12 @@ img {
 
 h1 {
     @extend .hide-clamp;
+    -webkit-line-clamp: 1;
 
     position: absolute;
     text-align: center;
     width: 100%;
     color: white;
-    -webkit-line-clamp: 1;
     margin-top: 0.5rem;
 }
 

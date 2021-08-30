@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PlaylistCardComponent } from './components/playlist-card/playlist-card.component';
-import { TextModule } from '../text/text.module';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -10,7 +9,6 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    TextModule,
     RouterModule
   ],
   exports: [

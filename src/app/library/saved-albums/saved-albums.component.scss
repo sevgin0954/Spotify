@@ -1,7 +1,16 @@
 @import './../../card.scss';
 @import './../../playlists.scss';
+@import './../../../styles.scss';
 
 h2 {
+    @extend .hide-clamp;
+    -webkit-line-clamp: 1;
+
     margin-top: 0.4rem;
     margin-bottom: 0.4rem;
+}
+
+.artists {
+    @extend .hide-clamp;
+    -webkit-line-clamp: 2;
 }
