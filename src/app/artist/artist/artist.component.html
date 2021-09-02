@@ -1,0 +1,10 @@
+<header #header>
+    <img [src]="artist.images[0].url" alt="heart">
+
+    <div class="header-info">
+        <h1>{{ artist.name }}</h1>
+        <p>{{ artist.followers.total }} Followers</p>
+        <app-like *ngIf="isUserFallowing !== undefined" (onDislike)="unfallow()" (onLike)="fallow()" [isLiked]="isUserFallowing">
+        </app-like>
+    </div>
+</header>

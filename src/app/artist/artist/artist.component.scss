@@ -1,0 +1,14 @@
+@import './../../songs-header.scss';
+@import './../../../variables.scss';
+
+* {
+    color: white;
+}
+
+p {
+    display: inline;
+}
+
+header {
+    background: linear-gradient(180deg, rgba(153, 203, 232,1) 0%, rgba(153, 203, 232,0.1) 100%);
+}

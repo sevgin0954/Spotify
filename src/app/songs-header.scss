@@ -1,0 +1,26 @@
+header {
+    display: flex;
+    height: 13rem;
+    padding: 1rem;
+
+    .header-info {
+        align-self: flex-end;
+    }
+
+    img {
+        height: 100%;
+        border-radius: 3px;
+        margin-right: 2rem;
+    }
+}
+
+@media (max-width: 950px) {
+    header {
+        height: 10rem;
+    }
+}
+@media (max-width: 650px) {
+    header {
+        height: 8rem;
+    }
+}

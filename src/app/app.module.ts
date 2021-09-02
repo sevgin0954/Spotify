@@ -13,6 +13,7 @@ import { CategoryPlaylistsFullModule } from './category-playlists-full/category-
 import { PlaylistSongsModule } from './playlist-songs/playlist-songs.module';
 import { LibraryModule } from './library/library.module';
 import { LikedSongsModule } from './liked-songs/liked-songs.module';
+import { ArtistModule } from './artist/artist.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LikedSongsModule } from './liked-songs/liked-songs.module';
     CategoryPlaylistsFullModule,
     PlaylistSongsModule,
     LibraryModule,
-    LikedSongsModule
+    LikedSongsModule,
+    ArtistModule
   ],
   providers: [
     {

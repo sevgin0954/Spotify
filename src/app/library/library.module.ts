@@ -7,22 +7,22 @@ import { SavedPlaylistsComponent } from './saved-playlists/saved-playlists.compo
 import { SharedModule } from '../shared/shared.module';
 import { UserLibraryService } from './services/user-library.service';
 import { SavedArtistsComponent } from './saved-artists/saved-artists.component';
-import { ArtistCardComponent } from './components/artist-card/artist-card.component';
 import { SavedAlbumsComponent } from './saved-albums/saved-albums.component';
+import { ArtistCardModule } from '../artist-card/artist-card.module';
 
 @NgModule({
   declarations: [
     LibraryComponent,
     SavedPlaylistsComponent,
     SavedArtistsComponent,
-    ArtistCardComponent,
     SavedAlbumsComponent
   ],
   imports: [
     CommonModule,
     PlaylistCardModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    ArtistCardModule
   ],
   providers: [
     UserLibraryService

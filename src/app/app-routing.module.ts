@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ArtistComponent } from './artist/artist/artist.component';
 import { LogoutComponent } from './authentication/logout/logout.component';
 import { SigninComponent } from './authentication/signin/signin.component';
 import { BrowseComponent } from './categories/browse/browse.component';
@@ -11,6 +12,7 @@ import { SavedArtistsComponent } from './library/saved-artists/saved-artists.com
 import { SavedPlaylistsComponent } from './library/saved-playlists/saved-playlists.component';
 import { LikedSongsComponent } from './liked-songs/liked-songs/liked-songs.component';
 import { PlaylistSongsComponent } from './playlist-songs/playlist-songs/playlist-songs.component';
+import { ArtistResolver } from './services-singleton/resolvers/artist-resolver.service';
 import { PlaylistResolverService } from './services-singleton/resolvers/playlist-resolver.service';
 import { RouteConstants } from './shared/constants/route-constants';
 
@@ -29,7 +31,8 @@ const routes: Routes = [
   ] },
   { path: 'signin', component: SigninComponent },
   { path: 'liked', component: LikedSongsComponent },
-  { path: 'logout', component: LogoutComponent }
+  { path: 'logout', component: LogoutComponent },
+  { path: 'artist/:id', component: ArtistComponent, resolve: { artist: ArtistResolver } }
 ];
 
 @NgModule({

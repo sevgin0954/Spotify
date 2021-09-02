@@ -8,52 +8,70 @@ import { AuthUtility } from "../shared/utilities/auth-utility";
 import { LocalStorageService } from "./local-storage.service";
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: "root"
 })
-export class FallowPlaylistService {
+export class FallowArtistService {
     constructor(
-        private localStorageService: LocalStorageService,
-        private http: HttpClient
+        private http: HttpClient,
+        private localStorageService: LocalStorageService
     ) { }
 
-    checkIfUserIsFallowingPlaylist(playlistId: string, userId: string): Observable<boolean> {
+    checkIfCurrentUserIsFallowing(artistId: string): Observable<boolean> {
         const authToken = this.localStorageService.getUserToken();
         let headers = new HttpHeaders();
         headers = AuthUtility.addAuthHeaders(headers, authToken);
-
         headers = headers.set(MainConstants.USER_AUTHORIZATION_REQUIRED_HEADER, '');
 
         let params = new HttpParams();
-        params = params.set('ids', userId);
+        params = params.set('type', 'artist');
+        params = params.set('ids', artistId);
 
-        return this.http.get<boolean>(`${RouteConstants.BASE}/playlists/${playlistId}/followers/contains`, {
+        return this.http.get<boolean>(`${RouteConstants.BASE}/me/following/contains`, {
             headers, params
         }).pipe(
             map(data => data[0])
         );
     }
 
-    fallow(playlistId: string): Observable<void> {
+    fallow(artistId: string): Observable<void> {
+        // TODO: Reuse
         const authToken = this.localStorageService.getUserToken();
         let headers = new HttpHeaders();
         headers = AuthUtility.addAuthHeaders(headers, authToken);
-        headers = headers.set('Content-Type', 'application/json');
         headers = headers.set(MainConstants.USER_AUTHORIZATION_REQUIRED_HEADER, '');
+        headers = headers.set('Content-Type', 'application/json');
 
-        return this.http.put<void>(`${RouteConstants.BASE}/playlists/${playlistId}/followers`, {}, {
-            headers
-        })
+        let params = new HttpParams();
+        params = params.set('type', 'artist');
+        params = params.set('ids', artistId);
+
+        const body = {
+            ids: [artistId]
+        };
+
+        return this.http.put<void>(`${RouteConstants.BASE}/me/following`, JSON.stringify(body), {
+            headers, params
+        });
     }
 
-    unfallow(playlistId: string): Observable<void> {
+    unfallow(artistId: string): Observable<void> {
+        // TODO: Reuse
         const authToken = this.localStorageService.getUserToken();
         let headers = new HttpHeaders();
         headers = AuthUtility.addAuthHeaders(headers, authToken);
-        headers = headers.set('Content-Type', 'application/json');
         headers = headers.set(MainConstants.USER_AUTHORIZATION_REQUIRED_HEADER, '');
+        headers = headers.set('Content-Type', 'application/json');
 
-        return this.http.delete<void>(`${RouteConstants.BASE}/playlists/${playlistId}/followers`, {
-            headers
-        })
+        let params = new HttpParams();
+        params = params.set('type', 'artist');
+        params = params.set('ids', artistId);
+
+        const body = {
+            ids: [artistId]
+        };
+
+        return this.http.delete<void>(`${RouteConstants.BASE}/me/following`, {
+            headers, params
+        });
     }
 }

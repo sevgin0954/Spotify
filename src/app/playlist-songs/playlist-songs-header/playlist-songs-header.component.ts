@@ -36,7 +36,7 @@ export class PlaylistSongsHeaderComponent implements OnChanges {
   }
 
   fallow(): void {
-    this.fallowService.fallowPlaylist(this.playlist.id).subscribe(() => {
+    this.fallowService.fallow(this.playlist.id).subscribe(() => {
       this.isUserFallowing = true;
     });
   }
