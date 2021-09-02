@@ -1,14 +1,15 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Track } from 'src/app/models/track/track';
 import { LocalStorageService } from 'src/app/services-singleton/local-storage.service';
 import { SongService } from 'src/app/services-singleton/song.service';
 
 @Component({
-  selector: 'app-playlist-songs-body',
-  templateUrl: './playlist-songs-body.component.html',
-  styleUrls: ['./playlist-songs-body.component.scss']
+  selector: 'app-tracks-table',
+  templateUrl: './tracks-table.component.html',
+  styleUrls: ['./tracks-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PlaylistSongsBodyComponent implements OnChanges {
+export class TracksTableComponent {
   @Input()
   tracks: Track[];
 
@@ -22,6 +23,7 @@ export class PlaylistSongsBodyComponent implements OnChanges {
 
   ngOnChanges(): void {
     const userToken = this.localStorageService.getUserToken();
+    // Checks if user is logged in
     if (userToken) {
       this.isTrackLiked.length = this.tracks.length;
 
