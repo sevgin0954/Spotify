@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Playlist } from 'src/app/models/playlist/playlist';
 
 @Component({
-  selector: 'app-playlist-songs',
-  templateUrl: './playlist-songs.component.html',
-  styleUrls: ['./playlist-songs.component.scss']
+  selector: 'app-playlist-tracks',
+  templateUrl: './playlist-tracks.component.html',
+  styleUrls: ['./playlist-tracks.component.scss']
 })
-export class PlaylistSongsComponent implements OnInit {
+export class PlaylistTracksComponent implements OnInit {
 
   playlist: Playlist;
 

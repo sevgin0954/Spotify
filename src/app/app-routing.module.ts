@@ -11,7 +11,7 @@ import { SavedAlbumsComponent } from './library/saved-albums/saved-albums.compon
 import { SavedArtistsComponent } from './library/saved-artists/saved-artists.component';
 import { SavedPlaylistsComponent } from './library/saved-playlists/saved-playlists.component';
 import { LikedSongsComponent } from './liked-songs/liked-songs/liked-songs.component';
-import { PlaylistSongsComponent } from './playlist-songs/playlist-songs/playlist-songs.component';
+import { PlaylistTracksComponent } from './playlist-tracks/playlist-tracks/playlist-tracks.component';
 import { ArtistResolver } from './services-singleton/resolvers/artist-resolver.service';
 import { PlaylistResolverService } from './services-singleton/resolvers/playlist-resolver.service';
 import { RouteConstants } from './shared/constants/route-constants';
@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: `${RouteConstants.CATEGORY_PLAYLISTS_BASE}/:id`, component: CategoryPlaylistsComponent },
   // TODO: Move to constant
   { path: `categories`, component: BrowseComponent },
-  { path: 'playlist/:id', component: PlaylistSongsComponent, resolve: { playlist: PlaylistResolverService } },
+  { path: 'playlist/:id', component: PlaylistTracksComponent, resolve: { playlist: PlaylistResolverService } },
   { path: 'library', redirectTo: 'library/playlists' },
   { path: 'library', component: LibraryComponent, children: [
     { path: 'playlists', component: SavedPlaylistsComponent },

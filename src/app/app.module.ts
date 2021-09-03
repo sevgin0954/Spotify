@@ -10,10 +10,10 @@ import { HomeModule } from './home/home.module';
 import { NavbarModule } from './navbar/navbar.module';
 import { CategoriesModule } from './categories/categories.module';
 import { CategoryPlaylistsFullModule } from './category-playlists-full/category-playlists-full.module';
-import { PlaylistSongsModule } from './playlist-songs/playlist-songs.module';
 import { LibraryModule } from './library/library.module';
 import { LikedSongsModule } from './liked-songs/liked-songs.module';
 import { ArtistModule } from './artist/artist.module';
+import { PlaylistTracksModule } from './playlist-tracks/playlist-tracks.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { ArtistModule } from './artist/artist.module';
     NavbarModule,
     CategoriesModule,
     CategoryPlaylistsFullModule,
-    PlaylistSongsModule,
+    PlaylistTracksModule,
     LibraryModule,
     LikedSongsModule,
     ArtistModule

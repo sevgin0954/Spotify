@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PlaylistSongsComponent } from './playlist-songs/playlist-songs.component';
+import { PlaylistTracksComponent } from './playlist-tracks/playlist-tracks.component';
 import { SongsComponent } from './songs/songs.component';
 import { SharedModule } from '../shared/shared.module';
-import { PlaylistSongsHeaderComponent } from './playlist-songs-header/playlist-songs-header.component';
+import { PlaylistTracksHeaderComponent } from './playlist-tracks-header/playlist-tracks-header.component';
 import { RouterModule } from '@angular/router';
 import { TrackModule } from '../track/track.module';
 
 @NgModule({
   declarations: [
-    PlaylistSongsComponent,
+    PlaylistTracksComponent,
     SongsComponent,
-    PlaylistSongsHeaderComponent
+    PlaylistTracksHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -20,4 +20,4 @@ import { TrackModule } from '../track/track.module';
     TrackModule
   ]
 })
-export class PlaylistSongsModule { }
+export class PlaylistTracksModule { }

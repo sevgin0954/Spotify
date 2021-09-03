@@ -6,11 +6,11 @@ import { LocalStorageService } from 'src/app/services-singleton/local-storage.se
 import { UserService } from 'src/app/services-singleton/user.service';
 
 @Component({
-  selector: 'app-playlist-songs-header',
-  templateUrl: './playlist-songs-header.component.html',
-  styleUrls: ['./playlist-songs-header.component.scss']
+  selector: 'app-playlist-tracks-header',
+  templateUrl: './playlist-tracks-header.component.html',
+  styleUrls: ['./playlist-tracks-header.component.scss']
 })
-export class PlaylistSongsHeaderComponent implements OnChanges {
+export class PlaylistTracksHeaderComponent implements OnChanges {
   @Input()
   playlist: Playlist;
 
