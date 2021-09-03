@@ -5,7 +5,6 @@ import { map } from "rxjs/operators";
 import { Paging } from "../models/paging/paging";
 import { PlailistTrack } from "../models/plailist-track/plailist-track";
 import { Track } from "../models/track/track";
-import { MainConstants } from "../shared/constants/main-constants";
 import { RouteConstants } from "../shared/constants/route-constants";
 import { AuthUtility } from "../shared/utilities/auth-utility";
 import { PaginationUtility } from "../shared/utilities/pagination-utility";
@@ -23,7 +22,7 @@ export class SongService {
     getSongs(trackId: string, limit: number, offset: number): Observable<Paging<PlailistTrack>> {
         const authToken = this.localStorageService.getApiToken();
         let headers = new HttpHeaders();
-        headers = AuthUtility.addAuthHeaders(headers, authToken);
+        headers = AuthUtility.addClientAuthHeaders(headers, authToken);
 
         let params = new HttpParams();
         params = PaginationUtility.addPaginationParams(params, limit, offset);
@@ -37,9 +36,7 @@ export class SongService {
     getLikedSongs(): Observable<Paging<Track>> {
         const authToken = this.localStorageService.getUserToken();
         let headers = new HttpHeaders();
-        headers = AuthUtility.addAuthHeaders(headers, authToken);
-
-        headers = headers.set(MainConstants.USER_AUTHORIZATION_REQUIRED_HEADER, '');
+        headers = AuthUtility.addUserAuthHeaders(headers, authToken);
 
         return this.http.get(`${RouteConstants.BASE}/me/tracks`, {
             headers
@@ -54,8 +51,7 @@ export class SongService {
     getLikedSongsByIds(trackIds: string[]): Observable<boolean[]> {
         const authToken = this.localStorageService.getUserToken();
         let headers = new HttpHeaders();
-        headers = AuthUtility.addAuthHeaders(headers, authToken);
-        headers = headers.set(MainConstants.USER_AUTHORIZATION_REQUIRED_HEADER, '');
+        headers = AuthUtility.addUserAuthHeaders(headers, authToken);
 
         let params = new HttpParams();
         params = params.set('ids', trackIds.join(','));
@@ -68,8 +64,7 @@ export class SongService {
     likeSong(songId: string): Observable<void> {
         const authToken = this.localStorageService.getUserToken();
         let headers = new HttpHeaders();
-        headers = AuthUtility.addAuthHeaders(headers, authToken);
-        headers = headers.set(MainConstants.USER_AUTHORIZATION_REQUIRED_HEADER, '');
+        headers = AuthUtility.addUserAuthHeaders(headers, authToken);
         headers = headers.set('Content-Type', 'application/json');
 
         let params = new HttpParams();
@@ -83,8 +78,7 @@ export class SongService {
     dislikeSong(songId: string): Observable<void> {
         const authToken = this.localStorageService.getUserToken();
         let headers = new HttpHeaders();
-        headers = AuthUtility.addAuthHeaders(headers, authToken);
-        headers = headers.set(MainConstants.USER_AUTHORIZATION_REQUIRED_HEADER, '');
+        headers = AuthUtility.addUserAuthHeaders(headers, authToken);
         headers = headers.set('Content-Type', 'application/json');
 
         let params = new HttpParams();

@@ -21,7 +21,7 @@ export class CategoryService {
     getCategory(category: CategoryEnum): Observable<Paging<Category>> {
         const authToken = this.localStorageService.getApiToken();
         let headers = new HttpHeaders();
-        headers = AuthUtility.addAuthHeaders(headers, authToken);
+        headers = AuthUtility.addClientAuthHeaders(headers, authToken);
 
         const categoryName = CategoryEnum[category].toLowerCase();
         return this.http.get<Paging<Category>>(`${RouteConstants.BASE}/browse/categories/${categoryName}`, {
@@ -32,7 +32,7 @@ export class CategoryService {
     getCategories(limit: number): Observable<Paging<Category>> {
         const authToken = this.localStorageService.getApiToken();
         let headers = new HttpHeaders();
-        headers = AuthUtility.addAuthHeaders(headers, authToken);
+        headers = AuthUtility.addClientAuthHeaders(headers, authToken);
 
         let params = new HttpParams();
         params = params.set('limit', limit.toString());

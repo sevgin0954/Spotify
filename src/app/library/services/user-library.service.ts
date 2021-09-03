@@ -21,9 +21,7 @@ export class UserLibraryService {
     getSavedAlbums(): Observable<Paging<SavedAlbum>> {
         const authToken = this.localStorageService.getUserToken();
         let headers = new HttpHeaders();
-        headers = AuthUtility.addAuthHeaders(headers, authToken);
-        
-        headers = headers.set(MainConstants.USER_AUTHORIZATION_REQUIRED_HEADER, '');
+        headers = AuthUtility.addUserAuthHeaders(headers, authToken);
 
         return this.http.get<Paging<SavedAlbum>>(`${RouteConstants.BASE}/me/albums`, {
             headers
@@ -33,9 +31,7 @@ export class UserLibraryService {
     getSavedPlaylists(): Observable<Paging<Playlist>> {
         const authToken = this.localStorageService.getUserToken();
         let headers = new HttpHeaders();
-        headers = AuthUtility.addAuthHeaders(headers, authToken);
-
-        headers = headers.set(MainConstants.USER_AUTHORIZATION_REQUIRED_HEADER, '');
+        headers = AuthUtility.addUserAuthHeaders(headers, authToken);
 
         return this.http.get<Paging<Playlist>>(`${RouteConstants.BASE}/me/playlists`, {
             headers
@@ -45,9 +41,7 @@ export class UserLibraryService {
     getSavedArtists(): Observable<Paging<Artist>> {
         const authToken = this.localStorageService.getUserToken();
         let headers = new HttpHeaders();
-        headers = AuthUtility.addAuthHeaders(headers, authToken);
-
-        headers = headers.set(MainConstants.USER_AUTHORIZATION_REQUIRED_HEADER, '');
+        headers = AuthUtility.addUserAuthHeaders(headers, authToken);
         
         let params = new HttpParams();
         params = params.set('type', 'artist');

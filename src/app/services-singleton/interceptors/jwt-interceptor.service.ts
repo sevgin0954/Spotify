@@ -52,7 +52,7 @@ export class JwtInterceptorService implements HttpInterceptor {
             switchMap(token => {
                 this.localStorageService.setApiToken(token.access_token);
                 const authToken = this.localStorageService.getApiToken();
-                const headers = AuthUtility.addAuthHeaders(request.headers, authToken);
+                const headers = AuthUtility.addClientAuthHeaders(request.headers, authToken);
 
                 const newRequest = request.clone({
                     headers

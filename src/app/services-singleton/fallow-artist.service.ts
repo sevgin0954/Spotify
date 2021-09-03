@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { MainConstants } from "../shared/constants/main-constants";
 import { RouteConstants } from "../shared/constants/route-constants";
 import { AuthUtility } from "../shared/utilities/auth-utility";
 import { LocalStorageService } from "./local-storage.service";
@@ -19,8 +18,7 @@ export class FallowArtistService {
     checkIfCurrentUserIsFallowing(artistId: string): Observable<boolean> {
         const authToken = this.localStorageService.getUserToken();
         let headers = new HttpHeaders();
-        headers = AuthUtility.addAuthHeaders(headers, authToken);
-        headers = headers.set(MainConstants.USER_AUTHORIZATION_REQUIRED_HEADER, '');
+        headers = AuthUtility.addUserAuthHeaders(headers, authToken);
 
         let params = new HttpParams();
         params = params.set('type', 'artist');
@@ -37,8 +35,7 @@ export class FallowArtistService {
         // TODO: Reuse
         const authToken = this.localStorageService.getUserToken();
         let headers = new HttpHeaders();
-        headers = AuthUtility.addAuthHeaders(headers, authToken);
-        headers = headers.set(MainConstants.USER_AUTHORIZATION_REQUIRED_HEADER, '');
+        headers = AuthUtility.addUserAuthHeaders(headers, authToken);
         headers = headers.set('Content-Type', 'application/json');
 
         let params = new HttpParams();
@@ -58,8 +55,7 @@ export class FallowArtistService {
         // TODO: Reuse
         const authToken = this.localStorageService.getUserToken();
         let headers = new HttpHeaders();
-        headers = AuthUtility.addAuthHeaders(headers, authToken);
-        headers = headers.set(MainConstants.USER_AUTHORIZATION_REQUIRED_HEADER, '');
+        headers = AuthUtility.addUserAuthHeaders(headers, authToken);
         headers = headers.set('Content-Type', 'application/json');
 
         let params = new HttpParams();

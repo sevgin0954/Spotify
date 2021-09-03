@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Artist } from "src/app/models/artist/artist";
@@ -18,7 +18,7 @@ export class ArtistService {
     getById(id: string): Observable<Artist> {
         const authToken = this.localStorageService.getApiToken();
         let headers = new HttpHeaders();
-        headers = AuthUtility.addAuthHeaders(headers, authToken);
+        headers = AuthUtility.addClientAuthHeaders(headers, authToken);
         
         return this.http.get<Artist>(`${RouteConstants.BASE}/artists/${id}`, {
             headers

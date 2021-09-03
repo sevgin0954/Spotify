@@ -22,7 +22,7 @@ export class PlaylistService {
     getByCategory(category: Category, limit: number, offset: number): Observable<Paging<Playlist>> {
         const authToken = this.localStorageService.getApiToken();
         let headers = new HttpHeaders();
-        headers = AuthUtility.addAuthHeaders(headers, authToken);
+        headers = AuthUtility.addClientAuthHeaders(headers, authToken);
 
         let params = new HttpParams();
         params = PaginationUtility.addPaginationParams(params, limit, offset);
@@ -37,7 +37,7 @@ export class PlaylistService {
     getFutured(limit: number, offset: number): Observable<Paging<Playlist>> {
         const authToken = this.localStorageService.getApiToken();
         let headers = new HttpHeaders();
-        headers = AuthUtility.addAuthHeaders(headers, authToken);
+        headers = AuthUtility.addClientAuthHeaders(headers, authToken);
 
         let params = new HttpParams();
         params = PaginationUtility.addPaginationParams(params, limit, offset);
@@ -51,7 +51,7 @@ export class PlaylistService {
     getById(id: string): Observable<Playlist> {
         const authToken = this.localStorageService.getApiToken();
         let headers = new HttpHeaders();
-        headers = AuthUtility.addAuthHeaders(headers, authToken);
+        headers = AuthUtility.addClientAuthHeaders(headers, authToken);
 
         return this.http.get<Playlist>(`${RouteConstants.BASE}/playlists/${id}`, {
             headers
