@@ -1,5 +1,5 @@
 import { Playlist } from "../models/playlist/playlist";
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 import { Paging } from "../models/paging/paging";
@@ -7,8 +7,7 @@ import { map } from "rxjs/operators";
 import { Category } from "../shared/enums/category";
 import { RouteConstants } from "../shared/constants/route-constants";
 import { PaginationUtility } from "../shared/utilities/pagination-utility";
-import { LocalStorageService } from "./local-storage.service";
-import { AuthUtility } from "../shared/utilities/auth-utility";
+import { HeadersService } from "./headers.service";
 
 @Injectable({
     providedIn: 'root'
@@ -16,13 +15,11 @@ import { AuthUtility } from "../shared/utilities/auth-utility";
 export class PlaylistService {
     constructor(
         private http: HttpClient,
-        private localStorageService: LocalStorageService
+        private headersService: HeadersService
     ) { }
 
     getByCategory(category: Category, limit: number, offset: number): Observable<Paging<Playlist>> {
-        const authToken = this.localStorageService.getApiToken();
-        let headers = new HttpHeaders();
-        headers = AuthUtility.addClientAuthHeaders(headers, authToken);
+        const headers = this.headersService.getClientHeaders();
 
         let params = new HttpParams();
         params = PaginationUtility.addPaginationParams(params, limit, offset);
@@ -35,9 +32,7 @@ export class PlaylistService {
     }
 
     getFutured(limit: number, offset: number): Observable<Paging<Playlist>> {
-        const authToken = this.localStorageService.getApiToken();
-        let headers = new HttpHeaders();
-        headers = AuthUtility.addClientAuthHeaders(headers, authToken);
+        const headers = this.headersService.getClientHeaders();
 
         let params = new HttpParams();
         params = PaginationUtility.addPaginationParams(params, limit, offset);
@@ -49,9 +44,7 @@ export class PlaylistService {
     }
 
     getById(id: string): Observable<Playlist> {
-        const authToken = this.localStorageService.getApiToken();
-        let headers = new HttpHeaders();
-        headers = AuthUtility.addClientAuthHeaders(headers, authToken);
+        const headers = this.headersService.getClientHeaders();
 
         return this.http.get<Playlist>(`${RouteConstants.BASE}/playlists/${id}`, {
             headers

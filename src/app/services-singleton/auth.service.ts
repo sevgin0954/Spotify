@@ -1,9 +1,8 @@
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Token } from "../models/token/token";
 import { MainConstants } from "../shared/constants/main-constants";
-import { RouteConstants } from "../shared/constants/route-constants";
 
 const BASE_ROUTE: string = 'https://accounts.spotify.com';
 

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Playlist } from 'src/app/models/playlist/playlist';
 import { Track } from 'src/app/models/track/track';
 import { SongService } from 'src/app/services-singleton/song.service';
 

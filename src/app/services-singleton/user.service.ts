@@ -1,10 +1,9 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { User } from "../models/user/user";
 import { RouteConstants } from "../shared/constants/route-constants";
-import { AuthUtility } from "../shared/utilities/auth-utility";
-import { LocalStorageService } from "./local-storage.service";
+import { HeadersService } from "./headers.service";
 
 @Injectable({
     providedIn: 'root'
@@ -12,14 +11,12 @@ import { LocalStorageService } from "./local-storage.service";
 
 export class UserService {
     constructor(
-        private localStorageService: LocalStorageService,
+        private headersService: HeadersService,
         private http: HttpClient
     ) { }
 
     getUser(): Observable<User> {
-        const authToken = this.localStorageService.getUserToken();
-        let headers = new HttpHeaders();
-        headers = AuthUtility.addUserAuthHeaders(headers, authToken);
+        const headers = this.headersService.getUserHeaders();
 
         return this.http.get<User>(`${RouteConstants.BASE}/me`, {
             headers

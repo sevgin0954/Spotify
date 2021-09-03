@@ -1,10 +1,9 @@
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { RouteConstants } from "../shared/constants/route-constants";
-import { AuthUtility } from "../shared/utilities/auth-utility";
-import { LocalStorageService } from "./local-storage.service";
+import { HeadersService } from "./headers.service";
 
 @Injectable({
     providedIn: "root"
@@ -12,17 +11,13 @@ import { LocalStorageService } from "./local-storage.service";
 export class FallowArtistService {
     constructor(
         private http: HttpClient,
-        private localStorageService: LocalStorageService
+        private headersService: HeadersService
     ) { }
 
     checkIfCurrentUserIsFallowing(artistId: string): Observable<boolean> {
-        const authToken = this.localStorageService.getUserToken();
-        let headers = new HttpHeaders();
-        headers = AuthUtility.addUserAuthHeaders(headers, authToken);
+        const headers = this.headersService.getUserHeaders();
 
-        let params = new HttpParams();
-        params = params.set('type', 'artist');
-        params = params.set('ids', artistId);
+        const params = this.getParams(artistId);
 
         return this.http.get<boolean>(`${RouteConstants.BASE}/me/following/contains`, {
             headers, params
@@ -32,15 +27,10 @@ export class FallowArtistService {
     }
 
     fallow(artistId: string): Observable<void> {
-        // TODO: Reuse
-        const authToken = this.localStorageService.getUserToken();
-        let headers = new HttpHeaders();
-        headers = AuthUtility.addUserAuthHeaders(headers, authToken);
+        let headers = this.headersService.getUserHeaders();
         headers = headers.set('Content-Type', 'application/json');
 
-        let params = new HttpParams();
-        params = params.set('type', 'artist');
-        params = params.set('ids', artistId);
+        const params = this.getParams(artistId);
 
         const body = {
             ids: [artistId]
@@ -53,21 +43,21 @@ export class FallowArtistService {
 
     unfallow(artistId: string): Observable<void> {
         // TODO: Reuse
-        const authToken = this.localStorageService.getUserToken();
-        let headers = new HttpHeaders();
-        headers = AuthUtility.addUserAuthHeaders(headers, authToken);
+        let headers = this.headersService.getUserHeaders();
         headers = headers.set('Content-Type', 'application/json');
 
-        let params = new HttpParams();
-        params = params.set('type', 'artist');
-        params = params.set('ids', artistId);
-
-        const body = {
-            ids: [artistId]
-        };
+        const params = this.getParams(artistId);
 
         return this.http.delete<void>(`${RouteConstants.BASE}/me/following`, {
             headers, params
         });
+    }
+
+    private getParams(artistId: string): HttpParams {
+        let params = new HttpParams();
+        params = params.set('type', 'artist');
+        params = params.set('ids', artistId);
+
+        return params;
     }
 }

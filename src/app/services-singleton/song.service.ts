@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
@@ -6,9 +6,8 @@ import { Paging } from "../models/paging/paging";
 import { PlailistTrack } from "../models/plailist-track/plailist-track";
 import { Track } from "../models/track/track";
 import { RouteConstants } from "../shared/constants/route-constants";
-import { AuthUtility } from "../shared/utilities/auth-utility";
 import { PaginationUtility } from "../shared/utilities/pagination-utility";
-import { LocalStorageService } from "./local-storage.service";
+import { HeadersService } from "./headers.service";
 
 @Injectable({
     providedIn: 'root'
@@ -16,13 +15,11 @@ import { LocalStorageService } from "./local-storage.service";
 export class SongService {
     constructor(
         private http: HttpClient,
-        private localStorageService: LocalStorageService
+        private headersService: HeadersService
     ) { }
 
     getSongs(trackId: string, limit: number, offset: number): Observable<Paging<PlailistTrack>> {
-        const authToken = this.localStorageService.getApiToken();
-        let headers = new HttpHeaders();
-        headers = AuthUtility.addClientAuthHeaders(headers, authToken);
+        const headers = this.headersService.getClientHeaders();
 
         let params = new HttpParams();
         params = PaginationUtility.addPaginationParams(params, limit, offset);
@@ -34,9 +31,7 @@ export class SongService {
     }
 
     getLikedSongs(): Observable<Paging<Track>> {
-        const authToken = this.localStorageService.getUserToken();
-        let headers = new HttpHeaders();
-        headers = AuthUtility.addUserAuthHeaders(headers, authToken);
+        const headers = this.headersService.getUserHeaders();
 
         return this.http.get(`${RouteConstants.BASE}/me/tracks`, {
             headers
@@ -49,9 +44,7 @@ export class SongService {
     }
 
     getLikedSongsByIds(trackIds: string[]): Observable<boolean[]> {
-        const authToken = this.localStorageService.getUserToken();
-        let headers = new HttpHeaders();
-        headers = AuthUtility.addUserAuthHeaders(headers, authToken);
+        const headers = this.headersService.getUserHeaders();
 
         let params = new HttpParams();
         params = params.set('ids', trackIds.join(','));
@@ -62,9 +55,7 @@ export class SongService {
     }
 
     likeSong(songId: string): Observable<void> {
-        const authToken = this.localStorageService.getUserToken();
-        let headers = new HttpHeaders();
-        headers = AuthUtility.addUserAuthHeaders(headers, authToken);
+        let headers = this.headersService.getUserHeaders();
         headers = headers.set('Content-Type', 'application/json');
 
         let params = new HttpParams();
@@ -76,9 +67,7 @@ export class SongService {
     }
 
     dislikeSong(songId: string): Observable<void> {
-        const authToken = this.localStorageService.getUserToken();
-        let headers = new HttpHeaders();
-        headers = AuthUtility.addUserAuthHeaders(headers, authToken);
+        let headers = this.headersService.getUserHeaders();
         headers = headers.set('Content-Type', 'application/json');
 
         let params = new HttpParams();

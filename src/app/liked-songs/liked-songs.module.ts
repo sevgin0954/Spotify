@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LikedSongsComponent } from './liked-songs/liked-songs.component';
-import { PlaylistSongsModule } from '../playlist-songs/playlist-songs.module';
+import { TrackModule } from '../track/track.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +9,7 @@ import { PlaylistSongsModule } from '../playlist-songs/playlist-songs.module';
   ],
   imports: [
     CommonModule,
-    PlaylistSongsModule
+    TrackModule
   ]
 })
 export class LikedSongsModule { }

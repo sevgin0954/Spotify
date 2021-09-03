@@ -5,6 +5,7 @@ import { Injectable } from "@angular/core";
   })
 export class WindowService {
     isElementInsideTheScreenVerticaly(element: Element): boolean {
+      // TODO: Remove depricated ClientRect
         const rect: ClientRect = element.getBoundingClientRect();
         const windowHeight = document.documentElement.clientHeight;
         const isTopInside = rect.top <= windowHeight && rect.top >= 0;
