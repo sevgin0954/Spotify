@@ -5,7 +5,6 @@ import { concatMap } from 'rxjs/operators';
 import { Artist } from 'src/app/models/artist/artist';
 import { FallowArtistService } from 'src/app/services-singleton/fallow-artist.service';
 import { LocalStorageService } from 'src/app/services-singleton/local-storage.service';
-import { ArtistService } from '../../services-singleton/artist.service';
 
 @Component({
   selector: 'app-artist',
@@ -16,6 +15,7 @@ export class ArtistComponent implements OnInit {
 
   isUserFallowing: boolean;
   artist: Artist;
+  fireCount: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,6 +27,7 @@ export class ArtistComponent implements OnInit {
     this.route.data.pipe(
       concatMap(params => {
         this.artist = params['artist'];
+        this.fireCount = this.artist.popularity / 20;
 
         const userToken = this.localStorageService.getUserToken();
         if (userToken) {

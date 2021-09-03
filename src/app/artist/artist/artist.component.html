@@ -3,6 +3,15 @@
 
     <div class="header-info">
         <h1>{{ artist.name }}</h1>
+
+        <div class="popularity-icons-container">
+            <i class="fas fa-fire" *ngIf="fireCount >= 1"></i>
+            <i class="fas fa-fire" *ngIf="fireCount >= 2"></i>
+            <i class="fas fa-fire" *ngIf="fireCount >= 3"></i>
+            <i class="fas fa-fire" *ngIf="fireCount >= 4"></i>
+            <i class="fas fa-fire" *ngIf="fireCount >= 5"></i>
+        </div>
+        
         <p>{{ artist.followers.total }} Followers</p>
         <app-like *ngIf="isUserFallowing !== undefined" (onDislike)="unfallow()" (onLike)="fallow()" [isLiked]="isUserFallowing">
         </app-like>
