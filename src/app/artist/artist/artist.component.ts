@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 import { concatMap } from 'rxjs/operators';
 import { Artist } from 'src/app/models/artist/artist';
 import { FallowArtistService } from 'src/app/services-singleton/fallow-artist.service';
+import { LocalStorageService } from 'src/app/services-singleton/local-storage.service';
 import { ArtistService } from '../../services-singleton/artist.service';
 
 @Component({
@@ -17,14 +19,22 @@ export class ArtistComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private fallowArtistService: FallowArtistService
+    private fallowArtistService: FallowArtistService,
+    private localStorageService: LocalStorageService
   ) { }
 
   ngOnInit(): void {
     this.route.data.pipe(
       concatMap(params => {
         this.artist = params['artist'];
-        return this.fallowArtistService.checkIfCurrentUserIsFallowing(this.artist.id);
+
+        const userToken = this.localStorageService.getUserToken();
+        if (userToken) {
+          return this.fallowArtistService.checkIfCurrentUserIsFallowing(this.artist.id);
+        }
+        else {
+          return of(false);
+        }
       })
     ).subscribe(data => {
       this.isUserFallowing = data;

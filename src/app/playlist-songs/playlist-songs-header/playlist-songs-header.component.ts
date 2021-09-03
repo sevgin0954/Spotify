@@ -14,7 +14,7 @@ export class PlaylistSongsHeaderComponent implements OnChanges {
   @Input()
   playlist: Playlist;
 
-  isUserFallowing: boolean = false;
+  isUserFallowing: boolean;
 
   constructor(
     private fallowService: FallowPlaylistService,
@@ -32,6 +32,9 @@ export class PlaylistSongsHeaderComponent implements OnChanges {
       ).subscribe(isUserFallowing => {
         this.isUserFallowing = isUserFallowing;
       });
+    }
+    else {
+      this.isUserFallowing = false;
     }
   }
 

@@ -48,6 +48,6 @@ export class SongsComponent implements OnInit {
   }
 
   getTracks(playlistTracks: PlailistTrack[]): Track[] {
-    return playlistTracks.map(pt => pt.track);
+    return playlistTracks.map(pt => pt.track).filter(t => t !== null);
   }
 }

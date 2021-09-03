@@ -7,7 +7,12 @@
         <p>
             <a class="author">{{ playlist.owner.display_name }}</a>, 
             {{ playlist.tracks.total }} songs 
-            <app-like (onDislike)="unfallow()" (onLike)="fallow()" [isLiked]="isUserFallowing"></app-like>
+            <app-like 
+                *ngIf="isUserFallowing !== undefined" 
+                (onDislike)="unfallow()" 
+                (onLike)="fallow()" 
+                [isLiked]="isUserFallowing">
+            </app-like>
         </p>
     </div>
 </header>
