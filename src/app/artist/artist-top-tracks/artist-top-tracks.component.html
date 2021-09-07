@@ -1,3 +1,6 @@
-<div class="top-tracks-container">
+<div class="top-tracks" #tracksContainer>
     <app-tracks-table [tracks]="tracks" [isTrackLiked]="isTrackLiked"></app-tracks-table>
 </div>
+
+<a class="top-tracks-action-button" #showTracksButton (click)="onShowAllTracks()">Show more</a>
+<a class="top-tracks-action-button hide-top-tracks-button" #hideTracksButton (click)="onHideTracks()">Show less</a>

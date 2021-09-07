@@ -11,11 +11,14 @@
             <i class="fas fa-fire" *ngIf="popularityCount >= 4"></i>
             <i class="fas fa-fire" *ngIf="popularityCount >= 5"></i>
         </div>
-        
+
         <p>{{ getFallowerCount() }} Followers</p>
-        <app-like *ngIf="isUserFallowing !== undefined" (onDislike)="unfallow()" (onLike)="fallow()" [isLiked]="isUserFallowing">
+        <app-like *ngIf="isUserFallowing !== undefined" (onDislike)="unfallow()" (onLike)="fallow()"
+            [isLiked]="isUserFallowing">
         </app-like>
     </div>
 </header>
 
-<app-artist-top-tracks [artistId]="artist.id"></app-artist-top-tracks>
+<div class="top-tracks-container">
+    <app-artist-top-tracks [artistId]="artist.id"></app-artist-top-tracks>
+</div>
