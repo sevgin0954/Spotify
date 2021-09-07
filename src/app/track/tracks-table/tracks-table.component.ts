@@ -14,6 +14,7 @@ export class TracksTableComponent {
 
   @Input()
   isTrackLiked: boolean[];
+  releasedDateSeparator = '-';
 
   constructor(
     private songService: SongService,
@@ -40,5 +41,17 @@ export class TracksTableComponent {
     const minutes = Math.floor(miliseconds / 60000);
     const seconds = Number.parseInt(((miliseconds % 60000) / 1000).toFixed(0));
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  }
+
+  getReleasedYear(songIndex: number): string {
+    const releasedDate = this.tracks[songIndex].album.release_date;
+    return releasedDate.split(this.releasedDateSeparator)[0];
+  }
+
+  getReleasedMonthAndDate(songIndex: number): string {
+    const releasedDate = this.tracks[songIndex].album.release_date;
+    const dateParts = releasedDate.split(this.releasedDateSeparator);
+
+    return dateParts[1] + this.releasedDateSeparator + dateParts[2];
   }
 }

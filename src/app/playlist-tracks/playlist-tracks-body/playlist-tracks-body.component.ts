@@ -42,15 +42,15 @@ export class SongsComponent implements OnChanges {
     this.initializeIsTrackLiked();
   }
 
+  // TODO: Refactor
   private initializeIsTrackLiked(): void {
-    const userToken = this.localStorageService.getUserToken();
-    // Checks if user is logged in
     if (this.isTrackLiked === undefined) {
       this.isTrackLiked = new Array(this.tracks.length);
     }
 
     this.isTrackLiked.length = this.tracks.length;
 
+    const userToken = this.localStorageService.getUserToken();
     if (userToken) {
       for (let startIndex = this.likedTracksStartIndex; startIndex < this.tracks.length; startIndex+=50) {
         const endIndex = this.likedTracksStartIndex + 50 - 1;

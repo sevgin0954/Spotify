@@ -5,11 +5,11 @@
         <h1>{{ artist.name }}</h1>
 
         <div class="popularity-icons-container">
-            <i class="fas fa-fire" *ngIf="fireCount >= 1"></i>
-            <i class="fas fa-fire" *ngIf="fireCount >= 2"></i>
-            <i class="fas fa-fire" *ngIf="fireCount >= 3"></i>
-            <i class="fas fa-fire" *ngIf="fireCount >= 4"></i>
-            <i class="fas fa-fire" *ngIf="fireCount >= 5"></i>
+            <i class="fas fa-fire" *ngIf="popularityCount >= 1"></i>
+            <i class="fas fa-fire" *ngIf="popularityCount >= 2"></i>
+            <i class="fas fa-fire" *ngIf="popularityCount >= 3"></i>
+            <i class="fas fa-fire" *ngIf="popularityCount >= 4"></i>
+            <i class="fas fa-fire" *ngIf="popularityCount >= 5"></i>
         </div>
         
         <p>{{ getFallowerCount() }} Followers</p>
@@ -17,3 +17,5 @@
         </app-like>
     </div>
 </header>
+
+<app-artist-top-tracks [artistId]="artist.id"></app-artist-top-tracks>

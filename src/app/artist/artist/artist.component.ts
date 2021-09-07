@@ -15,7 +15,7 @@ export class ArtistComponent implements OnInit {
 
   isUserFallowing: boolean;
   artist: Artist;
-  fireCount: number = 0;
+  popularityCount: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,16 +24,21 @@ export class ArtistComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.initializeArtistProperties();
+  }
+
+  private initializeArtistProperties(): void {
     this.route.data.pipe(
       concatMap(params => {
         this.artist = params['artist'];
-        this.fireCount = this.artist.popularity / 20;
+        this.popularityCount = this.artist.popularity / 20;
 
         const userToken = this.localStorageService.getUserToken();
         if (userToken) {
           return this.fallowArtistService.checkIfCurrentUserIsFallowing(this.artist.id);
         }
         else {
+          // Guest user can't be fallowing
           return of(false);
         }
       })
@@ -57,10 +62,10 @@ export class ArtistComponent implements OnInit {
   getFallowerCount(): string {
     const result: string[] = [];
     const separator = ',';
-    
+
     const partsCount = 3;
     let fallowerCountString = this.artist.followers.total.toString();
-    for (let i = fallowerCountString.length - partsCount; i > 0; i-=partsCount) {
+    for (let i = fallowerCountString.length - partsCount; i > 0; i -= partsCount) {
 
       const currentPart = fallowerCountString.substring(i, i + partsCount);
       result.push(currentPart);

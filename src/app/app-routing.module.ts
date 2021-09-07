@@ -13,10 +13,10 @@ import { SavedPlaylistsComponent } from './library/saved-playlists/saved-playlis
 import { LikedSongsComponent } from './liked-songs/liked-songs/liked-songs.component';
 import { PlaylistTracksComponent } from './playlist-tracks/playlist-tracks/playlist-tracks.component';
 import { ArtistResolver } from './services-singleton/resolvers/artist-resolver.service';
+import { ArtistTopTracksResolver } from './services-singleton/resolvers/artist-top-tracks.service';
 import { PlaylistResolverService } from './services-singleton/resolvers/playlist-resolver.service';
 import { RouteConstants } from './shared/constants/route-constants';
 
-// TODO: Use resolvers
 const routes: Routes = [
   { path: '', pathMatch: 'full' , component: HomeComponent },
   { path: `${RouteConstants.CATEGORY_PLAYLISTS_BASE}/:id`, component: CategoryPlaylistsComponent },
@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'liked', component: LikedSongsComponent },
   { path: 'logout', component: LogoutComponent },
-  { path: 'artist/:id', component: ArtistComponent, resolve: { artist: ArtistResolver } }
+  { path: 'artist/:id', component: ArtistComponent, resolve: { artist: ArtistResolver, tracks: ArtistTopTracksResolver } }
 ];
 
 @NgModule({

@@ -4,7 +4,7 @@
             <th>#</th>
             <th>TITLE</th>
             <th>ALBUM</th>
-            <th>DATA ADDED</th>
+            <th class="date-column">DATA ADDED</th>
             <th class="time-row-title"><i class="far fa-clock"></i></th>
         </tr>
     </thead>
@@ -31,8 +31,8 @@
             <td>
                 {{ track.album.name }}
             </td>
-            <td class="date-row-table-cell">
-                {{ track.album.release_date }}
+            <td class="date-row-table-cell date-column">
+                {{ getReleasedYear(trackIndex) }}<span class="released-moth-day">{{ releasedDateSeparator }}{{ getReleasedMonthAndDate(trackIndex) }}</span>
             </td>
             <td class="time-row-table-cell">
                 {{ getDurationString(track.duration_ms) }}

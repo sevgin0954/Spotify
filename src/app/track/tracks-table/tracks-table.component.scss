@@ -30,7 +30,7 @@ tr {
         align-items: center;
 
         img {
-            height: 6rem;
+            width: 6rem;
             margin-right: 1rem;
             border-radius: 3px;
         }
@@ -61,4 +61,22 @@ tr {
 tr:not(.header):hover {
     background-color: $grey-hightlighted;
     cursor: pointer;
+}
+
+@media (max-width: 750px) {
+    tr {
+        td {
+            img {
+                width: 4rem;
+            }
+        }
+    }
+
+    .released-moth-day {
+        display: none;
+    }
+
+    .date-column {
+        padding-right: 0; 
+    }
 }
