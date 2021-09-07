@@ -12,7 +12,7 @@
             <i class="fas fa-fire" *ngIf="fireCount >= 5"></i>
         </div>
         
-        <p>{{ artist.followers.total }} Followers</p>
+        <p>{{ getFallowerCount() }} Followers</p>
         <app-like *ngIf="isUserFallowing !== undefined" (onDislike)="unfallow()" (onLike)="fallow()" [isLiked]="isUserFallowing">
         </app-like>
     </div>
