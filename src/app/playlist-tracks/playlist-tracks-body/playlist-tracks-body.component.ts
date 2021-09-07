@@ -8,9 +8,9 @@ import { SongService } from 'src/app/services-singleton/song.service';
 const PAGE_LIMIT = 50;
 
 @Component({
-  selector: 'app-songs',
-  templateUrl: './songs.component.html',
-  styleUrls: ['./songs.component.scss']
+  selector: 'app-playlist-tracks-body',
+  templateUrl: './playlist-tracks-body.component.html',
+  styleUrls: ['./playlist-tracks-body.component.scss']
 })
 // TODO: Rename to tracks or playlist-tracks-body
 export class SongsComponent implements OnChanges {

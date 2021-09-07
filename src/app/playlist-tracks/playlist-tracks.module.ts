@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PlaylistTracksComponent } from './playlist-tracks/playlist-tracks.component';
-import { SongsComponent } from './songs/songs.component';
+import { SongsComponent } from './playlist-tracks-body/playlist-tracks-body.component';
 import { SharedModule } from '../shared/shared.module';
 import { PlaylistTracksHeaderComponent } from './playlist-tracks-header/playlist-tracks-header.component';
 import { RouterModule } from '@angular/router';
