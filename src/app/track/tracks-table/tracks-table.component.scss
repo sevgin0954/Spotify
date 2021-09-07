@@ -1,6 +1,5 @@
-@import '../../../../variables.scss';
-
-$table-padding: 1rem;
+@import './../tracks-table.scss';
+@import './../../../variables.scss';
 
 table {
     border-spacing: 0;
@@ -8,24 +7,14 @@ table {
     color: white;
 }
 
+.time-row-title {
+    text-align: end;
+    padding-left: 1rem;
+}
+
+$table-padding: 1rem;
+
 tr {
-    height: 6rem;
-    vertical-align: middle;
-
-    th {
-        padding-left: $table-padding;
-        padding-right: $table-padding;
-        padding-bottom: $table-padding;
-        text-align: start;
-
-        .time-row-title {
-            text-align: end;
-        }
-    }
-    th.time-row-title {
-        padding-left: 1rem;
-        text-align: end;
-    }
     td.time-row-table-cell {
         padding-left: 1rem;
     }

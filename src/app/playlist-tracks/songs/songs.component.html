@@ -1,4 +1,4 @@
-<app-tracks-table [tracks]="getTracks(playlistTrack.items)"></app-tracks-table>
+<app-tracks-table [tracks]="tracks" [isTrackLiked]="isTrackLiked"></app-tracks-table>
 
 <app-loading-elements [isLoadingDisabled]="isLoadingDisabled" [loadingCallback]="loadMoreSongsCallback">
 </app-loading-elements>

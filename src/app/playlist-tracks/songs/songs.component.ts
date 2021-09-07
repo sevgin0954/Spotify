@@ -1,7 +1,8 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Paging } from 'src/app/models/paging/paging';
 import { PlailistTrack } from 'src/app/models/plailist-track/plailist-track';
 import { Track } from 'src/app/models/track/track';
+import { LocalStorageService } from 'src/app/services-singleton/local-storage.service';
 import { SongService } from 'src/app/services-singleton/song.service';
 
 const PAGE_LIMIT = 50;
@@ -11,7 +12,8 @@ const PAGE_LIMIT = 50;
   templateUrl: './songs.component.html',
   styleUrls: ['./songs.component.scss']
 })
-export class SongsComponent implements OnInit {
+// TODO: Rename to tracks or playlist-tracks-body
+export class SongsComponent implements OnChanges {
   @Input()
   playlistTrack: Paging<PlailistTrack>;
 
@@ -20,16 +22,63 @@ export class SongsComponent implements OnInit {
 
   isLoadingDisabled: boolean = true;
   loadMoreSongsCallback: Function;
+  tracks: Track[];
+  isTrackLiked: boolean[];
+
+  private likedTracksStartIndex: number = 0;
 
   constructor(
-    private songService: SongService
+    private songService: SongService,
+    private localStorageService: LocalStorageService
   ) { }
 
-  ngOnInit(): void {
+  ngOnChanges() {
     if (this.playlistTrack.next) {
       this.isLoadingDisabled = false;
     }
 
+    this.initializeLoadMoreSongsCallback();
+    this.updateTracks();
+    this.initializeIsTrackLiked();
+  }
+
+  private initializeIsTrackLiked(): void {
+    const userToken = this.localStorageService.getUserToken();
+    // Checks if user is logged in
+    if (this.isTrackLiked === undefined) {
+      this.isTrackLiked = new Array(this.tracks.length);
+    }
+
+    this.isTrackLiked.length = this.tracks.length;
+
+    if (userToken) {
+      for (let startIndex = this.likedTracksStartIndex; startIndex < this.tracks.length; startIndex+=50) {
+        const endIndex = this.likedTracksStartIndex + 50 - 1;
+  
+        const currentPartTracks = this.tracks.slice(this.likedTracksStartIndex, endIndex);
+        const currentPartTracksIds = currentPartTracks.map(t => t.id);
+        this.songService.getLikedSongsByIds(currentPartTracksIds).subscribe(data => {
+          this.likedTracksStartIndex += data.length;
+          this.fillIsTrackLiked(startIndex, data);
+        });
+      }
+    }
+    else {
+      this.isTrackLiked = this.isTrackLiked.fill(false);
+    }
+  }
+
+  private fillIsTrackLiked(startIndex: number, values: boolean[]): void {
+    let valuesIndex = 0;
+    for (let i = startIndex; i < this.isTrackLiked.length; i++) {
+      this.isTrackLiked[i] = values[valuesIndex];
+      valuesIndex++;
+    }
+
+    this.isTrackLiked = [...this.isTrackLiked];
+  }
+
+  private initializeLoadMoreSongsCallback(): void {
     this.loadMoreSongsCallback = () => {
       return this.songService.getSongs(this.playlistId, PAGE_LIMIT, this.playlistTrack.items.length).pipe(
       ).subscribe(data => {
@@ -43,11 +92,13 @@ export class SongsComponent implements OnInit {
         else {
           this.isLoadingDisabled = true;
         }
+
+        this.updateTracks();
       });
     };
   }
 
-  getTracks(playlistTracks: PlailistTrack[]): Track[] {
-    return playlistTracks.map(pt => pt.track).filter(t => t !== null);
+  updateTracks(): void {
+    this.tracks = this.playlistTrack.items.map(pt => pt.track).filter(t => t !== null);
   }
 }

@@ -12,7 +12,7 @@ export class LikeComponent {
 
   @Output()
   onLike = new EventEmitter<string>();
-
+// TODO: Rename event on fallow
   @Output()
   onDislike = new EventEmitter<string>();
 

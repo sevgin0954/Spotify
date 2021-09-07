@@ -1,0 +1,12 @@
+$table-padding: 1rem;
+
+tr {
+    height: 6rem;
+    vertical-align: middle;
+}
+th {
+    padding-left: $table-padding;
+    padding-right: $table-padding;
+    padding-bottom: $table-padding;
+    text-align: start;
+}

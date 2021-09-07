@@ -10,6 +10,7 @@ import { SongService } from 'src/app/services-singleton/song.service';
 export class LikedSongsComponent implements OnInit {
 
   tracks: Track[] = [];
+  isTrackLiked: boolean[] = [];
   playlistName: string = 'Liked songs';
   ownerName: string = '';
   totalTracks: number = 0;
@@ -21,6 +22,7 @@ export class LikedSongsComponent implements OnInit {
   ngOnInit(): void {
     this.songService.getLikedSongs().subscribe(data => {
       this.tracks = data.items;
+      this.isTrackLiked = new Array(this.tracks.length).fill(true);
 
       this.totalTracks = data.total;
     })
