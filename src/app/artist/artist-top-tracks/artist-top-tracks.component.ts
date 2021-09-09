@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, Renderer2, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Track } from 'src/app/models/track/track';
@@ -13,22 +13,12 @@ export class ArtistTopTracksComponent implements OnChanges {
   @Input()
   artistId: string;
 
-  @ViewChild('tracksContainer')
-  tracksContainer: ElementRef;
-
-  @ViewChild('showTracksButton')
-  showTracksButton: ElementRef;
-
-  @ViewChild('hideTracksButton')
-  hideTracksButton: ElementRef;
-
   tracks: Track[] = [];
   isTrackLiked: boolean[] = [];
 
   constructor(
     private route: ActivatedRoute,
-    private songService: SongService,
-    private renderer2: Renderer2
+    private songService: SongService
   ) { }
 
   ngOnChanges(): void {
@@ -42,17 +32,5 @@ export class ArtistTopTracksComponent implements OnChanges {
     ).subscribe(data => {
       this.isTrackLiked = data;
     });
-  }
-
-  onShowAllTracks(): void {
-    this.renderer2.setStyle(this.tracksContainer.nativeElement, 'height', 'fit-content');
-    this.renderer2.setStyle(this.showTracksButton.nativeElement, 'display', 'none');
-    this.renderer2.setStyle(this.hideTracksButton.nativeElement, 'display', 'block');
-  }
-
-  onHideTracks(): void {
-    this.renderer2.removeStyle(this.tracksContainer.nativeElement, 'height');
-    this.renderer2.setStyle(this.hideTracksButton.nativeElement, 'display', 'none');
-    this.renderer2.setStyle(this.showTracksButton.nativeElement, 'display', 'block');
   }
 }

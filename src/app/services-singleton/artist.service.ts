@@ -4,6 +4,8 @@ import { Observable } from "rxjs";
 import { pluck } from "rxjs/operators";
 import { Artist } from "src/app/models/artist/artist"
 import { RouteConstants } from "src/app/shared/constants/route-constants";
+import { SimplifiedAlbum } from "../models/album/simplified-album";
+import { Paging } from "../models/paging/paging";
 import { Track } from "../models/track/track";
 import { HeadersService } from "./headers.service";
 
@@ -37,5 +39,17 @@ export class ArtistService {
         }).pipe(
             pluck('tracks')
         );
+    }
+
+    getAlbums(artistId: string, limit: number, offset: number = 0): Observable<Paging<SimplifiedAlbum>> {
+        const headers = this.headersService.getClientHeaders();
+
+        let params = new HttpParams();
+        params = params.set('limit', limit.toString());
+        params = params.set('offset', offset.toString());
+
+        return this.http.get<Paging<SimplifiedAlbum>>(`${RouteConstants.BASE}/artists/${artistId}/albums`, {
+            headers, params
+        });
     }
 }

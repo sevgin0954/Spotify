@@ -9,6 +9,7 @@ import { UserLibraryService } from './services/user-library.service';
 import { SavedArtistsComponent } from './saved-artists/saved-artists.component';
 import { SavedAlbumsComponent } from './saved-albums/saved-albums.component';
 import { ArtistCardModule } from '../artist-card/artist-card.module';
+import { AlbumCardModule } from '../album-card/album-card.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ArtistCardModule } from '../artist-card/artist-card.module';
     PlaylistCardModule,
     RouterModule,
     SharedModule,
-    ArtistCardModule
+    ArtistCardModule,
+    AlbumCardModule
   ],
   providers: [
     UserLibraryService

@@ -1,24 +1,6 @@
-<header #header>
-    <img [src]="artist.images[0].url" alt="heart">
+<app-artist-header [artist]="artist"></app-artist-header>
 
-    <div class="header-info">
-        <h1>{{ artist.name }}</h1>
-
-        <div class="popularity-icons-container">
-            <i class="fas fa-fire" *ngIf="popularityCount >= 1"></i>
-            <i class="fas fa-fire" *ngIf="popularityCount >= 2"></i>
-            <i class="fas fa-fire" *ngIf="popularityCount >= 3"></i>
-            <i class="fas fa-fire" *ngIf="popularityCount >= 4"></i>
-            <i class="fas fa-fire" *ngIf="popularityCount >= 5"></i>
-        </div>
-
-        <p>{{ getFallowerCount() }} Followers</p>
-        <app-like *ngIf="isUserFallowing !== undefined" (onDislike)="unfallow()" (onLike)="fallow()"
-            [isLiked]="isUserFallowing">
-        </app-like>
-    </div>
-</header>
-
-<div class="top-tracks-container">
+<section class="artist-albums-container">
     <app-artist-top-tracks [artistId]="artist.id"></app-artist-top-tracks>
-</div>
+    <app-artist-albums [artistId]="artist.id"></app-artist-albums>
+</section>

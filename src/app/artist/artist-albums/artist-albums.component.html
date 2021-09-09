@@ -1,0 +1,5 @@
+<app-expandable-list>
+    <div class="card" *ngFor="let album of albums$ | async">
+        <app-album-card [album]="album"></app-album-card>
+    </div>
+</app-expandable-list>

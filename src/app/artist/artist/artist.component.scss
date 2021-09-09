@@ -1,40 +1,9 @@
-@import './../../songs-header.scss';
-@import './../../../variables.scss';
 
-p {
-    display: inline;
+app-artist-top-tracks {
+    width: 100%;
+    margin-right: 1rem;
 }
 
-header {
-    background: linear-gradient(180deg, rgba(153, 203, 232,1) 0%, rgba(153, 203, 232,0.1) 100%);
-    color: white;
-}
-
-.popularity-icons-container {
-    margin-bottom: 0.5rem;
-
-    i:nth-child(1) {
-        margin-right: 0.5rem;
-        font-size: 1rem;
-    }
-    i:nth-child(2) {
-        margin-right: 0.5rem;
-        font-size: 1.2rem;
-    }
-    i:nth-child(3) {
-        margin-right: 0.5rem;
-        font-size: 1.4rem;
-    }
-    i:nth-child(4) {
-        margin-right: 0.5rem;
-        font-size: 1.6rem;
-    }
-    i:nth-child(5) {
-        margin-right: 0.5rem;
-        font-size: 1.8rem;
-    }
-}
-
-.top-tracks-container {
-    max-width: 600px;
+.artist-albums-container {
+    display: flex;
 }

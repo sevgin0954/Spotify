@@ -1,5 +1,6 @@
-@import './../../../styles.scss';
+@import './../../card.scss';
 @import './../../playlists.scss';
+@import './../../../styles.scss';
 
 h2 {
     @extend .hide-clamp;

@@ -21,8 +21,4 @@ export class SavedAlbumsComponent implements OnInit {
       this.albums = data.items;
     });
   }
-
-  getArtistsString(artists: SimplifiedArtist[]): string {
-    return artists.map(a => a.name).join(', ');
-  }
 }
