@@ -1,4 +1,5 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { WindowService } from 'src/app/services-singleton/window.service';
 
 // TODO: Move to a separated module
 @Component({
@@ -6,36 +7,56 @@ import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
   templateUrl: './expandable-list.component.html',
   styleUrls: ['./expandable-list.component.scss']
 })
-export class ExpandableListComponent {
-  @ViewChild('tracksContainer')
-  tracksContainer: ElementRef;
+export class ExpandableListComponent implements AfterContentChecked {
+  @ViewChild('elementsContainer')
+  elementsContainer: ElementRef;
+
+  @ViewChild('contentContainer')
+  contentContainer: ElementRef;
 
   @ViewChild('showTracksButton')
   showTracksButton: ElementRef;
 
   @ViewChild('hideTracksButton')
   hideTracksButton: ElementRef;
-  
+
   constructor(
-    private renderer2: Renderer2
+    private renderer2: Renderer2,
+    private windowService: WindowService
   ) { }
-  
-  // TODO: Make to work with less than 10 items
+
+  ngAfterContentChecked(): void {
+    if (this.contentContainer === undefined || this.elementsContainer === undefined) {
+      return;
+    }
+
+    const isOverflowing = 
+      this.windowService.isElementOverflowingParent(this.contentContainer.nativeElement, this.elementsContainer.nativeElement);
+    if (isOverflowing === false) {
+      this.renderer2.setStyle(this.showTracksButton.nativeElement, 'display', 'none');
+      this.removeBorder();
+    }
+  }
+
   onShowAllTracks(): void {
-    this.renderer2.setStyle(this.tracksContainer.nativeElement, 'height', 'fit-content');
-    this.renderer2.setStyle(this.tracksContainer.nativeElement, 'border', 'none');
-    this.renderer2.setStyle(this.tracksContainer.nativeElement, 'border-radius', '0');
+    this.renderer2.setStyle(this.elementsContainer.nativeElement, 'height', 'fit-content');
+    this.removeBorder();
 
     this.renderer2.setStyle(this.showTracksButton.nativeElement, 'display', 'none');
     this.renderer2.setStyle(this.hideTracksButton.nativeElement, 'display', 'block');
   }
 
   onHideTracks(): void {
-    this.renderer2.removeStyle(this.tracksContainer.nativeElement, 'height');
-    this.renderer2.removeStyle(this.tracksContainer.nativeElement, 'border');
-    this.renderer2.removeStyle(this.tracksContainer.nativeElement, 'border-radius');
+    this.renderer2.removeStyle(this.elementsContainer.nativeElement, 'height');
+    this.renderer2.removeStyle(this.elementsContainer.nativeElement, 'border');
+    this.renderer2.removeStyle(this.elementsContainer.nativeElement, 'border-radius');
 
     this.renderer2.setStyle(this.hideTracksButton.nativeElement, 'display', 'none');
     this.renderer2.setStyle(this.showTracksButton.nativeElement, 'display', 'block');
+  }
+
+  private removeBorder(): void {
+    this.renderer2.setStyle(this.elementsContainer.nativeElement, 'border', 'none');
+    this.renderer2.setStyle(this.elementsContainer.nativeElement, 'border-radius', '0');
   }
 }

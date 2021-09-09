@@ -1,5 +1,7 @@
-<div class="container" #tracksContainer>
-    <ng-content></ng-content>
+<div class="container" #elementsContainer>
+    <div #contentContainer>
+        <ng-content #content></ng-content>
+    </div>
 </div>
 
 <a class="action-button" #showTracksButton (click)="onShowAllTracks()">Show more</a>
