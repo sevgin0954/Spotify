@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { tap } from 'rxjs/operators';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { pluck, tap } from 'rxjs/operators';
+import { Playlist } from 'src/app/models/playlist/playlist';
 import { PlaylistService } from 'src/app/services-singleton/playlist.service';
 import { RouteConstants } from 'src/app/shared/constants/route-constants';
 import { Category as CategoryEnum } from 'src/app/shared/enums/category';
-import { loadPlaylistsCallback } from '../types';
 
 const PLAYLIST_LIMIT = 10;
 
@@ -18,7 +19,7 @@ export class CategoryPlaylistsShortComponent implements OnInit, OnChanges {
   category: CategoryEnum
 
   playlistsRoute: string;
-  loadPlaylistsCallbacks: loadPlaylistsCallback;
+  playlists$: Observable<Playlist[]>;
 
   constructor(private playlistService: PlaylistService) { }
 
@@ -31,9 +32,9 @@ export class CategoryPlaylistsShortComponent implements OnInit, OnChanges {
     this.playlistsRoute = `/${RouteConstants.CATEGORY_PLAYLISTS_BASE}/${CategoryEnum[this.category]}`;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.loadPlaylistsCallbacks = () => {
-      return this.playlistService.getByCategory(this.category, PLAYLIST_LIMIT, 0);
-    };
+  ngOnChanges(): void {
+    this.playlists$ = this.playlistService.getByCategory(this.category, PLAYLIST_LIMIT, 0).pipe(
+      pluck('items')
+    );
   }
 }

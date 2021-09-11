@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlaylistsSectionComponent } from './playlists-section.component';
+import { SectionRowComponent } from './section-row.component';
 
-describe('PlaylistsSectionComponent', () => {
-  let component: PlaylistsSectionComponent;
-  let fixture: ComponentFixture<PlaylistsSectionComponent>;
+describe('SectionRowComponent', () => {
+  let component: SectionRowComponent;
+  let fixture: ComponentFixture<SectionRowComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlaylistsSectionComponent ]
+      declarations: [ SectionRowComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlaylistsSectionComponent);
+    fixture = TestBed.createComponent(SectionRowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

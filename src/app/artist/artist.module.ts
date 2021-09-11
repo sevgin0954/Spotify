@@ -8,6 +8,8 @@ import { ArtistAlbumsComponent } from './artist-albums/artist-albums.component';
 import { AlbumCardModule } from '../album-card/album-card.module';
 import { ExpandableListComponent } from './expandable-list/expandable-list.component';
 import { ArtistHeaderComponent } from './artist-header/artist-header.component';
+import { ArtistRelatedArtistsComponent } from './artist-related-artists/artist-related-artists.component';
+import { ArtistCardModule } from '../artist-card/artist-card.module';
 
 @NgModule({
   declarations: [
@@ -15,13 +17,16 @@ import { ArtistHeaderComponent } from './artist-header/artist-header.component';
     ArtistTopTracksComponent,
     ArtistAlbumsComponent,
     ExpandableListComponent,
-    ArtistHeaderComponent
+    ArtistHeaderComponent,
+    ArtistRelatedArtistsComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     TrackModule,
-    AlbumCardModule
+    AlbumCardModule,
+    ArtistCardModule,
+    SharedModule
   ]
 })
 export class ArtistModule { }

@@ -1,0 +1,9 @@
+Fans also like
+
+<div *ngIf="artists$ | async as artists">
+    <app-section-row [elements]="artists" [template]="artistCard"></app-section-row>
+</div>
+
+<ng-template #artistCard let-element>
+    <app-artist-card [artist]="element"></app-artist-card>
+</ng-template>

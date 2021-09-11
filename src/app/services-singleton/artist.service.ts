@@ -52,4 +52,14 @@ export class ArtistService {
             headers, params
         });
     }
+
+    getRelatedArtists(artistId: string): Observable<Artist[]> {
+        const headers = this.headersService.getClientHeaders();
+
+        return this.http.get<Artist[]>(`${RouteConstants.BASE}/artists/${artistId}/related-artists`, {
+            headers
+        }).pipe(
+            pluck('artists')
+        );
+    }
 }
