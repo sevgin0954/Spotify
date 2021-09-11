@@ -1,4 +1,4 @@
-<app-expandable-list>
+<app-expandable-list (hideButtonClick)="onHideButtonClick()" (showButtonClick)="onShowButtonClick()">
     <div class="card" *ngFor="let album of albums$ | async">
         <app-album-card [album]="album"></app-album-card>
     </div>

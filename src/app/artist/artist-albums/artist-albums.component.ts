@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 import { SimplifiedAlbum } from 'src/app/models/album/simplified-album';
@@ -18,6 +18,12 @@ export class ArtistAlbumsComponent implements OnChanges {
 
   albums$: Observable<SimplifiedAlbum[]>;
 
+  @Output()
+  hideButtonClick: EventEmitter<void> = new EventEmitter();
+
+  @Output()
+  showButtonClick: EventEmitter<void> = new EventEmitter();
+
   constructor(
     private artistService: ArtistService
   ) { }
@@ -26,5 +32,13 @@ export class ArtistAlbumsComponent implements OnChanges {
     this.albums$ = this.artistService.getAlbums(this.artistId, LIMIT).pipe(
       pluck('items')
     );
+  }
+
+  onShowButtonClick(): void {
+    this.showButtonClick.emit();
+  }
+
+  onHideButtonClick(): void {
+    this.hideButtonClick.emit();
   }
 }

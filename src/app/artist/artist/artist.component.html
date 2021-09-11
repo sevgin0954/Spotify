@@ -1,8 +1,15 @@
 <app-artist-header [artist]="artist"></app-artist-header>
 
-<section class="artist-albums-container">
-    <app-artist-top-tracks [artistId]="artist.id"></app-artist-top-tracks>
-    <app-artist-albums [artistId]="artist.id"></app-artist-albums>
-</section>
-
-<app-artist-related-artists [artistId]="artist.id"></app-artist-related-artists>
+<div class="container">
+    <section class="tracks-container">
+        <app-artist-top-tracks [artistId]="artist.id"></app-artist-top-tracks>
+    </section>
+    <section class="albums-container" #albums>
+        <app-artist-albums [artistId]="artist.id" (hideButtonClick)="onHideButtonClick()" (showButtonClick)="onShowButtonClick()">
+        </app-artist-albums>
+    </section>
+    
+    <section class="related-artists-container" #artists>
+        <app-artist-related-artists [artistId]="artist.id"></app-artist-related-artists>
+    </section>
+</div>

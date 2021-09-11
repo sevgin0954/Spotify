@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, ElementRef, EventEmitter, Output, Renderer2, ViewChild } from '@angular/core';
 import { WindowService } from 'src/app/services-singleton/window.service';
 
 // TODO: Move to a separated module
@@ -19,6 +19,12 @@ export class ExpandableListComponent implements AfterContentChecked {
 
   @ViewChild('hideTracksButton')
   hideTracksButton: ElementRef;
+
+  @Output()
+  hideButtonClick: EventEmitter<void> = new EventEmitter();
+
+  @Output()
+  showButtonClick: EventEmitter<void> = new EventEmitter();
 
   constructor(
     private renderer2: Renderer2,
@@ -44,6 +50,8 @@ export class ExpandableListComponent implements AfterContentChecked {
 
     this.renderer2.setStyle(this.showTracksButton.nativeElement, 'display', 'none');
     this.renderer2.setStyle(this.hideTracksButton.nativeElement, 'display', 'block');
+
+    this.showButtonClick.emit();
   }
 
   onHideTracks(): void {
@@ -53,6 +61,8 @@ export class ExpandableListComponent implements AfterContentChecked {
 
     this.renderer2.setStyle(this.hideTracksButton.nativeElement, 'display', 'none');
     this.renderer2.setStyle(this.showTracksButton.nativeElement, 'display', 'block');
+
+    this.hideButtonClick.emit();
   }
 
   private removeBorder(): void {
