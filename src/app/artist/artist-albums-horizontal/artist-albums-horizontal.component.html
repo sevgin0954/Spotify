@@ -1,0 +1,11 @@
+<h2>
+    Albums
+</h2>
+
+<div class="container" *ngIf="albums$ | async as albums">
+    <app-section-row [elements]="albums" [template]="albumTemplate"></app-section-row>
+</div>
+
+<ng-template #albumTemplate let-album>
+    <app-album-card [album]="album"></app-album-card>
+</ng-template>

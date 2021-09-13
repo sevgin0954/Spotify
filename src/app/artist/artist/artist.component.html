@@ -4,11 +4,18 @@
     <section class="tracks-container">
         <app-artist-top-tracks [artistId]="artist.id"></app-artist-top-tracks>
     </section>
-    <section class="albums-container" #albums>
-        <app-artist-albums [artistId]="artist.id" (hideButtonClick)="onHideButtonClick()" (showButtonClick)="onShowButtonClick()">
-        </app-artist-albums>
+
+    <section class="albums-vertical-container" #albums>
+        <app-artist-albums-vertical 
+            [artistId]="artist.id" 
+            (hideButtonClick)="onHideButtonClick()" 
+            (showButtonClick)="onShowButtonClick()">
+        </app-artist-albums-vertical>
     </section>
-    
+    <section class="albums-horizontal-container">
+        <app-artist-albums-horizontal [artistId]="artist.id"></app-artist-albums-horizontal>
+    </section>
+
     <section class="related-artists-container" #artists>
         <app-artist-related-artists [artistId]="artist.id"></app-artist-related-artists>
     </section>

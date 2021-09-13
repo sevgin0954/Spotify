@@ -7,9 +7,9 @@ import { ArtistService } from 'src/app/services-singleton/artist.service';
 const LIMIT = 5;
 
 @Component({
-  selector: 'app-artist-albums',
-  templateUrl: './artist-albums.component.html',
-  styleUrls: ['./artist-albums.component.scss'],
+  selector: 'app-artist-albums-vertical',
+  templateUrl: './artist-albums-vertical.component.html',
+  styleUrls: ['./artist-albums-vertical.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArtistAlbumsComponent implements OnChanges {

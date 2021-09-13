@@ -4,9 +4,13 @@
     margin-right: 1rem;
 }
 
-.albums-container {
+.albums-vertical-container {
     display: inline-block;
     vertical-align: top;
+}
+
+.albums-horizontal-container {
+    display: none;
 }
 
 .related-artists-container {
@@ -27,4 +31,39 @@
 
 .shrinked-related-artists-container {
     grid-column: 1;
+}
+
+@media (max-width: 1250px) {
+    .container {
+        grid-template-columns: 76% 24%;
+    }
+}
+@media (max-width: 1050px) {
+    .container {
+        grid-column: 1;
+        grid-row: 1;
+        grid-template-columns: 1fr;
+    }
+
+    .albums-horizontal-container {
+        display: block;
+    }
+
+    .albums-vertical-container {
+        display: none;
+    }
+
+    .expanded-albums-container {
+        grid-row: 2;
+        grid-column: 1;
+    }
+
+    .related-artists-container {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .shrinked-related-artists-container {
+        grid-column: 1;
+    }
 }
