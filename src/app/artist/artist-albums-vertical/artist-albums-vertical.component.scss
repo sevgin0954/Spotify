@@ -1,8 +1,21 @@
 .card {
-    max-width: 15rem;
-    height: 242px;
+    width: 14rem;
+    height: 15.2rem;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 1rem;
     margin-top: 1rem;
+}
+
+@media (min-width: 2000px) {
+    .card {
+        width: 17rem;
+        height: 20rem;
+    }
+}
+@media (min-width: 3000px) {
+    .card {
+        width: 20rem;
+        height: 25rem;
+    }
 }
