@@ -57,15 +57,17 @@ export class ArtistHeaderComponent implements OnChanges {
 
     const partsCount = 3;
     let fallowerCountString = this.artist.followers.total.toString();
-    for (let i = fallowerCountString.length - partsCount; i > 0; i -= partsCount) {
+    for (let i = fallowerCountString.length - partsCount; i >= 0; i -= partsCount) {
 
       const currentPart = fallowerCountString.substring(i, i + partsCount);
       result.push(currentPart);
     }
 
     const leftPartCount = fallowerCountString.length % 3;
-    const leftPartString = fallowerCountString.substring(0, leftPartCount);
-    result.push(leftPartString);
+    if (leftPartCount > 0) {
+      const leftPartString = fallowerCountString.substring(0, leftPartCount);
+      result.push(leftPartString);
+    }
 
     const resultString = result.reverse().join(separator);
     return resultString;
