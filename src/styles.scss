@@ -9,6 +9,12 @@ body {
     -webkit-box-orient: vertical;
 }
 
+.section-header {
+    color: white;
+    text-transform: capitalize;
+    font-size: 2em;
+}
+
 // Removed default styles
 a {
     color: black;
