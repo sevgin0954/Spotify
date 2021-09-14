@@ -32,5 +32,4 @@ export class SavedPlaylistsComponent implements OnInit {
       }
     });
   }
-
 }
