@@ -1,6 +1,6 @@
 <h1>{{ getCategoryName(category) }}</h1>
-<div class="playlists-container">
-    <div class="playlist-element" *ngFor="let playlist of playlists">
+<div class="grid-container">
+    <div class="grid-element" *ngFor="let playlist of playlists">
         <app-playlist-card [playlist]="playlist"></app-playlist-card>
     </div>
 </div>

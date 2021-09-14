@@ -1,5 +1,5 @@
-<div class="playlists-container">
-    <a routerLink="/artist/{{ artist.id }}" class="playlist-element" *ngFor="let artist of artists">
+<div class="grid-container">
+    <a routerLink="/artist/{{ artist.id }}" class="grid-element" *ngFor="let artist of artists">
         <app-artist-card [artist]="artist"></app-artist-card>
     </a>
 </div>
