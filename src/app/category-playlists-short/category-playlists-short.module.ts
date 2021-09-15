@@ -5,11 +5,13 @@ import { CategoryPlaylistsFuturedShortComponent } from './category-playlists-fut
 import { SharedModule } from '../shared/shared.module';
 import { PlaylistCardModule } from '../playlist-card/playlist-card.module';
 import { RouterModule } from '@angular/router';
+import { CategoryPlaylistBasicComponent } from './category-playlist-basic/category-playlist-basic.component';
 
 @NgModule({
   declarations: [
     CategoryPlaylistsShortComponent,
-    CategoryPlaylistsFuturedShortComponent
+    CategoryPlaylistsFuturedShortComponent,
+    CategoryPlaylistBasicComponent
   ],
   imports: [
     CommonModule,

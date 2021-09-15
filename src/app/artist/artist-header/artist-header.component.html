@@ -1,5 +1,5 @@
 <header #header>
-    <img [src]="artist.images[0].url" alt="heart">
+    <img crossorigin="anonymous" #image (load)="setBackgroundColor()" [src]="artist.images[0].url" alt="heart">
 
     <div class="header-info">
         <h1>{{ artist.name }}</h1>

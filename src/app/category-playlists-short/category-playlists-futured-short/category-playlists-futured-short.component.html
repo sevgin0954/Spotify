@@ -1,14 +1,2 @@
-<section>
-    <div class="heading">
-        <h1 class="section-header">Futured</h1>
-        <a [routerLink]="playlistsRoute">see all ></a>
-    </div>
-    
-    <ng-container *ngIf="playlists$ | async as playlists">
-        <app-section-row [elements]="playlists" [template]="playlist"></app-section-row>
-    </ng-container>
-</section>
-
-<ng-template #playlist let-playlist>
-    <app-playlist-card [playlist]="playlist"></app-playlist-card>
-</ng-template>
+<app-category-playlist-basic [title]="'Futured'" [playlistsRoute]="playlistsRoute" [playlists$]="playlists$">
+</app-category-playlist-basic>

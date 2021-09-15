@@ -1,5 +1,6 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, Renderer2, ViewChild } from '@angular/core';
 import { Artist } from 'src/app/models/artist/artist';
+import { ColorThiefService } from 'src/app/services-singleton/color-thief.service';
 import { FallowArtistService } from 'src/app/services-singleton/fallow-artist.service';
 import { LocalStorageService } from 'src/app/services-singleton/local-storage.service';
 
@@ -12,12 +13,20 @@ export class ArtistHeaderComponent implements OnChanges {
   @Input()
   artist: Artist;
 
+  @ViewChild('image')
+  image: ElementRef;
+
+  @ViewChild('header')
+  header: ElementRef;
+
   isUserFallowing: boolean;
   popularityCount: number;
 
   constructor(
     private fallowArtistService: FallowArtistService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private renderer2: Renderer2,
+    private colorThiefService: ColorThiefService
   ) { }
 
   ngOnChanges(): void {
@@ -37,6 +46,15 @@ export class ArtistHeaderComponent implements OnChanges {
       // Guest user can't be fallowing
       this.isUserFallowing = false;
     }
+  }
+
+  setBackgroundColor(): void {
+    const rgbColor = this.colorThiefService.getDominantColorRgb(this.image.nativeElement);
+    const rgbColorStr = rgbColor.join(', ');
+
+    this.renderer2.setStyle(
+      this.header.nativeElement, 'background', `linear-gradient(180deg, rgba(${rgbColorStr},1) 0%, rgba(${rgbColorStr},0.1) 100%)`
+    );
   }
 
   fallow() {

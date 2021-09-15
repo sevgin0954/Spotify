@@ -1,6 +1,9 @@
 <a routerLink="/playlist/{{ playlist.id }}">
-    <div class="card">
-        <img src="{{ playlist.images[playlist.images.length - 1].url }}" alt="{{ playlist.name }} playlist image">
+    <div #card class="card" (mouseenter)="trySetBorderStyles()" (mouseleave)="tryRemoveBorderStyles()">
+        <img #image
+            crossorigin="anonymous"
+            src="{{ playlist.images[playlist.images.length - 1].url }}" 
+            alt="{{ playlist.name }} playlist image">
     
         <div class="description">
             <div>

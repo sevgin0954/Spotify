@@ -8,7 +8,7 @@ import { RouteConstants } from 'src/app/shared/constants/route-constants';
 @Component({
   selector: 'app-category-playlists-futured-short',
   templateUrl: './category-playlists-futured-short.component.html',
-  styleUrls: ['./category-playlists-futured-short.component.scss', '../styles.scss'],
+  styleUrls: ['./category-playlists-futured-short.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoryPlaylistsFuturedShortComponent implements OnInit {

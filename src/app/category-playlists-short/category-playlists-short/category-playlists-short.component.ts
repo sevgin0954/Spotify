@@ -11,7 +11,7 @@ const PLAYLIST_LIMIT = 10;
 @Component({
   selector: 'app-category-playlists-short',
   templateUrl: './category-playlists-short.component.html',
-  styleUrls: ['./category-playlists-short.component.scss', '../styles.scss'],
+  styleUrls: ['./category-playlists-short.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoryPlaylistsShortComponent implements OnInit, OnChanges {
