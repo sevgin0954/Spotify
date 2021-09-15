@@ -1,5 +1,4 @@
 .card {
-    padding: 1rem;
     background-color: #282828;
     border-radius: 7px;
     color: white;
@@ -8,11 +7,15 @@
 
     img {
         width: 100%;
-        height: 65%;
+        height: 63%;
         object-fit: cover;
         border-radius: 7px;
-        margin-right: auto;
-        margin-left: auto;
         display: block;
+    }
+
+    .description {
+        margin-bottom: 1rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
     }
 }

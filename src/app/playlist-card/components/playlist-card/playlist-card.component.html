@@ -2,11 +2,13 @@
     <div class="card">
         <img src="{{ playlist.images[playlist.images.length - 1].url }}" alt="{{ playlist.name }} playlist image">
     
-        <div>
-            <h2>
-                {{ playlist.name }}
-            </h2>
+        <div class="description">
+            <div>
+                <h2>
+                    {{ playlist.name }}
+                </h2>
+            </div>
+            <p #description class="playlist-description" [innerHtml]="playlist.description"></p>
         </div>
-        <p #description class="playlist-description" [innerHtml]="playlist.description"></p>
     </div>
 </a>
