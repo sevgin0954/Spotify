@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnChanges, Renderer2, ViewChild } from '@angular/core';
 import { Artist } from 'src/app/models/artist/artist';
-import { ColorThiefService } from 'src/app/services-singleton/color-thief.service';
+import { ColorService } from 'src/app/services-singleton/color.service';
 import { FallowArtistService } from 'src/app/services-singleton/fallow-artist.service';
 import { LocalStorageService } from 'src/app/services-singleton/local-storage.service';
 
@@ -26,7 +26,7 @@ export class ArtistHeaderComponent implements OnChanges {
     private fallowArtistService: FallowArtistService,
     private localStorageService: LocalStorageService,
     private renderer2: Renderer2,
-    private colorThiefService: ColorThiefService
+    private colorThiefService: ColorService
   ) { }
 
   ngOnChanges(): void {

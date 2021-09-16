@@ -1,9 +1,11 @@
-<div class="card">
-    <img [src]="getImage().url" alt="{{ artist.name }}">
-
-    <div class="description">
-        <h2>
-            {{ artist.name }}
-        </h2>
+<app-box-shadow-colored [image]="image" [container]="card">
+    <div #card class="card">
+        <img crossorigin="anonymous" #image [src]="getImage().url" alt="{{ artist.name }}">
+    
+        <div class="description">
+            <h2>
+                {{ artist.name }}
+            </h2>
+        </div>
     </div>
-</div>
+</app-box-shadow-colored>

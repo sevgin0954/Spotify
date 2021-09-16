@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PlaylistCardComponent } from './components/playlist-card/playlist-card.component';
 import { RouterModule } from '@angular/router';
+import { BoxShadowModule } from '../box-shadow/box-shadow.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    BoxShadowModule
   ],
   exports: [
     PlaylistCardComponent

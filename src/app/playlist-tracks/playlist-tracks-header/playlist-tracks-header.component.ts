@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnChanges, Renderer2, ViewChild } from '@angular/core';
 import { switchMap } from 'rxjs/operators';
 import { Playlist } from 'src/app/models/playlist/playlist';
-import { ColorThiefService } from 'src/app/services-singleton/color-thief.service';
+import { ColorService } from 'src/app/services-singleton/color.service';
 import { FallowPlaylistService } from 'src/app/services-singleton/fallow-playlist.service';
 import { LocalStorageService } from 'src/app/services-singleton/local-storage.service';
 import { UserService } from 'src/app/services-singleton/user.service';
@@ -28,7 +28,7 @@ export class PlaylistTracksHeaderComponent implements OnChanges {
     private userService: UserService,
     private localStorageService: LocalStorageService,
     private renderer2: Renderer2,
-    private colorThiefService: ColorThiefService
+    private colorThiefService: ColorService
   ) { }
 
   ngOnChanges(): void {

@@ -5,4 +5,5 @@ export class MainConstants {
     //public static readonly SKIP_INTERCEPTOR_HEADER: string = 'skip-interceptor-header';
     public static readonly API_TOKEN_KEY: string = 'api_token';
     public static readonly USER_TOKEN_KEY: string = 'user_token';
+    public static readonly CARD_BORDER_LIGHTNESS: number = 40;
 }
