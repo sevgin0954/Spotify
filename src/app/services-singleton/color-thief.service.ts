@@ -5,7 +5,7 @@ import * as colorthief from 'colorthief';
     providedIn: 'root'
 })
 export class ColorThiefService {
-    getDominantColorRgb(image: Element): string[] {
+    getDominantColorRgb(image: Element): number[] {
         const colorThiefProto = colorthief.default.prototype;
         const rgbColor = colorThiefProto.getColor(image);
 
