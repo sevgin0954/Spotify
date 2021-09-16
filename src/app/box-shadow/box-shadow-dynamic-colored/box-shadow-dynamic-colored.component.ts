@@ -3,9 +3,9 @@ import { ColorService } from 'src/app/services-singleton/color.service';
 import { MainConstants } from 'src/app/shared/constants/main-constants';
 
 @Component({
-  selector: 'app-box-shadow-colored',
-  templateUrl: './box-shadow-colored.component.html',
-  styleUrls: ['./box-shadow-colored.component.scss'],
+  selector: 'app-box-shadow-dynamic-colored',
+  templateUrl: './box-shadow-dynamic-colored.component.html',
+  styleUrls: ['./box-shadow-dynamic-colored.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BoxShadowColoredComponent {

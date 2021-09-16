@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BoxShadowColoredComponent } from './box-shadow-colored/box-shadow-colored.component';
+import { BoxShadowColoredComponent } from './box-shadow-dynamic-colored/box-shadow-dynamic-colored.component';
 
 @NgModule({
   declarations: [

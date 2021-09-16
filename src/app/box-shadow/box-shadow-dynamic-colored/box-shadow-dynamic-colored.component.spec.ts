@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BoxShadowColoredComponent } from './box-shadow-colored.component';
+import { BoxShadowColoredComponent } from './box-shadow-dynamic-colored.component';
 
 describe('BoxShadowColoredComponent', () => {
   let component: BoxShadowColoredComponent;
