@@ -1,15 +1,41 @@
 import { Injectable } from "@angular/core";
 import * as colorthief from 'colorthief';
 
+const COLOR_THIEF_PROTO = colorthief.default.prototype;
+
 @Injectable({
     providedIn: 'root'
 })
 export class ColorService {
     getDominantColorRgb(image: Element): number[] {
-        const colorThiefProto = colorthief.default.prototype;
-        const rgbColor = colorThiefProto.getColor(image);
+        const rgbColor = COLOR_THIEF_PROTO.getColor(image);
 
         return rgbColor;
+    }
+
+    getPallete(image: Element): [number[]] {
+        const rgbColor = COLOR_THIEF_PROTO.getPalette(image);
+
+        return rgbColor;
+    }
+
+    getLightestColorHsl(image: Element): number[] {
+        let lightestHslColor: number[] = [];
+
+        const pallete = this.getPallete(image);
+        
+        pallete.forEach(currentRgbColor => {
+          const currentHslColor = this.rgbToHsl(currentRgbColor);
+    
+          if (lightestHslColor.length === 0) {
+            lightestHslColor = currentHslColor;
+          }
+          else if (currentHslColor[2] > lightestHslColor[2]) {
+            lightestHslColor = currentHslColor;
+          }
+        });
+
+        return lightestHslColor;
     }
 
     rgbToHsl(rgb: number[]): number[] {

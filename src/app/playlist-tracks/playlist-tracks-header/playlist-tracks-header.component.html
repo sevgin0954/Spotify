@@ -1,5 +1,5 @@
-<header #header>
-    <img crossorigin="anonymous" #image (load)="setBackgroundColor()" src="{{ playlist.images[0].url }}" alt="">
+<header #header [appBackgroundColorDynamic]="loadedImage">
+    <img appBoxShadowColorDynamic crossorigin="anonymous" #image (load)="setLoadedImage(image)" src="{{ playlist.images[0].url }}" alt="">
 
     <div class="header-info">
         <h1>{{ playlist.name }}</h1>

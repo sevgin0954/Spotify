@@ -1,6 +1,5 @@
-import { Component, ElementRef, Input, OnChanges, Renderer2, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Artist } from 'src/app/models/artist/artist';
-import { ColorService } from 'src/app/services-singleton/color.service';
 import { FallowArtistService } from 'src/app/services-singleton/fallow-artist.service';
 import { LocalStorageService } from 'src/app/services-singleton/local-storage.service';
 
@@ -13,20 +12,14 @@ export class ArtistHeaderComponent implements OnChanges {
   @Input()
   artist: Artist;
 
-  @ViewChild('image')
-  image: ElementRef;
-
-  @ViewChild('header')
-  header: ElementRef;
+  loadedImage: Element;
 
   isUserFallowing: boolean;
   popularityCount: number;
 
   constructor(
     private fallowArtistService: FallowArtistService,
-    private localStorageService: LocalStorageService,
-    private renderer2: Renderer2,
-    private colorThiefService: ColorService
+    private localStorageService: LocalStorageService
   ) { }
 
   ngOnChanges(): void {
@@ -48,13 +41,8 @@ export class ArtistHeaderComponent implements OnChanges {
     }
   }
 
-  setBackgroundColor(): void {
-    const rgbColor = this.colorThiefService.getDominantColorRgb(this.image.nativeElement);
-    const rgbColorStr = rgbColor.join(', ');
-
-    this.renderer2.setStyle(
-      this.header.nativeElement, 'background', `linear-gradient(180deg, rgba(${rgbColorStr},1) 0%, rgba(${rgbColorStr},0.1) 100%)`
-    );
+  setLoadedImage(image: Element): void {
+    this.loadedImage = image.cloneNode(false) as Element;
   }
 
   fallow() {

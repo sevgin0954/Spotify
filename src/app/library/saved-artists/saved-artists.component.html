@@ -1,7 +1,5 @@
 <div class="grid-container">
-    <a routerLink="/artist/{{ artist.id }}" class="grid-element" *ngFor="let artist of artists">
-        <app-artist-card [artist]="artist"></app-artist-card>
-    </a>
+    <app-artist-card class="grid-element" *ngFor="let artist of artists" [artist]="artist"></app-artist-card>
 </div>
 
 <app-loading-elements [loadingCallback]="loadMoreArtists" [isLoadingDisabled]="isLoadingDisabled"></app-loading-elements>

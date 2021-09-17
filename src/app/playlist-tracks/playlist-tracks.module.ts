@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { PlaylistTracksHeaderComponent } from './playlist-tracks-header/playlist-tracks-header.component';
 import { RouterModule } from '@angular/router';
 import { TrackModule } from '../track/track.module';
+import { HeaderModule } from '../header/header.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TrackModule } from '../track/track.module';
     CommonModule,
     SharedModule,
     RouterModule,
-    TrackModule
+    TrackModule,
+    HeaderModule
   ]
 })
 export class PlaylistTracksModule { }

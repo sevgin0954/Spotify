@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ArtistCardComponent } from './components/artist-card/artist-card.component';
 import { BoxShadowModule } from '../box-shadow/box-shadow.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { BoxShadowModule } from '../box-shadow/box-shadow.module';
   ],
   imports: [
     CommonModule,
-    BoxShadowModule
+    BoxShadowModule,
+    RouterModule
   ],
   exports: [
     ArtistCardComponent
