@@ -1,11 +1,11 @@
 import { Directive, ElementRef, HostBinding, HostListener } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-import { ColorService } from '../services-singleton/color.service';
+import { ColorService } from '../services/color.service';
 
 @Directive({
-  selector: '[appBoxShadowColorDynamic]'
+  selector: '[appBoxShadowColorLightest]'
 })
-export class BoxShadowColorDynamicDirective {
+export class BoxShadowColorLightestDirective {
 
   @HostBinding('style')
   style: SafeStyle;

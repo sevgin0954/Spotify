@@ -11,7 +11,7 @@ import { ArtistHeaderComponent } from './artist-header/artist-header.component';
 import { ArtistRelatedArtistsComponent } from './artist-related-artists/artist-related-artists.component';
 import { ArtistCardModule } from '../artist-card/artist-card.module';
 import { ArtistAlbumsHorizontalComponent } from './artist-albums-horizontal/artist-albums-horizontal.component';
-import { HeaderModule } from '../header/header.module';
+import { DynamicColorModule } from '../dynamic-color/dynamicColor.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { HeaderModule } from '../header/header.module';
     AlbumCardModule,
     ArtistCardModule,
     SharedModule,
-    HeaderModule
+    DynamicColorModule
   ]
 })
 export class ArtistModule { }

@@ -12,7 +12,13 @@ export class AlbumCardComponent {
   @Input()
   album: SimplifiedAlbum;
 
+  loadedImage: Element;
+
   getArtistsString(artists: SimplifiedArtist[]): string {
     return artists.map(a => a.name).join(', ');
+  }
+
+  setLoadedImage(image: Element): void {
+    this.loadedImage = image;
   }
 }

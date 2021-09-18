@@ -1,4 +1,4 @@
-<header #header [appBackgroundColorDynamic]="loadedImage">
+<header #header [appBackgroundColorDominant]="loadedImage">
     <img appBoxShadowColorDynamic crossorigin="anonymous" #image (load)="setLoadedImage(image)" src="{{ playlist.images[0].url }}" alt="">
 
     <div class="header-info">

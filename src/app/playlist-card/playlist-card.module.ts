@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PlaylistCardComponent } from './components/playlist-card/playlist-card.component';
 import { RouterModule } from '@angular/router';
-import { BoxShadowModule } from '../box-shadow/box-shadow.module';
+import { DynamicColorModule } from '../dynamic-color/dynamicColor.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,7 @@ import { BoxShadowModule } from '../box-shadow/box-shadow.module';
   imports: [
     CommonModule,
     RouterModule,
-    BoxShadowModule
+    DynamicColorModule
   ],
   exports: [
     PlaylistCardComponent

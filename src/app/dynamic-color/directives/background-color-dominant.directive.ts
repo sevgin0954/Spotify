@@ -1,12 +1,12 @@
 import { Directive, ElementRef, Input, OnChanges, Renderer2 } from '@angular/core';
-import { ColorService } from '../services-singleton/color.service';
+import { ColorService } from '../services/color.service';
 
 @Directive({
-  selector: '[appBackgroundColorDynamic]'
+  selector: '[appBackgroundColorDominant]'
 })
-export class BackgroundColorDynamicDirective implements OnChanges {
+export class BackgroundColorDominantDirective implements OnChanges {
 
-  @Input('appBackgroundColorDynamic')
+  @Input('appBackgroundColorDominant')
   image: Element;
 
   constructor(

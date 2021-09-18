@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlbumCardComponent } from './album-card/album-card.component';
-import { BoxShadowModule } from '../box-shadow/box-shadow.module';
+import { DynamicColorModule } from '../dynamic-color/dynamicColor.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +9,7 @@ import { BoxShadowModule } from '../box-shadow/box-shadow.module';
   ],
   imports: [
     CommonModule,
-    BoxShadowModule
+    DynamicColorModule
   ],
   exports: [
     AlbumCardComponent

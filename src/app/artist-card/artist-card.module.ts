@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ArtistCardComponent } from './components/artist-card/artist-card.component';
-import { BoxShadowModule } from '../box-shadow/box-shadow.module';
 import { RouterModule } from '@angular/router';
+import { DynamicColorModule } from '../dynamic-color/dynamicColor.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    BoxShadowModule,
+    DynamicColorModule,
     RouterModule
   ],
   exports: [

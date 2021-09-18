@@ -11,10 +11,16 @@ import { Image } from 'src/app/models/image/image';
 export class ArtistCardComponent {
   @Input()
   artist: Artist;
+
+  loadedImage: Element;
   
   getImage(): Image {
     const images = this.artist.images;
 
     return images[0];
+  }
+
+  setLoadedImage(image: Element): void {
+    this.loadedImage = image;
   }
 }

@@ -1,11 +1,9 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import * as colorthief from 'colorthief';
 
 const COLOR_THIEF_PROTO = colorthief.default.prototype;
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class ColorService {
     getDominantColorRgb(image: Element): number[] {
         const rgbColor = COLOR_THIEF_PROTO.getColor(image);

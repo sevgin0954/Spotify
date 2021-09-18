@@ -1,19 +1,18 @@
-<app-box-shadow-dynamic-colored [image]="image" [container]="card">
-    <a routerLink="/playlist/{{ playlist.id }}">
-        <div #card class="card">
-            <img #image
-                crossorigin="anonymous"
-                src="{{ playlist.images[playlist.images.length - 1].url }}" 
-                alt="{{ playlist.name }} playlist image">
-        
-            <div class="description">
-                <div>
-                    <h2>
-                        {{ playlist.name }}
-                    </h2>
-                </div>
-                <p #description class="playlist-description" [innerHtml]="playlist.description"></p>
+<a routerLink="/playlist/{{ playlist.id }}">
+    <div #card class="card" [appBoxShadowColorDominant]="loadedImage">
+        <img #image
+            (load)="setLoadedImage(image)"
+            crossorigin="anonymous"
+            src="{{ playlist.images[playlist.images.length - 1].url }}" 
+            alt="{{ playlist.name }} playlist image">
+    
+        <div class="description">
+            <div>
+                <h2>
+                    {{ playlist.name }}
+                </h2>
             </div>
+            <p #description class="playlist-description" [innerHtml]="playlist.description"></p>
         </div>
-    </a>
-</app-box-shadow-dynamic-colored>
+    </div>
+</a>

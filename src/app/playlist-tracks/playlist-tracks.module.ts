@@ -6,7 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { PlaylistTracksHeaderComponent } from './playlist-tracks-header/playlist-tracks-header.component';
 import { RouterModule } from '@angular/router';
 import { TrackModule } from '../track/track.module';
-import { HeaderModule } from '../header/header.module';
+import { DynamicColorModule } from '../dynamic-color/dynamicColor.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { HeaderModule } from '../header/header.module';
     SharedModule,
     RouterModule,
     TrackModule,
-    HeaderModule
+    DynamicColorModule
   ]
 })
 export class PlaylistTracksModule { }

@@ -14,10 +14,16 @@ export class PlaylistCardComponent implements AfterViewInit {
   @ViewChild('description')
   description: ElementRef;
 
+  loadedImage: Element;
+
   ngAfterViewInit(): void {
     const child = this.description.nativeElement.children[0];
     if (child) {
       this.description.nativeElement.children[0].setAttribute('style', `color: white; text-decoration: underline;`);
     }
+  }
+
+  setLoadedImage(image: Element): void {
+    this.loadedImage = image;
   }
 }
