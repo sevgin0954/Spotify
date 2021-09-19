@@ -28,6 +28,7 @@ export class TracksWithLikesTableComponent implements OnChanges {
 
       this.isTrackLikedCurrentPage = this.tracksService
         .tryMoveLoadedTrackLiked(this.isTrackLikedLoaded, this.isTrackLikedPages, this.isTrackLikedCurrentPage);
+      this.isTrackLikedLoaded = [...this.isTrackLikedLoaded];
     });
   }
 }

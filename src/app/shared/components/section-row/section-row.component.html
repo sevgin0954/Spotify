@@ -1,4 +1,4 @@
-<div class="grid-container" (window:resize)="onResize()">
+<div class="grid-container">
     <div class="grid-element" *ngFor="let currentElement of elements" #element>
         <ng-container *ngTemplateOutlet="template; context: { $implicit: currentElement }"></ng-container>
     </div>
