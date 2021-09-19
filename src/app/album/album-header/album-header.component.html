@@ -1,0 +1,28 @@
+<header #header [appBackgroundColorDominant]="loadedImage">
+    <img 
+        appBoxShadowColorDynamic 
+        crossorigin="anonymous" 
+        #image 
+        (load)="setLoadedImage(image)" 
+        src="{{ album.images[0].url }}" 
+        alt="">
+
+    <div class="header-info">
+        <p>album</p>
+        <h1>{{ album.name }}</h1>
+        <p class="release-date">{{ album.release_date }}</p>
+        <p class="bottom-row-info">
+            <ng-container *ngFor="let artist of album.artists; let i = index">
+                <span *ngIf="i !== 0">, </span>
+                <a class="author" routerLink="/artist/{{artist.id}}">{{ artist.name }}</a>
+            </ng-container>&nbsp;
+            {{ album.total_tracks }} songs 
+            <app-like 
+                *ngIf="isUserFallowing !== undefined" 
+                (onDislike)="unfallow()" 
+                (onLike)="fallow()" 
+                [isLiked]="isUserFallowing">
+            </app-like>
+        </p>
+    </div>
+</header>

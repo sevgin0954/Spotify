@@ -1,0 +1,4 @@
+<ng-container *ngIf="album$ | async as album">
+    <app-album-header [album]="album"></app-album-header>
+    <app-album-tracks-body [playlistTrack]="album.tracks" [albumId]="album.id"></app-album-tracks-body>
+</ng-container>

@@ -4,19 +4,17 @@ import { SongService } from 'src/app/services-singleton/song.service';
 import { DisplayService } from '../services/display.service';
 
 @Component({
-  selector: 'app-tracks-table',
-  templateUrl: './tracks-table.component.html',
-  styleUrls: ['./tracks-table.component.scss'],
+  selector: 'app-tracks-table-short',
+  templateUrl: './tracks-table-short.component.html',
+  styleUrls: ['./tracks-table-short.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TracksTableComponent {
+export class TracksTableShortComponent {
   @Input()
   tracks: Track[];
 
   @Input()
   isTrackLiked: boolean[];
-  
-  releasedDateSeparator = '-';
 
   constructor(
     private songService: SongService,
@@ -42,13 +40,5 @@ export class TracksTableComponent {
 
   getDurationString(miliseconds: number): string {
     return this.displayService.getDurationString(miliseconds);
-  }
-
-  getReleasedYear(songIndex: number): string {
-    return this.displayService.getReleasedYear(songIndex, this.tracks, this.releasedDateSeparator);
-  }
-
-  getReleasedMonthAndDate(songIndex: number): string {
-    return this.displayService.getReleasedMonthAndDate(songIndex, this.tracks, this.releasedDateSeparator);
   }
 }

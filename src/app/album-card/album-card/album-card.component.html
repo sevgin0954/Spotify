@@ -1,4 +1,4 @@
-<a href="#">
+<a routerLink="/album/{{ album.id }}">
     <div #card class="card" [appBoxShadowColorDominant]="loadedImage">
         <img (load)="setLoadedImage(image)" crossorigin="anonymous" #image [src]="album.images[0].url" alt="album cover">
     

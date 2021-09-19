@@ -14,6 +14,7 @@ import { LibraryModule } from './library/library.module';
 import { LikedSongsModule } from './liked-songs/liked-songs.module';
 import { ArtistModule } from './artist/artist.module';
 import { PlaylistTracksModule } from './playlist-tracks/playlist-tracks.module';
+import { AlbumModule } from './album/album.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PlaylistTracksModule } from './playlist-tracks/playlist-tracks.module';
     PlaylistTracksModule,
     LibraryModule,
     LikedSongsModule,
-    ArtistModule
+    ArtistModule,
+    AlbumModule
   ],
   providers: [
     {

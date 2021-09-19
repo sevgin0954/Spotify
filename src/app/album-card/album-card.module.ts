@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlbumCardComponent } from './album-card/album-card.component';
 import { DynamicColorModule } from '../dynamic-color/dynamicColor.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { DynamicColorModule } from '../dynamic-color/dynamicColor.module';
   ],
   imports: [
     CommonModule,
-    DynamicColorModule
+    DynamicColorModule,
+    RouterModule
   ],
   exports: [
     AlbumCardComponent

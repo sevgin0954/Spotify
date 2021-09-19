@@ -1,0 +1,34 @@
+<table>
+    <thead>
+        <tr class="header">
+            <th>#</th>
+            <th>TITLE</th>
+            <th class="time-row-title"><i class="far fa-clock"></i></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let track of tracks; 
+        let trackIndex = index;">
+            <td>
+                {{ trackIndex + 1 }}
+            </td>
+            <td class="title-row">
+                <img src="{{ track.album.images[0].url }}" alt="">
+                <div>
+                    <p>{{ track.name}}</p>
+                    <a class="artist" routerLink="/artist/{{artist.id}}" *ngFor="let artist of track.artists">
+                        {{ artist.name }}
+                    </a>
+                </div>
+                <div class="like-container">
+                    <app-like (onDislike)="dislike(trackIndex)" (onLike)="like(trackIndex)"
+                        [isLiked]="isTrackLiked[trackIndex]">
+                    </app-like>
+                </div>
+            </td>
+            <td class="time-row-table-cell">
+                {{ getDurationString(track.duration_ms) }}
+            </td>
+        </tr>
+    </tbody>
+</table>

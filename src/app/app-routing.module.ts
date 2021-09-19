@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AlbumComponent } from './album/album/album.component';
 import { ArtistComponent } from './artist/artist/artist.component';
 import { LogoutComponent } from './authentication/logout/logout.component';
 import { SigninComponent } from './authentication/signin/signin.component';
@@ -32,7 +33,8 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'liked', component: LikedSongsComponent },
   { path: 'logout', component: LogoutComponent },
-  { path: 'artist/:id', component: ArtistComponent, resolve: { artist: ArtistResolver, tracks: ArtistTopTracksResolver } }
+  { path: 'artist/:id', component: ArtistComponent, resolve: { artist: ArtistResolver, tracks: ArtistTopTracksResolver } },
+  { path: 'album/:id', component: AlbumComponent }
 ];
 
 @NgModule({
