@@ -1,6 +1,6 @@
 <a routerLink="/artist/{{ artist.id }}">
     <div #card class="card" [appBoxShadowColorDominant]="loadedImage">
-        <img (load)="setLoadedImage(image)" crossorigin="anonymous" #image [src]="getImage().url" alt="{{ artist.name }}">
+        <img (load)="setLoadedImage(image)" crossorigin="anonymous" #image [src]="getImage()?.url" alt="{{ artist.name }}">
     
         <div class="description">
             <h2>
