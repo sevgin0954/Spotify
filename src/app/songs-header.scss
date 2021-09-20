@@ -26,9 +26,17 @@ header {
     header {
         height: 10rem;
     }
+
+    p {
+        margin: 0.5rem 0px;
+    }
 }
 @media (max-width: 650px) {
     header {
         height: 8rem;
+    }
+
+    h1 {
+        margin: 0;
     }
 }
