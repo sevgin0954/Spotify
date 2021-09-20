@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnChanges, Renderer2 } from '@angular/core';
+import { Directive, DoCheck, ElementRef, Input, OnChanges, Renderer2 } from '@angular/core';
 import { ColorService } from '../services/color.service';
 
 @Directive({
@@ -7,7 +7,10 @@ import { ColorService } from '../services/color.service';
 export class BackgroundColorDominantDirective implements OnChanges {
 
   @Input('appBackgroundColorDominant')
-  image: Element;
+  image: HTMLImageElement;
+
+  @Input()
+  imageUrl: string;
 
   constructor(
     private renderer2: Renderer2,
@@ -28,8 +31,7 @@ export class BackgroundColorDominantDirective implements OnChanges {
     const rgbColorStr = rgbColor.join(', ');
 
     this.renderer2.setStyle(
-        header, 'background', `linear-gradient(180deg, rgba(${rgbColorStr},1) 0%, rgba(${rgbColorStr},0.1) 100%)`
+      header, 'background', `linear-gradient(180deg, rgba(${rgbColorStr},1) 0%, rgba(${rgbColorStr},0.1) 100%)`
     );
-}
-
+  }
 }

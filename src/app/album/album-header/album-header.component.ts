@@ -13,7 +13,8 @@ export class AlbumHeaderComponent implements OnChanges {
   @Input()
   album: SimplifiedAlbum;
 
-  loadedImage: Element;
+  loadedImage: HTMLImageElement;
+  imageUrl: string;
   isUserFallowing: boolean;
 
   constructor(
@@ -33,8 +34,9 @@ export class AlbumHeaderComponent implements OnChanges {
     }
   }
 
-  setLoadedImage(image: Element): void {
+  setLoadedImage(image: HTMLImageElement): void {
     this.loadedImage = image;
+    this.imageUrl = image.currentSrc;
   }
 
   getArtistsNames(): string[] {

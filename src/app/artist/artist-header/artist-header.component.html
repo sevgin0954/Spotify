@@ -1,5 +1,5 @@
-<header #header [appBackgroundColorDominant]="loadedImage">
-    <img appBoxShadowColorDynamic crossorigin="anonymous" #image (load)="setLoadedImage(image)" [src]="artist.images[0].url" alt="heart">
+<header #header [appBackgroundColorDominant]="loadedImage" [imageUrl]="imageUrl">
+    <img appBoxShadowColorDynamic crossorigin="anonymous" #image [src]="artist.images[0].url" (load)="setLoadedImage(image)" alt="artist">
 
     <div class="header-info">
         <p>artist</p>

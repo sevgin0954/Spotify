@@ -25,7 +25,7 @@ export class ArtistTopTracksComponent implements OnChanges {
     this.route.data.pipe(
       switchMap(data => {
         this.tracks = data['tracks'];
-        
+
         const tracksIds = this.tracks.map(t => t.id);
         return this.songService.getLikedSongsByIds(tracksIds);
       })

@@ -15,7 +15,8 @@ export class PlaylistTracksHeaderComponent implements OnChanges {
   playlist: Playlist;
 
   isUserFallowing: boolean;
-  loadedImage: Element;
+  loadedImage: HTMLImageElement;
+  imageUrl: string;
 
   constructor(
     private fallowService: FallowPlaylistService,
@@ -51,7 +52,8 @@ export class PlaylistTracksHeaderComponent implements OnChanges {
     });
   }
 
-  setLoadedImage(image: Element): void {
-    this.loadedImage = image.cloneNode(false) as Element;
+  setLoadedImage(image: HTMLImageElement): void {
+    this.loadedImage = image;
+    this.imageUrl = image.currentSrc;
   }
 }
