@@ -1,9 +1,25 @@
+@import './../styles.scss';
+
 * {
+    color: white;
+}
+
+a {
     color: white;
 }
 
 .author {
     text-decoration: underline;
+}
+
+h1 {
+    @extend .hide-clamp;
+    -webkit-line-clamp: 1;
+}
+
+.description {
+    @extend .hide-clamp;
+    -webkit-line-clamp: 2;
 }
 
 header {
@@ -27,6 +43,10 @@ header {
         height: 10rem;
     }
 
+    h1 {
+        margin: 0;
+    }
+
     p {
         margin: 0.5rem 0px;
     }
@@ -38,5 +58,9 @@ header {
 
     h1 {
         margin: 0;
+    }
+
+    p {
+        margin: 0.3rem 0px;
     }
 }
