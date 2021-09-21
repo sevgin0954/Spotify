@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowseComponent } from './browse/browse.component';
+import { RouterModule, Routes } from '@angular/router';
+import { CategoriesComponent } from './categories/categories.component';
 import { CategoryComponent } from './components/category/category.component';
-import { RouterModule } from '@angular/router';
 
-
+const routes: Routes = [
+  { path: '', component: CategoriesComponent }
+];
 
 @NgModule({
   declarations: [
-    BrowseComponent,
+    CategoriesComponent,
     CategoryComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
-  ],
-  exports: [
-    BrowseComponent
+    RouterModule.forChild(routes)
   ]
 })
 export class CategoriesModule { }

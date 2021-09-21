@@ -8,11 +8,11 @@ import { RouteConstants } from 'src/app/shared/constants/route-constants';
 const CATEGORIES_DISPLAY_LIMIT = 50;
 
 @Component({
-  selector: 'app-browse',
-  templateUrl: './browse.component.html',
-  styleUrls: ['./browse.component.scss']
+  selector: 'app-categories',
+  templateUrl: './categories.component.html',
+  styleUrls: ['./categories.component.scss']
 })
-export class BrowseComponent implements OnInit {
+export class CategoriesComponent implements OnInit {
   categories$: Observable<Category[]>;
 
   constructor(

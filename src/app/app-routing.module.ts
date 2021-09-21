@@ -4,7 +4,6 @@ import { AlbumComponent } from './album/album/album.component';
 import { ArtistComponent } from './artist/artist/artist.component';
 import { LogoutComponent } from './authentication/logout/logout.component';
 import { SigninComponent } from './authentication/signin/signin.component';
-import { BrowseComponent } from './categories/browse/browse.component';
 import { CategoryPlaylistsComponent } from './category-playlists-full/category-playlists/category-playlists.component';
 import { HomeComponent } from './home/home/home.component';
 import { LibraryComponent } from './library/library/library.component';
@@ -22,7 +21,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full' , component: HomeComponent },
   { path: `${RouteConstants.CATEGORY_PLAYLISTS_BASE}/:id`, component: CategoryPlaylistsComponent },
   // TODO: Move to constant
-  { path: `categories`, component: BrowseComponent },
+  { path: `categories`, loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule) },
   { path: 'playlist/:id', component: PlaylistTracksComponent, resolve: { playlist: PlaylistResolverService } },
   { path: 'library', redirectTo: 'library/playlists' },
   { path: 'library', component: LibraryComponent, children: [

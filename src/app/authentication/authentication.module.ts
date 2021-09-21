@@ -10,6 +10,10 @@ import { LogoutComponent } from './logout/logout.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    SigninComponent,
+    LogoutComponent
   ]
 })
 export class AuthenticationModule { }
