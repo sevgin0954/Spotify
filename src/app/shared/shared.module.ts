@@ -4,13 +4,15 @@ import { LoadingElementsComponent } from './components/loading-elements/loading-
 import { LoadingComponent } from "./components/loading/loading.component";
 import { LikeComponent } from './components/like/like.component';
 import { SectionRowComponent } from './components/section-row/section-row.component';
+import { PopularityIndicatorComponent } from './components/popularity-indicator/popularity-indicator.component';
 
 @NgModule({
   declarations: [
     LoadingElementsComponent,
     LoadingComponent,
     LikeComponent,
-    SectionRowComponent
+    SectionRowComponent,
+    PopularityIndicatorComponent
   ],
   imports: [
     CommonModule
@@ -19,7 +21,8 @@ import { SectionRowComponent } from './components/section-row/section-row.compon
     LoadingElementsComponent,
     LoadingComponent,
     LikeComponent,
-    SectionRowComponent
+    SectionRowComponent,
+    PopularityIndicatorComponent
   ]
 })
 export class SharedModule { }

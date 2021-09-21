@@ -40,6 +40,10 @@ header {
 
 @media (max-width: 950px) {
     header {
+        .popularity-indicator-container {
+            margin-bottom: 0;
+        }
+        
         height: 10rem;
     }
 
