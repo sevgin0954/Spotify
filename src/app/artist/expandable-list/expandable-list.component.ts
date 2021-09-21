@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, ElementRef, EventEmitter, Output, Renderer2, ViewChild } from '@angular/core';
+import { AfterContentChecked, Component, ElementRef, EventEmitter, HostListener, Output, Renderer2, ViewChild } from '@angular/core';
 import { WindowService } from 'src/app/services-singleton/window.service';
 
 // TODO: Move to a separated module
@@ -36,17 +36,26 @@ export class ExpandableListComponent implements AfterContentChecked {
       return;
     }
 
+    this.updateIsOverflowingState();
+  }
+
+  @HostListener('window:resize')
+  updateIsOverflowingState(): void {
     const isOverflowing = 
       this.windowService.isElementOverflowingParent(this.contentContainer.nativeElement, this.elementsContainer.nativeElement);
     if (isOverflowing === false) {
       this.renderer2.setStyle(this.showTracksButton.nativeElement, 'display', 'none');
-      this.removeBorder();
+      this.removeBorderStyles();
+    }
+    else {
+      this.renderer2.setStyle(this.showTracksButton.nativeElement, 'display', 'block');
+      this.addBorderStyles();
     }
   }
 
   onShowAllTracks(): void {
     this.renderer2.setStyle(this.elementsContainer.nativeElement, 'height', 'fit-content');
-    this.removeBorder();
+    this.removeBorderStyles();
 
     this.renderer2.setStyle(this.showTracksButton.nativeElement, 'display', 'none');
     this.renderer2.setStyle(this.hideTracksButton.nativeElement, 'display', 'block');
@@ -56,8 +65,7 @@ export class ExpandableListComponent implements AfterContentChecked {
 
   onHideTracks(): void {
     this.renderer2.removeStyle(this.elementsContainer.nativeElement, 'height');
-    this.renderer2.removeStyle(this.elementsContainer.nativeElement, 'border');
-    this.renderer2.removeStyle(this.elementsContainer.nativeElement, 'border-radius');
+    this.addBorderStyles();
 
     this.renderer2.setStyle(this.hideTracksButton.nativeElement, 'display', 'none');
     this.renderer2.setStyle(this.showTracksButton.nativeElement, 'display', 'block');
@@ -65,8 +73,13 @@ export class ExpandableListComponent implements AfterContentChecked {
     this.hideButtonClick.emit();
   }
 
-  private removeBorder(): void {
+  private removeBorderStyles(): void {
     this.renderer2.setStyle(this.elementsContainer.nativeElement, 'border', 'none');
     this.renderer2.setStyle(this.elementsContainer.nativeElement, 'border-radius', '0');
+  }
+
+  private addBorderStyles(): void {
+    this.renderer2.removeStyle(this.elementsContainer.nativeElement, 'border');
+    this.renderer2.removeStyle(this.elementsContainer.nativeElement, 'border-radius');
   }
 }
