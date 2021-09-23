@@ -2,7 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { Paging } from 'src/app/models/paging/paging';
 import { PlailistTrack } from 'src/app/models/plailist-track/plailist-track';
 import { Track } from 'src/app/models/track/track';
-import { SongService } from 'src/app/services-singleton/song.service';
+import { TracksService } from 'src/app/services-singleton/tracks.service';
 
 const PAGE_LIMIT = 50;
 
@@ -24,7 +24,7 @@ export class SongsComponent implements OnChanges {
   tracks: Track[];
 
   constructor(
-    private songService: SongService
+    private songService: TracksService
   ) { }
 
   ngOnChanges() {

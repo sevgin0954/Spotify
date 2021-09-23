@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Track } from 'src/app/models/track/track';
-import { TracksService } from '../services/tracks.service';
+import { TracksDisplayService } from '../services/tracks-display.service';
 import { isTracksLikedPage } from '../types';
 
 @Component({
@@ -19,7 +19,7 @@ export class TracksWithLikesTableShortComponent {
   private isTrackLikedCurrentPage: number = 1;
 
   constructor(
-    private tracksService: TracksService
+    private tracksService: TracksDisplayService
   ) { }
 
   ngOnChanges(): void {

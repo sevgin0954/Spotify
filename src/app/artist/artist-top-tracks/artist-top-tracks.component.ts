@@ -2,7 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { switchMap } from 'rxjs/operators';
 import { Track } from 'src/app/models/track/track';
 import { ArtistService } from 'src/app/services-singleton/artist.service';
-import { SongService } from 'src/app/services-singleton/song.service';
+import { TracksService } from 'src/app/services-singleton/tracks.service';
 
 @Component({
   selector: 'app-artist-top-tracks',
@@ -17,7 +17,7 @@ export class ArtistTopTracksComponent implements OnChanges {
   isTrackLiked: boolean[] = [];
 
   constructor(
-    private songService: SongService,
+    private songService: TracksService,
     private artistService: ArtistService
   ) { }
 

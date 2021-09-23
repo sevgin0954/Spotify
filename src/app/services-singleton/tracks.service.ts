@@ -9,11 +9,10 @@ import { RouteConstants } from "../shared/constants/route-constants";
 import { PaginationUtility } from "../shared/utilities/pagination-utility";
 import { HeadersService } from "./headers.service";
 
-// TODO: Rename to TrackService
 @Injectable({
     providedIn: 'root'
 })
-export class SongService {
+export class TracksService {
     constructor(
         private http: HttpClient,
         private headersService: HeadersService

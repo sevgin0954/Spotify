@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Track } from 'src/app/models/track/track';
-import { SongService } from 'src/app/services-singleton/song.service';
+import { TracksService } from 'src/app/services-singleton/tracks.service';
 
 @Component({
   selector: 'app-liked-tracks',
@@ -16,7 +16,7 @@ export class LikedTracksComponent implements OnInit {
   totalTracks: number = 0;
 
   constructor(
-    private songService: SongService
+    private songService: TracksService
   ) { }
 
   ngOnInit(): void {

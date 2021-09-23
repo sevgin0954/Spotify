@@ -3,15 +3,15 @@ import { Observable, of } from "rxjs";
 import { concatMap, mergeMap } from "rxjs/operators";
 import { Track } from "src/app/models/track/track";
 import { LocalStorageService } from "src/app/services-singleton/local-storage.service";
-import { SongService } from "src/app/services-singleton/song.service";
+import { TracksService } from "src/app/services-singleton/tracks.service";
 import { isTracksLikedPage } from "../types";
 
 @Injectable()
-export class TracksService {
+export class TracksDisplayService {
     private likedTracksStartIndex: number = 0;
 
     constructor(
-        private songService: SongService,
+        private songService: TracksService,
         private localStorageService: LocalStorageService
     ) { }
 

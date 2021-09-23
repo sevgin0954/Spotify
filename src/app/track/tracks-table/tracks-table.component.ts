@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 import { Track } from 'src/app/models/track/track';
-import { SongService } from 'src/app/services-singleton/song.service';
+import { TracksService } from 'src/app/services-singleton/tracks.service';
 import { DisplayService } from '../services/display.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class TracksTableComponent {
   releasedDateSeparator = '-';
 
   constructor(
-    private songService: SongService,
+    private songService: TracksService,
     private changeDetectionRef: ChangeDetectorRef,
     private displayService: DisplayService
   ) { }
