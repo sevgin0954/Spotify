@@ -1,3 +1,4 @@
-<app-playlist-tracks-header [playlist]="playlist"></app-playlist-tracks-header>
-
-<app-playlist-tracks-body [playlistTrack]="playlist.tracks" [playlistId]="playlist.id"></app-playlist-tracks-body>
+<ng-container *ngIf="playlist$ | async as playlist">
+    <app-playlist-tracks-header [playlist]="playlist"></app-playlist-tracks-header>
+    <app-playlist-tracks-body [playlistTrack]="playlist.tracks" [playlistId]="playlist.id"></app-playlist-tracks-body>
+</ng-container>

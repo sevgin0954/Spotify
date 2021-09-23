@@ -1,43 +1,53 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AlbumComponent } from './album/album/album.component';
-import { ArtistComponent } from './artist/artist/artist.component';
-import { LogoutComponent } from './authentication/logout/logout.component';
-import { SigninComponent } from './authentication/signin/signin.component';
-import { CategoryPlaylistsComponent } from './category-playlists-full/category-playlists/category-playlists.component';
-import { HomeComponent } from './home/home/home.component';
-import { LibraryComponent } from './library/library/library.component';
-import { SavedAlbumsComponent } from './library/saved-albums/saved-albums.component';
-import { SavedArtistsComponent } from './library/saved-artists/saved-artists.component';
-import { SavedPlaylistsComponent } from './library/saved-playlists/saved-playlists.component';
-import { LikedSongsComponent } from './liked-songs/liked-songs/liked-songs.component';
-import { PlaylistTracksComponent } from './playlist-tracks/playlist-tracks/playlist-tracks.component';
-import { ArtistResolver } from './services-singleton/resolvers/artist-resolver.service';
-import { ArtistTopTracksResolver } from './services-singleton/resolvers/artist-top-tracks.service';
-import { PlaylistResolverService } from './services-singleton/resolvers/playlist-resolver.service';
+import { CustomPreloadingStrategyService } from './services-singleton/custom-preloading-strategy.service';
 import { RouteConstants } from './shared/constants/route-constants';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full' , component: HomeComponent },
-  { path: `${RouteConstants.CATEGORY_PLAYLISTS_BASE}/:id`, component: CategoryPlaylistsComponent },
+  { 
+    path: '', 
+    pathMatch: 'full', 
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+  },
+  { 
+    path: `${RouteConstants.CATEGORY_PLAYLISTS_BASE}/:id`,
+    loadChildren: () => import('./category-playlists-full/category-playlists-full.module').then(m => m.CategoryPlaylistsFullModule)
+  },
   // TODO: Move to constant
-  { path: `categories`, loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule) },
-  { path: 'playlist/:id', component: PlaylistTracksComponent, resolve: { playlist: PlaylistResolverService } },
+  { 
+    path: `categories`, 
+    loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule) 
+  },
+  { 
+    path: 'playlist/:id', data: { preload: true },
+    loadChildren: () => import('./playlist-tracks/playlist-tracks.module').then(m => m.PlaylistTracksModule) 
+  },
   { path: 'library', redirectTo: 'library/playlists' },
-  { path: 'library', component: LibraryComponent, children: [
-    { path: 'playlists', component: SavedPlaylistsComponent },
-    { path: 'artists', component: SavedArtistsComponent },
-    { path: 'albums', component: SavedAlbumsComponent }
-  ] },
-  { path: 'signin', component: SigninComponent },
-  { path: 'liked', component: LikedSongsComponent },
-  { path: 'logout', component: LogoutComponent },
-  { path: 'artist/:id', component: ArtistComponent, resolve: { artist: ArtistResolver, tracks: ArtistTopTracksResolver } },
-  { path: 'album/:id', component: AlbumComponent }
+  { 
+    path: 'library', 
+    loadChildren: () => import('./library/library.module').then(m => m.LibraryModule) 
+  },
+  { 
+    path: 'auth', 
+    loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
+  },
+  { 
+    path: 'liked', 
+    loadChildren: () => import('./liked-tracks/liked-tracks.module').then(m => m.LikedTracksModule) 
+  },
+  { 
+    path: 'artist/:id', 
+    loadChildren: () => import('./artist/artist.module').then(m => m.ArtistModule)
+  },
+  { 
+    path: 'album/:id', 
+    loadChildren: () => import('./album/album.module').then(m => m.AlbumModule) 
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: CustomPreloadingStrategyService })],
+  providers: [CustomPreloadingStrategyService],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

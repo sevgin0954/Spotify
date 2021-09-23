@@ -18,7 +18,7 @@ export class SigninComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const redirectUri = window.location.origin + '/signin';
+    const redirectUri = window.location.origin + '/auth/signin';
 
     const url = location.href;
     const queryParams = url.split('?')[1];

@@ -3,11 +3,11 @@ import { Track } from 'src/app/models/track/track';
 import { SongService } from 'src/app/services-singleton/song.service';
 
 @Component({
-  selector: 'app-liked-songs',
-  templateUrl: './liked-songs.component.html',
-  styleUrls: ['./liked-songs.component.scss']
+  selector: 'app-liked-tracks',
+  templateUrl: './liked-tracks.component.html',
+  styleUrls: ['./liked-tracks.component.scss']
 })
-export class LikedSongsComponent implements OnInit {
+export class LikedTracksComponent implements OnInit {
 
   tracks: Track[] = [];
   isTrackLiked: boolean[] = [];
@@ -27,5 +27,4 @@ export class LikedSongsComponent implements OnInit {
       this.totalTracks = data.total;
     })
   }
-
 }

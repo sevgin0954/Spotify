@@ -12,6 +12,11 @@ import { ArtistRelatedArtistsComponent } from './artist-related-artists/artist-r
 import { ArtistCardModule } from '../artist-card/artist-card.module';
 import { ArtistAlbumsHorizontalComponent } from './artist-albums-horizontal/artist-albums-horizontal.component';
 import { DynamicColorModule } from '../dynamic-color/dynamicColor.module';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  { path: '', component: ArtistComponent }
+];
 
 @NgModule({
   declarations: [
@@ -30,7 +35,8 @@ import { DynamicColorModule } from '../dynamic-color/dynamicColor.module';
     AlbumCardModule,
     ArtistCardModule,
     SharedModule,
-    DynamicColorModule
+    DynamicColorModule,
+    RouterModule.forChild(routes)
   ]
 })
 export class ArtistModule { }

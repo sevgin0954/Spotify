@@ -1,22 +1,22 @@
-<app-artist-header [artist]="artist"></app-artist-header>
+<ng-container *ngIf="artist$ | async as artist">
+    <app-artist-header [artist]="artist"></app-artist-header>
 
-<div class="container">
-    <section class="tracks-container">
-        <app-artist-top-tracks [artistId]="artist.id"></app-artist-top-tracks>
-    </section>
+    <div class="container">
+        <section class="tracks-container">
+            <app-artist-top-tracks [artistId]="artist.id"></app-artist-top-tracks>
+        </section>
 
-    <section class="albums-vertical-container" #albums>
-        <app-artist-albums-vertical 
-            [artistId]="artist.id" 
-            (hideButtonClick)="onHideButtonClick()" 
-            (showButtonClick)="onShowButtonClick()">
-        </app-artist-albums-vertical>
-    </section>
-    <section class="albums-horizontal-container">
-        <app-artist-albums-horizontal [artistId]="artist.id"></app-artist-albums-horizontal>
-    </section>
+        <section class="albums-vertical-container" #albums>
+            <app-artist-albums-vertical [artistId]="artist.id" (hideButtonClick)="onHideButtonClick()"
+                (showButtonClick)="onShowButtonClick()">
+            </app-artist-albums-vertical>
+        </section>
+        <section class="albums-horizontal-container">
+            <app-artist-albums-horizontal [artistId]="artist.id"></app-artist-albums-horizontal>
+        </section>
 
-    <section class="related-artists-container" #artists>
-        <app-artist-related-artists [artistId]="artist.id"></app-artist-related-artists>
-    </section>
-</div>
+        <section class="related-artists-container" #artists>
+            <app-artist-related-artists [artistId]="artist.id"></app-artist-related-artists>
+        </section>
+    </div>
+</ng-container>

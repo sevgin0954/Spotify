@@ -1,7 +1,12 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
 import { CategoryPlaylistsShortModule } from "../category-playlists-short/category-playlists-short.module";
 import { HomeComponent } from "./home/home.component";
+
+const routes: Routes = [
+    { path: '', component: HomeComponent }
+  ];
 
 @NgModule({
     declarations: [
@@ -9,7 +14,8 @@ import { HomeComponent } from "./home/home.component";
     ],
     imports: [
         CommonModule,
-        CategoryPlaylistsShortModule
+        CategoryPlaylistsShortModule,
+        RouterModule.forChild(routes)
     ],
     exports: [
         HomeComponent

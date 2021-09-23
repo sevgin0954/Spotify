@@ -31,7 +31,7 @@ export class JwtInterceptorService implements HttpInterceptor {
                     if (hasUserAuthRequiredHeader) {
                         this.localStorageService.removeUserToken();
 
-                        this.router.navigate(['/signin']);
+                        this.router.navigate(['/auth/signin']);
 
                         return EMPTY;
                     }

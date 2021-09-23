@@ -3,6 +3,11 @@ import { CategoryPlaylistsComponent } from './category-playlists/category-playli
 import { PlaylistCardModule } from '../playlist-card/playlist-card.module';
 import { SharedModule } from '../shared/shared.module';
 import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  { path: '', component: CategoryPlaylistsComponent }
+];
 
 @NgModule({
   declarations: [
@@ -11,7 +16,8 @@ import { CommonModule } from '@angular/common';
   imports: [
     PlaylistCardModule,
     SharedModule,
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(routes)
   ],
   exports: [
     CategoryPlaylistsComponent

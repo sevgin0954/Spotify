@@ -1,6 +1,9 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { concatMap } from 'rxjs/operators';
 import { Artist } from 'src/app/models/artist/artist';
+import { ArtistService } from 'src/app/services-singleton/artist.service';
 
 const ALBUMS_EXPANDED_CLASS = 'expanded-albums-container';
 const SIMILAR_ARTISTS_SHRINKED_CLASS = 'shrinked-related-artists-container';
@@ -8,10 +11,11 @@ const SIMILAR_ARTISTS_SHRINKED_CLASS = 'shrinked-related-artists-container';
 @Component({
   selector: 'app-artist',
   templateUrl: './artist.component.html',
-  styleUrls: ['./artist.component.scss']
+  styleUrls: ['./artist.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArtistComponent implements OnInit {
-  artist: Artist;
+  artist$: Observable<Artist>;
 
   @ViewChild('albums')
   albumsElement: ElementRef;
@@ -21,17 +25,18 @@ export class ArtistComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private renderer2: Renderer2
+    private renderer2: Renderer2,
+    private artistService: ArtistService
   ) { }
 
   ngOnInit(): void {
-    this.initializeArtistProperties();
-  }
+    this.artist$ = this.route.params.pipe(
+      concatMap(params => {
+        const artistId = params['id'];
 
-  private initializeArtistProperties(): void {
-    this.route.data.subscribe(data => {
-      this.artist = data['artist'];
-    });
+        return this.artistService.getById(artistId);
+      })
+    );
   }
 
   onShowButtonClick(): void {

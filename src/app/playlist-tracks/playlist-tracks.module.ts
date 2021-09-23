@@ -4,9 +4,13 @@ import { PlaylistTracksComponent } from './playlist-tracks/playlist-tracks.compo
 import { SongsComponent } from './playlist-tracks-body/playlist-tracks-body.component';
 import { SharedModule } from '../shared/shared.module';
 import { PlaylistTracksHeaderComponent } from './playlist-tracks-header/playlist-tracks-header.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { TrackModule } from '../track/track.module';
 import { DynamicColorModule } from '../dynamic-color/dynamicColor.module';
+
+const routes: Routes = [
+  { path: '', component: PlaylistTracksComponent }
+];
 
 @NgModule({
   declarations: [
@@ -17,7 +21,7 @@ import { DynamicColorModule } from '../dynamic-color/dynamicColor.module';
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule,
+    RouterModule.forChild(routes),
     TrackModule,
     DynamicColorModule
   ]
