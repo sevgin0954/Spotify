@@ -3,7 +3,6 @@ import { Observable } from "rxjs";
 import { SavedAlbum } from "../../models/album/saved-album";
 import { Paging } from "../../models/paging/paging";
 import { Playlist } from "../../models/playlist/playlist";
-import { MainConstants } from "../../shared/constants/main-constants";
 import { RouteConstants } from "../../shared/constants/route-constants";
 import { AuthUtility } from "../../shared/utilities/auth-utility";
 import { LocalStorageService } from "../../services-singleton/local-storage.service";

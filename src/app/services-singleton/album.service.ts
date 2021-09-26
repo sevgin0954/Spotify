@@ -5,7 +5,9 @@ import { pluck } from "rxjs/operators";
 import { SimplifiedAlbum } from "../models/album/simplified-album";
 import { Paging } from "../models/paging/paging";
 import { Track } from "../models/track/track";
+import { RouteConstants } from "../shared/constants/route-constants";
 import { PaginationUtility } from "../shared/utilities/pagination-utility";
+import { StringValidator } from "../shared/validators/string-validator";
 import { HeadersService } from "./headers.service";
 
 @Injectable({
@@ -19,9 +21,11 @@ export class AlbumService {
     ) { }
 
     getById(id: string): Observable<SimplifiedAlbum> {
+        StringValidator.validateString(id, 'id');
+
         const headers = this.headersService.getClientHeaders();
 
-        return this.http.get<SimplifiedAlbum>(`https://api.spotify.com/v1/albums/${id}`, {
+        return this.http.get<SimplifiedAlbum>(`${RouteConstants.BASE}/albums/${id}`, {
             headers
         });
     }
@@ -32,7 +36,7 @@ export class AlbumService {
         let params = new HttpParams();
         params = PaginationUtility.addPaginationParams(params, limit, offset);
 
-        return this.http.get<SimplifiedAlbum>(`https://api.spotify.com/v1/albums/${albumId}/tracks`, {
+        return this.http.get<SimplifiedAlbum>(`${RouteConstants.BASE}/albums/${albumId}/tracks`, {
             headers, params
         }).pipe(
             pluck('tracks')
