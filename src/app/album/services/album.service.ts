@@ -2,21 +2,19 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { pluck } from "rxjs/operators";
-import { SimplifiedAlbum } from "../models/album/simplified-album";
-import { Paging } from "../models/paging/paging";
-import { Track } from "../models/track/track";
-import { LimitConstants } from "../shared/constants/limit-constants";
-import { RouteConstants } from "../shared/constants/route-constants";
-import { PageArguments } from "../shared/page-arguments";
-import { PaginationUtility } from "../shared/utilities/pagination-utility";
-import { NumberValidator } from "../shared/validators/number-validator";
-import { ObjectValidator } from "../shared/validators/object-validator";
-import { StringValidator } from "../shared/validators/string-validator";
-import { HeadersService } from "./headers.service";
+import { SimplifiedAlbum } from "src/app/models/album/simplified-album";
+import { Paging } from "src/app/models/paging/paging";
+import { Track } from "src/app/models/track/track";
+import { HeadersService } from "src/app/services-singleton/headers.service";
+import { LimitConstants } from "src/app/shared/constants/limit-constants";
+import { RouteConstants } from "src/app/shared/constants/route-constants";
+import { PageArguments } from "src/app/shared/page-arguments";
+import { PaginationUtility } from "src/app/shared/utilities/pagination-utility";
+import { NumberValidator } from "src/app/shared/validators/number-validator";
+import { ObjectValidator } from "src/app/shared/validators/object-validator";
+import { StringValidator } from "src/app/shared/validators/string-validator";
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class AlbumService {
 
     constructor(

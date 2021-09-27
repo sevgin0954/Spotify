@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { AlbumTracksBodyComponent } from './album-tracks-body/album-tracks-body.component';
 import { TrackModule } from '../track/track.module';
+import { AlbumService } from './services/album.service';
 
 const routes: Routes = [
   { path: '', component: AlbumComponent }
@@ -24,6 +25,9 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes),
     TrackModule
+  ],
+  providers: [
+    AlbumService
   ]
 })
 export class AlbumModule { }

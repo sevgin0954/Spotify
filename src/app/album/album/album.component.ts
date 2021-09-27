@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { concatMap } from 'rxjs/operators';
 import { SimplifiedAlbum } from 'src/app/models/album/simplified-album';
-import { AlbumService } from 'src/app/services-singleton/album.service';
+import { AlbumService } from '../services/album.service';
 
 @Component({
   selector: 'app-album',

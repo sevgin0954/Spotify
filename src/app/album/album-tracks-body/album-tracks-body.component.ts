@@ -1,8 +1,8 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { Paging } from 'src/app/models/paging/paging';
-import { PlailistTrack } from 'src/app/models/plailist-track/plailist-track';
 import { Track } from 'src/app/models/track/track';
-import { AlbumService } from 'src/app/services-singleton/album.service';
+import { PageArguments } from 'src/app/shared/page-arguments';
+import { AlbumService } from '../services/album.service';
 
 const TRACKS_LIMIT = 50;
 
@@ -69,20 +69,21 @@ export class AlbumTracksBodyComponent implements OnChanges {
   }
 
   loadMoreSongsCallback = () => {
-    // this.albumService.getTracks(this.albumId, this.tracks.length, TRACKS_LIMIT).subscribe(data => {
-    //   this.playlistTrack.items.push(...data.items);
-    //   this.playlistTrack.next = data.next;
-    //   this.playlistTrack.total = data.total;
+    const pageArgs = new PageArguments(this.tracks.length, TRACKS_LIMIT);
+    this.albumService.getTracks(this.albumId, pageArgs).subscribe(data => {
+      this.playlistTrack.items.push(...data.items);
+      this.playlistTrack.next = data.next;
+      this.playlistTrack.total = data.total;
 
-    //   if (this.playlistTrack.next) {
-    //     this.isLoadingDisabled = false;
-    //   }
-    //   else {
-    //     this.isLoadingDisabled = true;
-    //   }
+      if (this.playlistTrack.next) {
+        this.isLoadingDisabled = false;
+      }
+      else {
+        this.isLoadingDisabled = true;
+      }
 
-    //   this.updateTracks();
-    // });
+      this.updateTracks();
+    });
   }
 
   updateTracks(): void {

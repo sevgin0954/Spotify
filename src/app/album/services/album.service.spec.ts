@@ -1,15 +1,15 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of } from "rxjs";
-import { ExceptionConstants } from "../shared/constants/exception-constants";
-import { RouteConstants } from "../shared/constants/route-constants";
-import { ArgumentsUtilities } from "../test-common/arguments-utilities";
-import { Spied } from "../test-common/types";
+import { ExceptionConstants } from "../../shared/constants/exception-constants";
+import { RouteConstants } from "../../shared/constants/route-constants";
+import { ArgumentsUtilities } from "../../test-common/arguments-utilities";
+import { Spied } from "../../test-common/types";
 import { AlbumService } from "./album.service";
-import { HeadersService } from "./headers.service";
-import { SimplifiedAlbum } from './../models/album/simplified-album';
-import { PageArguments } from "../shared/page-arguments";
-import { Track } from "../models/track/track";
-import { Paging } from "../models/paging/paging";
+import { HeadersService } from "../../services-singleton/headers.service";
+import { SimplifiedAlbum } from '../../models/album/simplified-album';
+import { PageArguments } from "../../shared/page-arguments";
+import { Track } from "../../models/track/track";
+import { Paging } from "../../models/paging/paging";
 
 describe('', () => {
 
