@@ -1,9 +1,9 @@
 import { ExceptionConstants } from "../constants/exception-constants";
-import { DataValidator } from "./data-validator";
+import { ObjectValidator } from "./object-validator";
 
 export class StringValidator {
     public static validateString(str: string, argumentsInfo: string): void {
-        DataValidator.notNullOrUndefinied(str, argumentsInfo);
+        ObjectValidator.notNullOrUndefinied(str, argumentsInfo);
         StringValidator.notEmty(str, argumentsInfo);
     }
 

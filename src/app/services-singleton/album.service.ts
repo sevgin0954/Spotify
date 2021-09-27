@@ -5,8 +5,12 @@ import { pluck } from "rxjs/operators";
 import { SimplifiedAlbum } from "../models/album/simplified-album";
 import { Paging } from "../models/paging/paging";
 import { Track } from "../models/track/track";
+import { LimitConstants } from "../shared/constants/limit-constants";
 import { RouteConstants } from "../shared/constants/route-constants";
+import { PageArguments } from "../shared/page-arguments";
 import { PaginationUtility } from "../shared/utilities/pagination-utility";
+import { NumberValidator } from "../shared/validators/number-validator";
+import { ObjectValidator } from "../shared/validators/object-validator";
 import { StringValidator } from "../shared/validators/string-validator";
 import { HeadersService } from "./headers.service";
 
@@ -30,16 +34,24 @@ export class AlbumService {
         });
     }
 
-    getTracks(albumId: string, offset: number, limit: number): Observable<Paging<Track>> {
+    getTracks(albumId: string, pageArguments: PageArguments): Observable<Paging<Track>> {
+        this.validateGetTracksArguments(albumId, pageArguments);
+
         const headers = this.headersService.getClientHeaders();
 
         let params = new HttpParams();
-        params = PaginationUtility.addPaginationParams(params, limit, offset);
+        params = PaginationUtility.addPaginationParams(params, pageArguments.limit, pageArguments.offset);
 
         return this.http.get<SimplifiedAlbum>(`${RouteConstants.BASE}/albums/${albumId}/tracks`, {
             headers, params
         }).pipe(
             pluck('tracks')
         );
+    }
+
+    private validateGetTracksArguments(albumId: string, pageArguments: PageArguments): void {
+        StringValidator.validateString(albumId, 'albumId');
+        ObjectValidator.notNullOrUndefinied(pageArguments, 'pageArguments');
+        NumberValidator.validateMax(pageArguments.limit, LimitConstants.ALBUM_TRACKS_MAX, 'pageArguments.limit');
     }
 }

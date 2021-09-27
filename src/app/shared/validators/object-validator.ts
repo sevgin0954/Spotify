@@ -1,6 +1,6 @@
 import { ExceptionConstants } from "../constants/exception-constants";
 
-export class DataValidator {
+export class ObjectValidator {
     public static notNullOrUndefinied(data: any, argumentsInfo: string): void {
         if (data == null) {
             const errorMessage = this.appendArgumentName(ExceptionConstants.NULL_OR_UNDEFINED, argumentsInfo);
