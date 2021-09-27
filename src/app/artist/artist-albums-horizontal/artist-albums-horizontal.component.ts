@@ -2,7 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 import { SimplifiedAlbum } from 'src/app/models/album/simplified-album';
-import { ArtistService } from 'src/app/services-singleton/artist.service';
+import { ArtistService } from '../services/artist.service';
 
 const LIMIT = 10;
 

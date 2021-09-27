@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Artist } from 'src/app/models/artist/artist';
-import { ArtistService } from 'src/app/services-singleton/artist.service';
+import { ArtistService } from '../services/artist.service';
 
 @Component({
   selector: 'app-artist-related-artists',

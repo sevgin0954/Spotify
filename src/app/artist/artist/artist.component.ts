@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { concatMap } from 'rxjs/operators';
 import { Artist } from 'src/app/models/artist/artist';
-import { ArtistService } from 'src/app/services-singleton/artist.service';
+import { ArtistService } from '../services/artist.service';
 
 const ALBUMS_EXPANDED_CLASS = 'expanded-albums-container';
 const SIMILAR_ARTISTS_SHRINKED_CLASS = 'shrinked-related-artists-container';

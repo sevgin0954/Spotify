@@ -13,6 +13,7 @@ import { ArtistCardModule } from '../artist-card/artist-card.module';
 import { ArtistAlbumsHorizontalComponent } from './artist-albums-horizontal/artist-albums-horizontal.component';
 import { DynamicColorModule } from '../dynamic-color/dynamicColor.module';
 import { RouterModule, Routes } from '@angular/router';
+import { ArtistService } from './services/artist.service';
 
 const routes: Routes = [
   { path: '', component: ArtistComponent }
@@ -37,6 +38,9 @@ const routes: Routes = [
     SharedModule,
     DynamicColorModule,
     RouterModule.forChild(routes)
+  ],
+  providers: [
+    ArtistService
   ]
 })
 export class ArtistModule { }

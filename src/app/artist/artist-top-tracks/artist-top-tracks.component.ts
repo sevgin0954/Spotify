@@ -1,8 +1,9 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { switchMap } from 'rxjs/operators';
 import { Track } from 'src/app/models/track/track';
-import { ArtistService } from 'src/app/services-singleton/artist.service';
+import { GeolocationService } from 'src/app/services-singleton/geolocation.service';
 import { TracksService } from 'src/app/services-singleton/tracks.service';
+import { ArtistService } from '../services/artist.service';
 
 @Component({
   selector: 'app-artist-top-tracks',
@@ -18,13 +19,18 @@ export class ArtistTopTracksComponent implements OnChanges {
 
   constructor(
     private songService: TracksService,
-    private artistService: ArtistService
+    private artistService: ArtistService,
+    private geolocationService: GeolocationService
   ) { }
 
   ngOnChanges(): void {
-    this.artistService.getTopTracks(this.artistId).pipe(
-      switchMap(data => {
-        this.tracks = data;
+    // Cache region code
+    this.geolocationService.getRegionCode().pipe(
+      switchMap(regionCode => {
+        return this.artistService.getTopTracks(this.artistId, regionCode);
+      }),
+      switchMap(tracks => {
+        this.tracks = tracks;
 
         const tracksIds = this.tracks.map(t => t.id);
         return this.songService.getLikedSongsByIds(tracksIds);
