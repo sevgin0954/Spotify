@@ -7,8 +7,8 @@ export class PageArguments {
     private _limit: number;
 
     constructor(
-        offset: number,
-        limit: number
+        limit: number,
+        offset: number = 0
     ) {
         if (offset > limit){
             throw Error(ExceptionConstants.OFFSET_BIGGER_THAN_LIMIT);
@@ -23,7 +23,7 @@ export class PageArguments {
     }
 
     set offset(offset: number) {
-        NumberValidator.validatePositiveNumber(offset, 'offset');
+        NumberValidator.validateNonNegativeNumber(offset, 'offset');
         this._offset = offset;
     }
 

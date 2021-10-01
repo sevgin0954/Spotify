@@ -69,7 +69,7 @@ export class AlbumTracksBodyComponent implements OnChanges {
   }
 
   loadMoreSongsCallback = () => {
-    const pageArgs = new PageArguments(this.tracks.length, TRACKS_LIMIT);
+    const pageArgs = new PageArguments(TRACKS_LIMIT, this.tracks.length);
     this.albumService.getTracks(this.albumId, pageArgs).subscribe(data => {
       this.playlistTrack.items.push(...data.items);
       this.playlistTrack.next = data.next;

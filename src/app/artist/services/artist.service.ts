@@ -9,6 +9,7 @@ import { Track } from "src/app/models/track/track";
 import { HeadersService } from "src/app/services-singleton/headers.service";
 import { RouteConstants } from "src/app/shared/constants/route-constants";
 import { RegionCode } from "src/app/shared/enums/region-code";
+import { PageArguments } from "src/app/shared/page-arguments";
 import { ObjectValidator } from "src/app/shared/validators/object-validator";
 import { StringValidator } from "src/app/shared/validators/string-validator";
 
@@ -50,19 +51,28 @@ export class ArtistService {
         ObjectValidator.notNullOrUndefinied(regionCode, 'regionCode');
     }
 
-    getAlbums(artistId: string, limit: number, offset: number = 0): Observable<Paging<SimplifiedAlbum>> {
+    getAlbums(artistId: string, pageArgs: PageArguments): Observable<Paging<SimplifiedAlbum>> {
+        this.validateGetAlbumsArguments(artistId, pageArgs);
+
         const headers = this.headersService.getClientHeaders();
 
         let params = new HttpParams();
-        params = params.set('limit', limit.toString());
-        params = params.set('offset', offset.toString());
+        params = params.set('limit', pageArgs.limit.toString());
+        params = params.set('offset', pageArgs.offset.toString());
 
         return this.http.get<Paging<SimplifiedAlbum>>(`${RouteConstants.BASE}/artists/${artistId}/albums`, {
             headers, params
         });
     }
 
+    private validateGetAlbumsArguments(artistId: string, pageArgs: PageArguments): void {
+        StringValidator.validateString(artistId, 'artistId');
+        ObjectValidator.notNullOrUndefinied(pageArgs, 'pageArgs');
+    }
+
     getRelatedArtists(artistId: string): Observable<Artist[]> {
+        StringValidator.validateString(artistId, 'artistId');
+
         const headers = this.headersService.getClientHeaders();
 
         return this.http.get<Artist[]>(`${RouteConstants.BASE}/artists/${artistId}/related-artists`, {

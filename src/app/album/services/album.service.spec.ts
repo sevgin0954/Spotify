@@ -114,7 +114,7 @@ describe('', () => {
 
         beforeEach(() => {
             id = '123';
-            pageArguments = new PageArguments(1, 1);
+            pageArguments = new PageArguments(2, 1);
             httpClient.get.and.returnValue(httpClientGetReturnValue);
         });
 
