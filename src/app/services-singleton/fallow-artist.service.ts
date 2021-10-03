@@ -1,8 +1,9 @@
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { RouteConstants } from "../shared/constants/route-constants";
+import { StringValidator } from "../shared/validators/string-validator";
 import { HeadersService } from "./headers.service";
 
 @Injectable({
@@ -15,9 +16,13 @@ export class FallowArtistService {
     ) { }
 
     checkIfCurrentUserIsFallowing(artistId: string): Observable<boolean> {
+        StringValidator.validateString(artistId, 'artistId');
+        
         const headers = this.headersService.getUserHeaders();
 
-        const params = this.getParams(artistId);
+        let params = new HttpParams();
+        params = params.set('type', 'artist');
+        params = params.set('ids', artistId);
 
         return this.http.get<boolean>(`${RouteConstants.BASE}/me/following/contains`, {
             headers, params
@@ -27,37 +32,35 @@ export class FallowArtistService {
     }
 
     fallow(artistId: string): Observable<void> {
-        let headers = this.headersService.getUserHeaders();
-        headers = headers.set('Content-Type', 'application/json');
+        StringValidator.validateString(artistId, 'artistId');
 
-        const params = this.getParams(artistId);
+        const options = this.getOptionsForChangingFallowingState(artistId);
 
         const body = {
             ids: [artistId]
         };
 
-        return this.http.put<void>(`${RouteConstants.BASE}/me/following`, JSON.stringify(body), {
-            headers, params
-        });
+        return this.http.put<void>(`${RouteConstants.BASE}/me/following`, JSON.stringify(body), options);
     }
 
     unfallow(artistId: string): Observable<void> {
-        // TODO: Reuse
+        StringValidator.validateString(artistId, 'artistId');
+        
+        const options = this.getOptionsForChangingFallowingState(artistId);
+
+        return this.http.delete<void>(`${RouteConstants.BASE}/me/following`, options);
+    }
+
+    private getOptionsForChangingFallowingState(artistId: string): { headers: HttpHeaders, params: HttpParams } {
         let headers = this.headersService.getUserHeaders();
         headers = headers.set('Content-Type', 'application/json');
 
-        const params = this.getParams(artistId);
-
-        return this.http.delete<void>(`${RouteConstants.BASE}/me/following`, {
-            headers, params
-        });
-    }
-
-    private getParams(artistId: string): HttpParams {
         let params = new HttpParams();
         params = params.set('type', 'artist');
         params = params.set('ids', artistId);
 
-        return params;
+        return {
+            headers, params
+        };
     }
 }

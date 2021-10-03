@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { RouteConstants } from "../shared/constants/route-constants";
+import { StringValidator } from "../shared/validators/string-validator";
 import { HeadersService } from "./headers.service";
 
 @Injectable({
@@ -15,6 +16,9 @@ export class FallowPlaylistService {
     ) { }
 
     checkIfUserIsFallowingPlaylist(playlistId: string, userId: string): Observable<boolean> {
+        StringValidator.validateString(playlistId, 'playlistId');
+        StringValidator.validateString(userId, 'userId');
+
         const headers = this.headersService.getUserHeaders();
 
         let params = new HttpParams();
@@ -28,6 +32,8 @@ export class FallowPlaylistService {
     }
 
     fallow(playlistId: string): Observable<void> {
+        StringValidator.validateString(playlistId, 'playlistId');
+
         let headers = this.headersService.getUserHeaders();
         headers = headers.set('Content-Type', 'application/json');
 
@@ -37,6 +43,8 @@ export class FallowPlaylistService {
     }
 
     unfallow(playlistId: string): Observable<void> {
+        StringValidator.validateString(playlistId, 'playlistId');
+
         let headers = this.headersService.getUserHeaders();
         headers = headers.set('Content-Type', 'application/json');
 
