@@ -5,6 +5,7 @@ import { Paging } from 'src/app/models/paging/paging';
 import { Playlist } from 'src/app/models/playlist/playlist';
 import { PlaylistService } from 'src/app/services-singleton/playlist.service';
 import { Category as CategoryEnum } from 'src/app/shared/enums/category';
+import { PageArguments } from 'src/app/shared/page-arguments';
 
 const FUTURED_CATEGORY: string = 'futured';
 const PAGE_LIMIT: number = 50;
@@ -37,11 +38,12 @@ export class CategoryPlaylistsComponent {
       concatMap(params => {
         this.category = params['id'];
 
+        const pageArgs = new PageArguments(PAGE_LIMIT, this.playlists.length);
         if (this.category.toLowerCase() === FUTURED_CATEGORY) {
-          return this.playlistService.getFutured(PAGE_LIMIT, this.playlists.length);
+          return this.playlistService.getFutured(pageArgs);
         }
         else {
-          return this.playlistService.getByCategory(CategoryEnum[this.category], PAGE_LIMIT, this.playlists.length);
+          return this.playlistService.getByCategory(CategoryEnum[this.category], pageArgs);
         }
       }),
       tap(data => {

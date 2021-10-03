@@ -5,6 +5,7 @@ import { Playlist } from 'src/app/models/playlist/playlist';
 import { PlaylistService } from 'src/app/services-singleton/playlist.service';
 import { RouteConstants } from 'src/app/shared/constants/route-constants';
 import { Category as CategoryEnum } from 'src/app/shared/enums/category';
+import { PageArguments } from 'src/app/shared/page-arguments';
 
 const PLAYLIST_LIMIT = 10;
 
@@ -33,7 +34,8 @@ export class CategoryPlaylistsShortComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
-    this.playlists$ = this.playlistService.getByCategory(this.category, PLAYLIST_LIMIT, 0).pipe(
+    const pageArgs = new PageArguments(PLAYLIST_LIMIT);
+    this.playlists$ = this.playlistService.getByCategory(this.category, pageArgs).pipe(
       pluck('items')
     );
   }

@@ -3,6 +3,7 @@ import { Paging } from 'src/app/models/paging/paging';
 import { PlailistTrack } from 'src/app/models/plailist-track/plailist-track';
 import { Track } from 'src/app/models/track/track';
 import { TracksService } from 'src/app/services-singleton/tracks.service';
+import { PageArguments } from 'src/app/shared/page-arguments';
 
 const PAGE_LIMIT = 50;
 
@@ -38,7 +39,9 @@ export class SongsComponent implements OnChanges {
 
   private initializeLoadMoreSongsCallback(): void {
     this.loadMoreSongsCallback = () => {
-      return this.songService.getSongs(this.playlistId, PAGE_LIMIT, this.playlistTrack.items.length).pipe(
+      const pageArgs = new PageArguments(PAGE_LIMIT, this.playlistTrack.items.length);
+
+      return this.songService.getSongs(this.playlistId, pageArgs).pipe(
       ).subscribe(data => {
         this.playlistTrack.items.push(...data.items);
         this.playlistTrack.next = data.next;

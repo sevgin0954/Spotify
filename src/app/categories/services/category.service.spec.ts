@@ -1,14 +1,14 @@
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Category } from "../models/category/category";
-import { Paging } from "../models/paging/paging";
-import { ExceptionConstants } from "../shared/constants/exception-constants";
-import { RouteConstants } from "../shared/constants/route-constants";
-import { Category as CategoryEnum } from "../shared/enums/category";
-import { ArgumentsUtilities } from "../test-common/arguments-utilities";
-import { Spied } from "../test-common/types";
+import { Category } from "../../models/category/category";
+import { Paging } from "../../models/paging/paging";
+import { ExceptionConstants } from "../../shared/constants/exception-constants";
+import { RouteConstants } from "../../shared/constants/route-constants";
+import { Category as CategoryEnum } from "../../shared/enums/category";
+import { ArgumentsUtilities } from "../../test-common/arguments-utilities";
+import { Spied } from "../../test-common/types";
 import { CategoryService } from "./category.service";
-import { HeadersService } from "./headers.service";
+import { HeadersService } from "../../services-singleton/headers.service";
 
 describe('', () => {
 

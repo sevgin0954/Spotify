@@ -9,6 +9,8 @@ import { RouteConstants } from "../shared/constants/route-constants";
 import { PaginationUtility } from "../shared/utilities/pagination-utility";
 import { HeadersService } from "./headers.service";
 import { PageArguments } from "../shared/page-arguments";
+import { StringValidator } from "../shared/validators/string-validator";
+import { ObjectValidator } from "../shared/validators/object-validator";
 
 @Injectable({
     providedIn: 'root'
@@ -20,6 +22,9 @@ export class PlaylistService {
     ) { }
 
     getByCategory(category: Category, pageArgs: PageArguments): Observable<Paging<Playlist>> {
+        ObjectValidator.notNullOrUndefinied(category, 'category');
+        ObjectValidator.notNullOrUndefinied(pageArgs, 'pageArgs');
+
         const headers = this.headersService.getClientHeaders();
 
         let params = new HttpParams();
@@ -33,6 +38,8 @@ export class PlaylistService {
     }
 
     getFutured(pageArgs: PageArguments): Observable<Paging<Playlist>> {
+        ObjectValidator.notNullOrUndefinied(pageArgs, 'pageArgs');
+
         const headers = this.headersService.getClientHeaders();
 
         let params = new HttpParams();
@@ -45,6 +52,8 @@ export class PlaylistService {
     }
 
     getById(id: string): Observable<Playlist> {
+        StringValidator.validateString(id, 'id');
+
         const headers = this.headersService.getClientHeaders();
 
         return this.http.get<Playlist>(`${RouteConstants.BASE}/playlists/${id}`, {

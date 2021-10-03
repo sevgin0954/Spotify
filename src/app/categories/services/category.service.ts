@@ -1,19 +1,17 @@
 import { Observable } from "rxjs";
-import { Category as CategoryEnum } from "../shared/enums/category";
-import { Category } from "../models/category/category";
-import { Paging } from "../models/paging/paging";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { Injectable } from "@angular/core";
-import { RouteConstants } from "../shared/constants/route-constants";
-import { HeadersService } from "./headers.service";
-import { PageArguments } from "../shared/page-arguments";
-import { PaginationUtility } from "../shared/utilities/pagination-utility";
-import { ObjectValidator } from "../shared/validators/object-validator";
+import { HeadersService } from "src/app/services-singleton/headers.service";
+import { Category as CategoryEnum } from "src/app/shared/enums/category";
+import { Paging } from "src/app/models/paging/paging";
+import { Category } from "src/app/models/category/category";
+import { ObjectValidator } from "src/app/shared/validators/object-validator";
+import { RouteConstants } from "src/app/shared/constants/route-constants";
+import { PageArguments } from "src/app/shared/page-arguments";
+import { PaginationUtility } from "src/app/shared/utilities/pagination-utility";
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class CategoryService {
     constructor(
         private http: HttpClient,

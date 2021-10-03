@@ -4,6 +4,7 @@ import { pluck } from 'rxjs/operators';
 import { Playlist } from 'src/app/models/playlist/playlist';
 import { PlaylistService } from 'src/app/services-singleton/playlist.service';
 import { RouteConstants } from 'src/app/shared/constants/route-constants';
+import { PageArguments } from 'src/app/shared/page-arguments';
 
 @Component({
   selector: 'app-category-playlists-futured-short',
@@ -21,7 +22,8 @@ export class CategoryPlaylistsFuturedShortComponent implements OnInit {
   constructor(private playlistService: PlaylistService) { }
 
   ngOnInit(): void {
-    this.playlists$ = this.playlistService.getFutured(this.playlistLoadLimit, 0).pipe(
+    const pageArgs = new PageArguments(this.playlistLoadLimit);
+    this.playlists$ = this.playlistService.getFutured(pageArgs).pipe(
       pluck('items')
     );
   }
