@@ -8,6 +8,7 @@ import { Category } from "../shared/enums/category";
 import { RouteConstants } from "../shared/constants/route-constants";
 import { PaginationUtility } from "../shared/utilities/pagination-utility";
 import { HeadersService } from "./headers.service";
+import { PageArguments } from "../shared/page-arguments";
 
 @Injectable({
     providedIn: 'root'
@@ -18,11 +19,11 @@ export class PlaylistService {
         private headersService: HeadersService
     ) { }
 
-    getByCategory(category: Category, limit: number, offset: number): Observable<Paging<Playlist>> {
+    getByCategory(category: Category, pageArgs: PageArguments): Observable<Paging<Playlist>> {
         const headers = this.headersService.getClientHeaders();
 
         let params = new HttpParams();
-        params = PaginationUtility.addPaginationParams(params, limit, offset);
+        params = PaginationUtility.addPaginationParams(params, pageArgs);
 
         const categoryName = Category[category].toLowerCase()
         return this.http.get<Paging<Playlist>>(`${RouteConstants.BASE}/browse/categories/${categoryName}/playlists`, 
@@ -31,11 +32,11 @@ export class PlaylistService {
         );
     }
 
-    getFutured(limit: number, offset: number): Observable<Paging<Playlist>> {
+    getFutured(pageArgs: PageArguments): Observable<Paging<Playlist>> {
         const headers = this.headersService.getClientHeaders();
 
         let params = new HttpParams();
-        params = PaginationUtility.addPaginationParams(params, limit, offset);
+        params = PaginationUtility.addPaginationParams(params, pageArgs);
 
         return this.http.get<Paging<Playlist>>(`${RouteConstants.BASE}/browse/featured-playlists`, 
         { headers, params }).pipe(

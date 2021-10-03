@@ -38,7 +38,7 @@ export class AlbumService {
         const headers = this.headersService.getClientHeaders();
 
         let params = new HttpParams();
-        params = PaginationUtility.addPaginationParams(params, pageArguments.limit, pageArguments.offset);
+        params = PaginationUtility.addPaginationParams(params, pageArguments);
 
         return this.http.get<SimplifiedAlbum>(`${RouteConstants.BASE}/albums/${albumId}/tracks`, {
             headers, params

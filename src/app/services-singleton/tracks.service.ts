@@ -6,6 +6,7 @@ import { Paging } from "../models/paging/paging";
 import { PlailistTrack } from "../models/plailist-track/plailist-track";
 import { Track } from "../models/track/track";
 import { RouteConstants } from "../shared/constants/route-constants";
+import { PageArguments } from "../shared/page-arguments";
 import { PaginationUtility } from "../shared/utilities/pagination-utility";
 import { HeadersService } from "./headers.service";
 
@@ -18,11 +19,11 @@ export class TracksService {
         private headersService: HeadersService
     ) { }
 
-    getSongs(trackId: string, limit: number, offset: number): Observable<Paging<PlailistTrack>> {
+    getSongs(trackId: string, pageArgs: PageArguments): Observable<Paging<PlailistTrack>> {
         const headers = this.headersService.getClientHeaders();
 
         let params = new HttpParams();
-        params = PaginationUtility.addPaginationParams(params, limit, offset);
+        params = PaginationUtility.addPaginationParams(params, pageArgs);
 
         return this.http.get<Paging<PlailistTrack>>(`${RouteConstants.BASE}/playlists/${trackId}/tracks`, {
             headers,

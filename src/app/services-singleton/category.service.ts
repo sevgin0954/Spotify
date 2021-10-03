@@ -7,6 +7,9 @@ import { map } from "rxjs/operators";
 import { Injectable } from "@angular/core";
 import { RouteConstants } from "../shared/constants/route-constants";
 import { HeadersService } from "./headers.service";
+import { PageArguments } from "../shared/page-arguments";
+import { PaginationUtility } from "../shared/utilities/pagination-utility";
+import { ObjectValidator } from "../shared/validators/object-validator";
 
 @Injectable({
     providedIn: 'root'
@@ -18,6 +21,8 @@ export class CategoryService {
     ) { }
 
     getCategory(category: CategoryEnum): Observable<Paging<Category>> {
+        ObjectValidator.notNullOrUndefinied(category, 'category');
+
         const headers = this.headersService.getClientHeaders();
 
         const categoryName = CategoryEnum[category].toLowerCase();
@@ -26,11 +31,13 @@ export class CategoryService {
         });
     }
 
-    getCategories(limit: number): Observable<Paging<Category>> {
+    getCategories(pageArgs: PageArguments): Observable<Paging<Category>> {
+        ObjectValidator.notNullOrUndefinied(pageArgs, 'category');
+
         const headers = this.headersService.getClientHeaders();
 
         let params = new HttpParams();
-        params = params.set('limit', limit.toString());
+        params = PaginationUtility.addPaginationParams(params, pageArgs);
 
         return this.http.get<Paging<Category>>(`${RouteConstants.BASE}/browse/categories`, {
             headers, params
