@@ -42,7 +42,7 @@ export class ExpandableListComponent implements AfterContentChecked {
   @HostListener('window:resize')
   updateIsOverflowingState(): void {
     const isOverflowing = 
-      this.windowService.isElementOverflowingParent(this.contentContainer.nativeElement, this.elementsContainer.nativeElement);
+      this.windowService.isElementOverflowingParentVerticaly(this.contentContainer.nativeElement, this.elementsContainer.nativeElement);
     if (isOverflowing === false) {
       this.renderer2.setStyle(this.showTracksButton.nativeElement, 'display', 'none');
       this.removeBorderStyles();
