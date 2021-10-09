@@ -2,6 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { SimplifiedAlbum } from 'src/app/models/album/simplified-album';
 import { FallowAlbumService } from 'src/app/services-singleton/fallow-album.service';
 import { LocalStorageService } from 'src/app/services-singleton/local-storage.service';
+import { ObjectValidator } from 'src/app/shared/validators/object-validator';
 
 @Component({
   selector: 'app-album-header',
@@ -35,6 +36,8 @@ export class AlbumHeaderComponent implements OnChanges {
   }
 
   setLoadedImage(image: HTMLImageElement): void {
+    ObjectValidator.notNullOrUndefinied(image, 'image');
+
     this.loadedImage = image;
     this.imageUrl = image.currentSrc;
   }
@@ -46,12 +49,16 @@ export class AlbumHeaderComponent implements OnChanges {
   unfallow(): void {
     this.fallowService.unfallow(this.album.id).subscribe(() => {
       this.isUserFallowing = false;
+    }, (error) => {
+      // TODO: Handle error
     });
   }
 
   fallow(): void {
     this.fallowService.fallow(this.album.id).subscribe(() => {
       this.isUserFallowing = true;
+    }, (error) => {
+      // TODO: Handle error
     });
   }
 }
