@@ -11,6 +11,7 @@ export class SavedArtistsComponent implements OnInit {
 
   artists: Artist[] = [];
   isLoadingDisabled: boolean = true;
+  isCurrentlyLoading: boolean = false;
 
   constructor(
     private userLibraryService: UserLibraryService
@@ -21,6 +22,8 @@ export class SavedArtistsComponent implements OnInit {
   }
 
   loadMoreArtists = () => {
+    this.isCurrentlyLoading = true;
+
     this.userLibraryService.getSavedArtists().subscribe(data => {
       this.artists.push(...data.items);
 
@@ -30,6 +33,8 @@ export class SavedArtistsComponent implements OnInit {
       else {
         this.isLoadingDisabled = true;
       }
+
+      this.isCurrentlyLoading = false;
     });
   }
 }

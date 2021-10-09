@@ -19,6 +19,7 @@ export class CategoryPlaylistsComponent {
   category: string = '';
   isLoadingDisabled: boolean = true;
   playlists: Playlist[] = [];
+  isCurrentlyLoading: boolean = false;
 
   constructor(
     private playlistService: PlaylistService,
@@ -34,6 +35,8 @@ export class CategoryPlaylistsComponent {
   }
 
   loadMorePlaylists = () => {
+    this.isCurrentlyLoading = true;
+
     this.route.params.pipe(
       concatMap(params => {
         this.category = params['id'];
@@ -57,6 +60,7 @@ export class CategoryPlaylistsComponent {
       pluck<Paging<Playlist>, Playlist[]>('items')
     ).subscribe(playlists => {
       this.playlists.push(...playlists);
+      this.isCurrentlyLoading = false;
     });
   }
 }

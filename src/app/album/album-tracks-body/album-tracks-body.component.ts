@@ -21,6 +21,7 @@ export class AlbumTracksBodyComponent implements OnChanges {
 
   tracks: Track[] = [];
   isLoadingDisabled: boolean = true;
+  isCurrentlyLoading: boolean = false;
 
   constructor(
     private albumService: AlbumService
@@ -69,6 +70,8 @@ export class AlbumTracksBodyComponent implements OnChanges {
   }
 
   loadMoreSongsCallback = () => {
+    this.isCurrentlyLoading = true;
+
     const pageArgs = new PageArguments(TRACKS_LIMIT, this.tracks.length);
     this.albumService.getTracks(this.albumId, pageArgs).subscribe(data => {
       this.playlistTrack.items.push(...data.items);
@@ -83,6 +86,8 @@ export class AlbumTracksBodyComponent implements OnChanges {
       }
 
       this.updateTracks();
+
+      this.isCurrentlyLoading = false;
     });
   }
 

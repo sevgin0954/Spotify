@@ -11,6 +11,7 @@ export class SavedPlaylistsComponent implements OnInit {
 
   playlists: Playlist[] = [];
   isLoadingDisabled: boolean = true;
+  isCurrentlyLoading: boolean = false;
 
   constructor(
     private userLibraryService: UserLibraryService
@@ -21,6 +22,8 @@ export class SavedPlaylistsComponent implements OnInit {
   }
 
   loadMorePlaylists = () => {
+    this.isCurrentlyLoading = true;
+
     this.userLibraryService.getSavedPlaylists().subscribe(data => {
       this.playlists.push(...data.items);
 
@@ -30,6 +33,8 @@ export class SavedPlaylistsComponent implements OnInit {
       else {
         this.isLoadingDisabled = true;
       }
+
+      this.isCurrentlyLoading = false;
     });
   }
 }

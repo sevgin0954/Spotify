@@ -2,4 +2,8 @@
     <app-artist-card class="grid-element" *ngFor="let artist of artists" [artist]="artist"></app-artist-card>
 </div>
 
-<app-loading-elements [loadingCallback]="loadMoreArtists" [isLoadingDisabled]="isLoadingDisabled"></app-loading-elements>
+<app-loading-elements 
+    [loadingCallback]="loadMoreArtists" 
+    [isLoadingDisabled]="isLoadingDisabled"
+    [isCurrentlyLoading]="isCurrentlyLoading">
+</app-loading-elements>

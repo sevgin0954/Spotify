@@ -1,5 +1,6 @@
-import { AfterViewChecked, Component, ElementRef, HostListener, Input, OnChanges, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, HostListener, Input, Renderer2, ViewChild } from '@angular/core';
 import { WindowService } from 'src/app/services-singleton/window.service';
+import isRequired from '../../decorators/isRequired';
 
 @Component({
   selector: 'app-loading-elements',
@@ -8,10 +9,16 @@ import { WindowService } from 'src/app/services-singleton/window.service';
 })
 export class LoadingElementsComponent implements AfterViewChecked {
   @Input()
+  @isRequired
   isLoadingDisabled: boolean;
 
   @Input()
+  @isRequired
   loadingCallback: Function;
+
+  @Input()
+  @isRequired
+  isCurrentlyLoading: boolean;
 
   @ViewChild('loading')
   private loadingElement: ElementRef;
@@ -32,7 +39,7 @@ export class LoadingElementsComponent implements AfterViewChecked {
 
   @HostListener("window:scroll")
   onScroll(): void {
-    if (this.isLoadingDisabled) {
+    if (this.isLoadingDisabled || this.isCurrentlyLoading) {
       return;
     }
 

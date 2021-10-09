@@ -22,6 +22,7 @@ export class SongsComponent implements OnChanges {
 
   isLoadingDisabled: boolean = true;
   loadMoreSongsCallback: Function;
+  isCurrentlyLoading = false;
   tracks: Track[];
 
   constructor(
@@ -39,6 +40,8 @@ export class SongsComponent implements OnChanges {
 
   private initializeLoadMoreSongsCallback(): void {
     this.loadMoreSongsCallback = () => {
+      this.isCurrentlyLoading = true;
+
       const pageArgs = new PageArguments(PAGE_LIMIT, this.playlistTrack.items.length);
 
       return this.songService.getSongs(this.playlistId, pageArgs).pipe(
@@ -55,6 +58,8 @@ export class SongsComponent implements OnChanges {
         }
 
         this.updateTracks();
+
+        this.isCurrentlyLoading = false;
       });
     };
   }

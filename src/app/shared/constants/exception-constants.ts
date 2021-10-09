@@ -5,4 +5,5 @@ export class ExceptionConstants {
     public static readonly NULL_OR_UNDEFINED = 'Null or Undefinied exception.';
     public static readonly OFFSET_BIGGER_THAN_LIMIT = 'Offset cannot be bigger than the limit';
     public static readonly POSITIVE_NUMBER = 'Number should be positive number.';
+    public static readonly REQUIRED_INPUT = 'Input is required.';
 } 
