@@ -1,4 +1,3 @@
-import { ExceptionConstants } from "./constants/exception-constants";
 import { NumberValidator } from "./validators/number-validator";
 
 export class PageArguments {
@@ -9,11 +8,7 @@ export class PageArguments {
     constructor(
         limit: number,
         offset: number = 0
-    ) {
-        if (offset > limit){
-            throw Error(ExceptionConstants.OFFSET_BIGGER_THAN_LIMIT);
-        }
-        
+    ) { 
         this.offset = offset;
         this.limit = limit;
     }

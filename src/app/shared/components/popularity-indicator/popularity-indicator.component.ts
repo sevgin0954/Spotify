@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import isInRange from '../../decorators/isInRange';
 
 @Component({
   selector: 'app-popularity-indicator',
@@ -8,5 +9,6 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class PopularityIndicatorComponent {
   @Input()
+  @isInRange(1, 5)
   popularityCount: number;
 }
