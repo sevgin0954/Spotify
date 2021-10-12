@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { concatMap } from 'rxjs/operators';
@@ -8,8 +8,7 @@ import { PlaylistService } from 'src/app/services-singleton/playlist.service';
 @Component({
   selector: 'app-playlist-tracks',
   templateUrl: './playlist-tracks.component.html',
-  styleUrls: ['./playlist-tracks.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./playlist-tracks.component.scss']
 })
 export class PlaylistTracksComponent implements OnInit {
 

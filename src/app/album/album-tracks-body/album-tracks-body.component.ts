@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { Paging } from 'src/app/models/paging/paging';
 import { Track } from 'src/app/models/track/track';
+import { RouteConstants } from 'src/app/shared/constants/route-constants';
 import { PageArguments } from 'src/app/shared/page-arguments';
 import { AlbumService } from '../services/album.service';
 
@@ -63,7 +64,7 @@ export class AlbumTracksBodyComponent implements OnChanges {
       };
       t.album.images[0] = {
         height: 500,
-        url: 'https://i1.sndcdn.com/avatars-000606604806-j6ghpm-t500x500.jpg',
+        url: RouteConstants.DEFAULT_ALBUM_ICON,
         width: 500
       };
     })

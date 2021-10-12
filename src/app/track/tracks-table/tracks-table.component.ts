@@ -49,6 +49,15 @@ export class TracksTableComponent {
   }
 
   getReleasedMonthAndDate(songIndex: number): string {
-    return this.displayService.getReleasedMonthAndDate(songIndex, this.tracks, this.releasedDateSeparator);
+    let monthAndDate = this.displayService.getReleasedMonthAndDay(songIndex, this.tracks, this.releasedDateSeparator);
+    
+    if (monthAndDate === '') {
+      monthAndDate = '';
+    }
+    else {
+      monthAndDate = this.releasedDateSeparator + monthAndDate;
+    }
+
+    return monthAndDate;
   }
 }

@@ -19,14 +19,14 @@ export class TracksWithLikesTableComponent implements OnChanges {
   private isTrackLikedCurrentPage: number = 1;
 
   constructor(
-    private tracksService: TracksDisplayService
+    private tracksDisplayService: TracksDisplayService
   ) { }
 
   ngOnChanges(): void {
-    this.tracksService.getIsTrackLiked(this.tracks).subscribe(data => {
+    this.tracksDisplayService.getIsTrackLiked(this.tracks).subscribe(data => {
       this.isTrackLikedPages.push(data);
 
-      this.isTrackLikedCurrentPage = this.tracksService
+      this.isTrackLikedCurrentPage = this.tracksDisplayService
         .tryMoveLoadedTrackLiked(this.isTrackLikedLoaded, this.isTrackLikedPages, this.isTrackLikedCurrentPage);
       this.isTrackLikedLoaded = [...this.isTrackLikedLoaded];
     });

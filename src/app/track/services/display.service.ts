@@ -14,10 +14,11 @@ export class DisplayService {
         return releasedDate.split(separator)[0];
     }
 
-    getReleasedMonthAndDate(songIndex: number, tracks: Track[], separator: string): string {
+    getReleasedMonthAndDay(songIndex: number, tracks: Track[], separator: string): string {
         const releasedDate = tracks[songIndex].album.release_date;
-        const dateParts = releasedDate.split(separator);
+        const dateParts = releasedDate.split(separator).filter(p => p !== undefined);
+        const mothAndDayPart = dateParts.filter((p, i) => i !== 0);
 
-        return dateParts[1] + separator + dateParts[2];
+        return mothAndDayPart.join(separator);
     }
 }
